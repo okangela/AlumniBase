@@ -1,0 +1,72 @@
+/*______D3 CSS begins______*/
+
+body {
+  background: #fcfcfa;
+  width: 944px;
+  margin: 10px;
+}
+  
+svg {
+  font: 500 14px "arial", sans-serif;
+  fill: #023848;
+}
+
+.node {
+  transition: opacity 0.25s;
+}
+
+.node rect {
+  fill-opacity: .75;
+  shape-rendering: crispEdges;
+}
+
+.node text {
+  pointer-events: none;
+  font-size: 9px;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.link {
+  fill: none;
+  stroke: #969696;
+  stroke-opacity: .1;
+}
+
+.link:hover {
+  stroke-opacity: .6;
+}
+
+/*_____D3 CSS ends_______*/
+
+
+
+body {
+	font-family: 'Source Sans Pro', sans-serif;
+	/*background-color: #00A0DC;*/
+	}
+h1 {
+	font-size: 48px;
+	font-weight: 600;
+}
+
+p {
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.btn {
+	padding: 8px 10px;
+	font-size: 16px;
+}
+
+.title-content {
+  position: relative;
+}
+.title_content_child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
