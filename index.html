@@ -81,7 +81,7 @@
 	var path = sankey.link()
 	  .curvature(0.3);
 
-	d3.json("sankey1.json", function(energy) {
+	d3.json("sankey.json", function(energy) {
 	  sankey
 	    .nodes(energy.nodes)
 	    .links(energy.links)
