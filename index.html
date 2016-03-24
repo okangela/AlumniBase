@@ -4,44 +4,6 @@
 <meta charset="utf-8">
 <head>
 	<title>Test Sankey</title>
-	<style>
-	body {
-	  background: #fcfcfa;
-	  width: 944px;
-	  margin: 10px;
-	}
-	  
-	svg {
-	  font: 500 14px "arial", sans-serif;
-	  fill: #023848;
-	}
-
-	.node {
-	  transition: opacity 0.25s;
-	}
-
-	.node rect {
-	  fill-opacity: .75;
-	  shape-rendering: crispEdges;
-	}
-
-	.node text {
-	  pointer-events: none;
-	  font-size: 9px;
-	  opacity: 0;
-	  transition: opacity 0.25s;
-	}
-
-	.link {
-	  fill: none;
-	  stroke: #969696;
-	  stroke-opacity: .1;
-	}
-
-	.link:hover {
-	  stroke-opacity: .6;
-	}
-	</style>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="style.css">
@@ -52,9 +14,9 @@
 	<script src="http://d3js.org/d3.v3.min.js"></script>
 	<script src="http://bost.ocks.org/mike/sankey/sankey.js"></script>
 	<script>
-	var margin = {top: 1, right: 30, bottom: 1, left: 1},
-	    width = 940 - margin.left - margin.right,
-	    height = 480 - margin.top - margin.bottom;
+	var margin = {top: 1, right: 30, bottom: 30, left:10},
+	    width = 1280 - margin.left - margin.right,
+	    height = 500 - margin.top - margin.bottom;
 	    
 	var category20b_sq = [
 	  '#393b79', '#5254a3', '#6b6ecf', '#9c9ede',
@@ -75,21 +37,21 @@
 
 	var sankey = d3.sankey()
 	  .nodeWidth(16)
-	  .nodePadding(10)
+	  .nodePadding(8)
 	  .size([width, height]);
 
 	var path = sankey.link()
-	  .curvature(0.3);
+	  .curvature(0.4);
 
-	d3.json("sankey.json", function(energy) {
+	d3.json("sankey.json", function(mydatabase) {
 	  sankey
-	    .nodes(energy.nodes)
-	    .links(energy.links)
-	    .layout(20);
+	    .nodes(mydatabase.nodes)
+	    .links(mydatabase.links)
+	    .layout(40);
 
 
 	  var link = svg.append("g").selectAll(".link")
-	      .data(energy.links)
+	      .data(mydatabase.links)
 	    .enter().append("path")
 	      .attr("class", "link")
 	      .attr("d", path)
@@ -110,14 +72,15 @@
 	        d3.selectAll(".node")
 	          .style("opacity", null)
 	          .selectAll("text")
-	          .style("opacity", 0);
+	          .style("opacity", 1);
 	      });
 
 	  var node = svg.append("g").selectAll(".node")
-	      .data(energy.nodes)
+	      .data(mydatabase.nodes)
 	    .enter().append("g")
 	      .attr("class", "node")
 	      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+	      
 
 	  node.append("rect")
 	      .attr("height", function(d) { return d.dy; })
@@ -136,7 +99,7 @@
 	    .filter(function(d) { return d.x > width * .9; })
 	      .attr("class", function(d) { return d.category ; })
 	      .attr("text-anchor", "end")
-	      .attr("transform", function(d) { return "translate (" + ((d.dy / 2) + 30) + "," + (d.dy / 2) + ") rotate(90)"; });
+	      // .attr("transform", function(d) { return "translate (" + ((d.dy / 2) + 30) + "," + (d.dy / 2) + ") rotate(90)"; });
 	});
 	</script>
 </body>
