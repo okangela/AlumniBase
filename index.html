@@ -80,7 +80,7 @@
 	    .enter().append("g")
 	      .attr("class", "node")
 	      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-	      
+
 
 	  node.append("rect")
 	      .attr("height", function(d) { return d.dy; })
@@ -98,7 +98,7 @@
 	      .text(function(d) { return d.name; })
 	    .filter(function(d) { return d.x > width * .9; })
 	      .attr("class", function(d) { return d.category ; })
-	      .attr("text-anchor", "end")
+	      .attr("text-anchor", "end") 
 	      // .attr("transform", function(d) { return "translate (" + ((d.dy / 2) + 30) + "," + (d.dy / 2) + ") rotate(90)"; });
 	});
 	</script>
