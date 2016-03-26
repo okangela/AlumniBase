@@ -9,6 +9,9 @@ body {
 svg {
   font: 500 14px "arial", sans-serif;
   fill: #023848;
+  display: block;
+  margin-top: 80px;
+  margin-left: 30px;
 }
 
 .node {
@@ -72,6 +75,5 @@ p {
 
 .sankeyChart{
   display: block;
-
 }
 
