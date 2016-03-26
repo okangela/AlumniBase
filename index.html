@@ -3,16 +3,60 @@
 <html lang="en">
 <meta charset="utf-8">
 <head>
-	<title>Test Sankey</title>
+	<title>AlumniBase - Find the "right" alumni</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="bootstrap3/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="bootstrap3/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
 
 </head>
 
 <body>
+
+	 <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Start Bootstrap</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Services</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+   <section>
+   	<div class = "container">
+   		<div class = "row">
+   		<div class = "sankeyChart"></div>
+   		</div>
+   	</div>
+   </section>
 	<script src="http://d3js.org/d3.v3.min.js"></script>
 	<script src="http://bost.ocks.org/mike/sankey/sankey.js"></script>
+	
+	<!-- _____________D3 begins here_____________-->
 	<script>
 	var margin = {top: 1, right: 30, bottom: 30, left:10},
 	    width = 1280 - margin.left - margin.right,
@@ -29,19 +73,19 @@
 	var color = d3.scale.ordinal()
 	  .range(category20b_sq);
 
-	var svg = d3.select("body").append("svg")
+	var svg = d3.select(".sankeyChart").append("svg")
 	  .attr("width", width + margin.left + margin.right)
 	  .attr("height", height + margin.top + margin.bottom)
 	  .append("g")
 	  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 	var sankey = d3.sankey()
-	  .nodeWidth(16)
-	  .nodePadding(8)
-	  .size([width, height]);
+				   .nodeWidth(16)
+				   .nodePadding(8)
+				   .size([width, height]);
 
 	var path = sankey.link()
-	  .curvature(0.4);
+	  				 .curvature(0.4);
 
 	d3.json("sankey.json", function(mydatabase) {
 	  sankey
