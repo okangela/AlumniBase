@@ -10,6 +10,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="bootstrap3/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 </head>
 
@@ -26,26 +27,71 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Start Bootstrap</a>
+                <a class="navbar-brand" href="#">AlumniBase</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
+            <div class="collapse navbar-collapse">
+            	<ul class="nav navbar-nav" id ="school">
+	        		<li class="dropdown">
+
+		                <a href="#" data-toggle="dropdown" class="dropdown-toggle">HCI, Georgia Institue of Technology<b class="caret"></b></a>
+
+		                <ul class="dropdown-menu">
+
+		                    <li><a href="#">Architecture, Indian Institute of Technology Roorkee</a></li>
+
+		                    <li class="divider"></li>
+
+		                    <li><p class="other-schools">Explore other schools</p></li>
+		                    <li><a href="#">HCI, Carnegie Mellon University</a></li>
+		                    <li><a href="#">HCI, University of Michigan</a></li>
+		                    <li><a href="#">HCI, UC Berkeley</a></li>
+
+		                </ul>
+
+		            </li>
+		          </ul>
+
+	            <ul class="nav navbar-nav">
+	                <li>
+	                    <a href="#">How to use?</a>
+	                </li>
+	                <li>
+	                    <a href="#"><i class="fa fa-user icon"></i>Profile</a>
+	                </li>
+	                <li>
+	                    <a href="#"><i class="fa fa-cog icon"></i>Settings</a>
+	                </li>
+	                
+	            </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container -->
+    </nav>
+
+   	<!-- Questions -->
+    <nav class="navbar-fixed-top questions" role="navigation">
+        <div class="container">
+            <div class="questions-bar">
+            	<p class = "questions_intro"> Begin asking some questions about your Alumni Network</p>
+                <ul class="questions-list">
                     <li>
-                        <a href="#">About</a>
+                        <a href="#">How many alumni work in the Bay Area? </a>
                     </li>
                     <li>
-                        <a href="#">Services</a>
+                        <a href="#">What do people do after graduation?</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="#">Who all are currenly working in research?</a>
+                    </li>
+                    <li id ="more">
+                        <a href="#">more...</a>
                     </li>
                 </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
+            </div><!-- /.navbar-header -->
+        </div><!-- /.container -->
     </nav>
+
+
    <section>
    	<div class = "container">
    		<div class = "row">
@@ -53,10 +99,21 @@
    		</div>
    	</div>
    </section>
+
+      <section>
+   	<div class = "container">
+   		<div class = "row">
+   		<div class = "timeline1"></div>
+   		</div>
+   	</div>
+   </section>
+
+   <!-- _____________D3 begins here_____________-->
 	<script src="http://d3js.org/d3.v3.min.js"></script>
 	<script src="sankeyPugin.js"></script>
+	<script src="d3-timeline-master/d3-timeline-master/src/d3-timeline.js"></script>
 	
-	<!-- _____________D3 begins here_____________-->
+	<!-- Sankey-->
 	<script>
 	var margin = {top: 1, right: 30, bottom: 30, left:10},
 	    width = 1280 - margin.left - margin.right,
@@ -146,5 +203,43 @@
 	      // .attr("transform", function(d) { return "translate (" + ((d.dy / 2) + 30) + "," + (d.dy / 2) + ") rotate(90)"; });
 	});
 	</script>
+
+	<!-- Timeline-->
+	<script type="text/javascript">
+    window.onload = function() {
+      var testData = [
+        {times: [{"starting_time": 1355752800000, "ending_time": 1355759900000}, {"starting_time": 1355767900000, "ending_time": 1355774400000}]},
+        {times: [{"starting_time": 1355759910000, "ending_time": 1355761900000}, ]},
+        {times: [{"starting_time": 1355761910000, "ending_time": 1355763910000}]},
+      ];
+
+      var labelColorTestData = [
+        {class:"jackie", icon: "d3-timeline-master/d3-timeline-master/examples/jackie.png",label: "person a", times: [{"color":"green", "label":"Weeee", "starting_time": 1355752800000, "ending_time": 1355759900000}, {"color":"blue", "label":"Weeee", "starting_time": 1355767900000, "ending_time": 1355774400000}]},
+        {class:"troll", icon: "d3-timeline-master/d3-timeline-master/examples/troll.png",label: "person b", times: [{"color":"pink", "label":"Weeee", "starting_time": 1355759910000, "ending_time": 1355761900000}, ]},
+        {class:"wat", icon: "d3-timeline-master/d3-timeline-master/examples/wat.png",label: "person c", times: [{"color":"yellow", "label":"Weeee", "starting_time": 1355761910000, "ending_time": 1355763910000}]},
+
+
+      ];
+
+      var width = 1280;
+
+      function timelineLabelColor() {
+        var chart = d3.timeline()
+          .beginning(1355752800000) // we can optionally add beginning and ending times to speed up rendering a little
+          .ending(1355774400000)
+          .stack() // toggles graph stacking
+          .background("grey")
+          .margin({left:70, right:30, top:0, bottom:0})
+          ;
+        var svg = d3.select(".timeline1").append("svg").attr("width", width)
+          .datum(labelColorTestData).call(chart);
+      }
+
+      timelineLabelColor(); 
+      
+  	}
+
+      </script>
+
 </body>
 </html>
