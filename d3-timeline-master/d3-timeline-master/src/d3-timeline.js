@@ -31,8 +31,8 @@
         rotateTicks = false,
         timeIsRelative = false,
         fullLengthBackgrounds = false,
-            itemHeight = 5,
-            itemMargin = 2,
+            itemHeight = 5, // changes here
+            itemMargin = 2, // changes here
         navMargin = 60,
         showTimeAxis = true,
         showAxisTop = false,

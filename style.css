@@ -91,13 +91,14 @@ p {
   float:left;
 }
 
-/*_________TabBar CSS begins_________*/
+/*_________TabBar_________*/
 
 .tabs-heading{
   font-size: 12px;
   font-weight: 300;
   color:  #9e9e9e;
   margin-bottom: 0px;
+  padding-top: 5px;
 }
 
 li #display-toggle{
@@ -116,6 +117,9 @@ li #display-toggle{
 
 .tab-menu{
   padding-bottom: 10px;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: #e0e0e0;
 }
 
 /*_________Timeline_________*/
@@ -124,7 +128,19 @@ li #display-toggle{
   width:900;
 }
 
-/*_________D3 CSS begins_________*/
+.timeline-wrapper{
+  display:inline-block;
+}
+
+/*_________Profile_________*/
+.profile-wrapper{
+  background-color: blue;
+  height:200px;
+  display:inline-block;
+}
+
+
+/*_________D3 CSS_________*/
 
 /*Sankey*/
 body {
