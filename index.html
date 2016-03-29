@@ -18,7 +18,6 @@
 
 	 <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -46,6 +45,7 @@
 		                    <li><a href="#">HCI, Carnegie Mellon University</a></li>
 		                    <li><a href="#">HCI, University of Michigan</a></li>
 		                    <li><a href="#">HCI, UC Berkeley</a></li>
+		                    <li><a href="#">see more...</a></li>
 
 		                </ul>
 
@@ -65,12 +65,10 @@
 	                
 	            </ul>
             </div><!-- /.navbar-collapse -->
-        </div><!-- /.container -->
     </nav>
 
    	<!-- Questions -->
-    <nav class="navbar-fixed-top questions" role="navigation">
-        <div class="container">
+    <nav class="questions" role="navigation">
             <div class="questions-bar">
             	<p class = "questions_intro"> Begin asking some questions about your Alumni Network</p>
                 <ul class="questions-list">
@@ -88,7 +86,6 @@
                     </li>
                 </ul>
             </div><!-- /.navbar-header -->
-        </div><!-- /.container -->
     </nav>
 
 
@@ -100,12 +97,36 @@
    	</div>
    </section>
 
-      <section>
-   	<div class = "container">
-   		<div class = "row">
-   		<div class = "timeline1"></div>
-   		</div>
-   	</div>
+     <section>
+     <div class = "tab-menu">
+		<div class = "first-tabs-radio">
+		<p class = "tabs-heading" >Color Careers by</p>
+		 <label class="radio-inline"><input type="radio" name="optradio">Location Change</label>
+		<label class="radio-inline"><input type="radio" name="optradio">Industry</label>
+		<label class="radio-inline"><input type="radio" name="optradio">Job Change</label> 
+		</div>
+
+		<div class="tabs-radio">
+		<p class = "tabs-heading" >Sort By</p>
+		 <label class="radio-inline"><input type="radio" name="optradio">Year of Graduation</label>
+		</div>
+
+		<div class="tabs-radio">
+		<p class = "tabs-heading" >View Mode</p>
+		 <label class="radio-inline"><input type="radio" name="optradio">Overview</label>
+		<label class="radio-inline"><input type="radio" name="optradio">Detailed</label>
+
+		<div class="tabs-radio">
+		<p class = "tabs-heading" >Cluster by</p>
+		 <label class="radio-inline"><input type="radio" name="optradio">Industry</label>
+		<label class="radio-inline"><input type="radio" name="optradio">Program</label>
+		<label class="radio-inline"><input type="radio" name="optradio">Location</label>
+		</div> <!-- End of tab-menu-->
+	</div>
+   		
+   		<br/>
+			
+   	<div class = "timeline1"></div>
    </section>
 
    <!-- _____________D3 begins here_____________-->
@@ -116,7 +137,7 @@
 	<!-- Sankey-->
 	<script>
 	var margin = {top: 1, right: 30, bottom: 30, left:10},
-	    width = 1280 - margin.left - margin.right,
+	    width = 900 - margin.left - margin.right,
 	    height = 500 - margin.top - margin.bottom;
 	    
 	var category20b_sq = [
@@ -207,21 +228,16 @@
 	<!-- Timeline-->
 	<script type="text/javascript">
     window.onload = function() {
-      var testData = [
-        {times: [{"starting_time": 1355752800000, "ending_time": 1355759900000}, {"starting_time": 1355767900000, "ending_time": 1355774400000}]},
-        {times: [{"starting_time": 1355759910000, "ending_time": 1355761900000}, ]},
-        {times: [{"starting_time": 1355761910000, "ending_time": 1355763910000}]},
-      ];
 
       var labelColorTestData = [
-        {class:"jackie", icon: "d3-timeline-master/d3-timeline-master/examples/jackie.png",label: "person a", times: [{"color":"green", "label":"Weeee", "starting_time": 1355752800000, "ending_time": 1355759900000}, {"color":"blue", "label":"Weeee", "starting_time": 1355767900000, "ending_time": 1355774400000}]},
-        {class:"troll", icon: "d3-timeline-master/d3-timeline-master/examples/troll.png",label: "person b", times: [{"color":"pink", "label":"Weeee", "starting_time": 1355759910000, "ending_time": 1355761900000}, ]},
-        {class:"wat", icon: "d3-timeline-master/d3-timeline-master/examples/wat.png",label: "person c", times: [{"color":"yellow", "label":"Weeee", "starting_time": 1355761910000, "ending_time": 1355763910000}]},
+        {class:"jackie", times: [{"color":"green", "label":"Weeee", "starting_time": 1355752800000, "ending_time": 1355759900000}, {"color":"blue", "label":"Weeee", "starting_time": 1355767900000, "ending_time": 1355774400000}]},
+        {class:"troll", times: [{"color":"pink", "label":"Weeee", "starting_time": 1355759910000, "ending_time": 1355761900000}, ]},
+        {class:"wat", times: [{"color":"yellow", "label":"Weeee", "starting_time": 1355761910000, "ending_time": 1355763910000}]},
 
 
       ];
 
-      var width = 1280;
+      var width = 900;
 
       function timelineLabelColor() {
         var chart = d3.timeline()
