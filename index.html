@@ -73,6 +73,9 @@
             	<p class = "questions_intro"> Begin asking some questions about your Alumni Network</p>
                 <ul class="questions-list">
                     <li>
+                        <a href="#">Explore Yourself</a>
+                    </li>
+                    <li>
                         <a href="#">How many alumni work in the Bay Area? </a>
                     </li>
                     <li>
@@ -90,55 +93,58 @@
 
 
    <section>
-   	<div class = "container">
-   		<div class = "row">
-   		<div class = "sankeyChart"></div>
+   		<div class = "container-fluid">
+   		<div class = "row sankeyChart"></div>
    		</div>
    	</div>
    </section>
 
-    <section>
+    <div class = "container-fluid">
     <div class = "timeline-wrapper">
 	    <div class = "tab-menu">
 		<div class = "first-tabs-radio">
 			<p class = "tabs-heading" >Color Careers by</p>
-			 <label class="radio-inline"><input type="radio" name="optradio">Location Change</label>
-			<label class="radio-inline"><input type="radio" name="optradio">Industry</label>
-			<label class="radio-inline"><input type="radio" name="optradio">Job Change</label> 
+			 <form role="form">
+				 <label class="radio-inline"><input type="radio" name="optradio">Location Change</label>
+				<label class="radio-inline"><input type="radio" name="optradio">Industry</label>
+				<label class="radio-inline"><input type="radio" name="optradio">Type of Employer</label> 
+			</form>
 		</div>
 
 		<div class="tabs-radio">
 			<p class = "tabs-heading" >Sort By</p>
-			 <label class="radio-inline"><input type="radio" name="optradio">Year of Graduation</label>
+			<form role="form">
+			 	<label class="radio-inline"><input type="radio" name="optradio">Year of Graduation</label>
+			</form>
 		</div>
 
 		<div class="tabs-radio">
 			<p class = "tabs-heading">View Mode</p>
-			 <label class="radio-inline"><input type="radio" name="optradio">Overview</label>
-			<label class="radio-inline"><input type="radio" name="optradio">Detailed</label>
+			<form role="form">
+			 	<label class="radio-inline"><input type="radio" name="optradio">Overview</label>
+				<label class="radio-inline"><input type="radio" name="optradio">Detailed</label>
+			</form>
 		</div>
 
 		<div class="tabs-radio">
 			<p class = "tabs-heading" >Cluster by</p>
-			 <label class="radio-inline"><input type="radio" name="optradio">Industry</label>
-			<label class="radio-inline"><input type="radio" name="optradio">Program</label>
-			<label class="radio-inline"><input type="radio" name="optradio">Location</label>
+			<form role="form">
+				 <label class="radio-inline"><input type="radio" name="optradio">Industry</label>
+				<label class="radio-inline"><input type="radio" name="optradio">Program</label>
+				<label class="radio-inline"><input type="radio" name="optradio">Location</label>
+			</form>
 		</div> 
 		</div><!-- End of tab-menu-->
 	   		
 	   	<br/>
 				
-	   	<div class = "timeline1"></div>
+	   	<div class = "timeline"></div>
    </div><!-- Timeline Wrapper-->
 
    <div class ="profile-wrapper">
-
-
-
-   </div>
-
-
-   </section>
+   		<div class = "profile"></div>
+   </div><!-- Profile Wrapper-->
+</div>
 
    <!-- _____________D3 begins here_____________-->
 	<script src="http://d3js.org/d3.v3.min.js"></script>
@@ -146,7 +152,8 @@
 	<script src="d3-timeline-master/d3-timeline-master/src/d3-timeline.js"></script>
 	
 	<!-- Sankey-->
-	<script>
+	
+	<!--<script>
 	var margin = {top: 1, right: 30, bottom: 30, left:10},
 	    width = 1400 - margin.left - margin.right,
 	    height = 500 - margin.top - margin.bottom;
@@ -236,8 +243,7 @@
 	});
 	</script>
 
-	<!-- Timeline-->
-	<script type="text/javascript">
+	<!--<script type="text/javascript">
     window.onload = function() {
 
       var labelColorTestData = [
@@ -251,9 +257,9 @@
 
       function timelineLabelColor() {
         var chart = d3.timeline()
-          .beginning(1355752800000) // we can optionally add beginning and ending times to speed up rendering a little
+          .beginning(1355752800000)
           .ending(1355774400000)
-          .stack() // toggles graph stacking
+          .stack()
           .background("grey")
           .margin({left:70, right:30, top:0, bottom:0})
           ;
@@ -264,8 +270,113 @@
       timelineLabelColor(); 
       
   	}
+      </script> -->
 
-      </script>
+      <script>
+        var w = 900,
+            h = 400,
+            padding = 20;
+            
+        // create an svg container
+        var tvis = d3.select(".timeline")
+            	.append("svg")
+                .attr("width", w)
+                .attr("height", h);
+                
+
+		d3.json("timeline.json", function(TJSON) {	
+
+			var startDates = [];
+			var endDates = [];
+
+			for (var a = 0; a <TJSON.length; a++){
+				for(var b = 0; b<TJSON[a].jobs.length; b++){
+					TJSON[a].jobs[b].start = new Date(TJSON[a].jobs[b].start);
+					TJSON[a].jobs[b].end = new Date(TJSON[a].jobs[b].end);
+					startDates.push(new Date(TJSON[a].jobs[b].start));
+					endDates.push(new Date(TJSON[a].jobs[b].end));
+				}
+			}
+
+			console.log(startDates);
+			console.log(endDates);
+
+			var maxDate = new Date(Math.max.apply(null,startDates));
+			var minDate = new Date(Math.min.apply(null,endDates));
+
+			console.log(maxDate);
+			console.log(minDate);
+            
+        // define the x scale
+        var xScale = d3.time.scale()
+	        .domain([minDate, maxDate])
+		.range([padding, w - padding * 2]);   
+	
+        // define the x axis
+        var xAxis = d3.svg.axis()
+            .orient("bottom")
+            .scale(xScale);
+
+        // define the y scale
+        var yScale = d3.scale.linear()
+	        .domain([0, TJSON.length]) 
+		.range([h - padding, padding]);         
+
+        // define the y axis
+        var yAxis = d3.svg.axis()
+            .orient("left")
+            .scale(yScale);
+
+        
+
+            
+        // draw y axis with labels and move in from the size by the amount of padding
+        tvis.append("g")
+            .attr("transform", "translate("+padding+",0)")
+            .call(yAxis);
+
+        // draw x axis with labels and move to the bottom of the chart area
+        tvis.append("g")
+            .attr("class", "xaxis")   // give it a class so it can be used to select only xaxis labels  below
+            .attr("transform", "translate(0," + (h - padding) + ")")
+            .call(xAxis);
+
+
+        				
+        var trect-x = trext.attr("x", function(d,i){
+        					for (var i = 0;i<d[i].length; i++){
+        						for(var j = 0; j<d[i].jobs.length; j++){
+        							return xScale(d[i].jobs[j].start);
+        						}
+        					}
+        					
+        				});
+
+        var trect-width = trect.attr("width", function(d,i){
+        					for (var i = 0;i<d[i].length; i++){
+        						for(var j; j<d[i].jobs.length; j++){
+        							return xScale(d[i].jobs[j].end) - xScale(d[i].jobs[j].start);
+        						}
+        					}
+        					
+        				});
+
+
+                var trect = tvis.selectAll("rect")
+        				.data(TJSON)
+        				.enter()
+        				.append("rect")
+        				.attr("y", function(d,i){
+        					return i*yScale(1);
+        				})
+        				.attr("height", function(d){
+        					return (h - padding)/yScale(range.length);
+        				});
+         
+    }); 
+	// End of JSON function
+	
+    </script>
 
 </body>
 </html>

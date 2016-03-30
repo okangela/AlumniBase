@@ -36,6 +36,7 @@ p {
   margin-bottom: 5px;
 }
 
+
 .other-schools{
   padding: 3px 20px;
   font-size: 12px;
@@ -64,27 +65,41 @@ p {
   padding-left: 0px;
 }
 
-.questions-list li {
+ul.questions-list li {
   display: inline;
-  padding: 0px 10px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  position: relative;
+  border-right: 1px solid #e0e0e0;
 }
 
-.questions-list a:hover{
+ul.questions-list li a{
+  padding: 5px 5px;
+
+}
+
+ul.questions-list a:active{
+  border-bottom: 2px solid #e0e0e0;
+  
+}
+
+ul.questions-list a:hover{
   background-color: #eeeeee;
-  padding: 5px 10px;
   text-decoration: none;
-  border-radius: 3px;
-  font-size: 14px;
+  color:#00bcd4;
 }
 
-#more a{
-  color:#9e9e9e;
+li#more{
+    border-right: 0px;
 }
+
+li#more a{
+  color:#9e9e9e; 
+}
+
 #more a:hover{
   background-color: transparent;
-  font-size: 14px;
   text-decoration: none;
-  padding: 5px 0px;
+  color:#00bcd4;
 }
 
 #school {
@@ -130,14 +145,10 @@ li #display-toggle{
 
 .timeline-wrapper{
   display:inline-block;
+  position: absolute;
 }
 
 /*_________Profile_________*/
-.profile-wrapper{
-  background-color: blue;
-  height:200px;
-  display:inline-block;
-}
 
 
 /*_________D3 CSS_________*/
