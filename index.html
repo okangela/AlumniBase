@@ -153,7 +153,7 @@
 	
 	<!-- Sankey-->
 	
-	<!--<script>
+	<script>
 	var margin = {top: 1, right: 30, bottom: 30, left:10},
 	    width = 1400 - margin.left - margin.right,
 	    height = 500 - margin.top - margin.bottom;
@@ -208,6 +208,7 @@
 	          .selectAll("text")
 	          .style("opacity", 1);
 	      })
+
 	      .on("mouseout", function(d) {
 	        d3.selectAll(".node")
 	          .style("opacity", null)
@@ -219,15 +220,31 @@
 	      .data(mydatabase.nodes)
 	    .enter().append("g")
 	      .attr("class", "node")
-	      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-
+	      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+	      .on("mouseover", function(d) { 
+	        d3.selectAll(".link")
+	          .style("opacity", 0.3)
+	          .filter(function(p) {
+	            return p.source.name || p.target.name ; //why is this not showing all the links?
+	          })
+	          .style("opacity", 1)
+	          .selectAll("text")
+	          .style("opacity", 1);
+	      })
+	      .on("mouseout", function(d) {
+	        d3.selectAll(".link")
+	          .style("opacity", null)
+	          .selectAll("text")
+	          .style("opacity", 1);
+	      });
 
 	  node.append("rect")
 	      .attr("height", function(d) { return d.dy; })
 	      .attr("width", sankey.nodeWidth())
 	      .style("fill", function(d) { return color(d.category); })
-	    .append("title")	
+	      .append("title")	
 	      .text(function(d) { return d.name; });
+	      
 
 	  node.append("text")
 	      .attr("x", 6 + sankey.nodeWidth())
@@ -243,34 +260,33 @@
 	});
 	</script>
 
-	<!--<script type="text/javascript">
-    window.onload = function() {
+<!--  //    window.onload = function() {
 
-      var labelColorTestData = [
-        {class:"jackie", label: "Person 1",times: [{"color":"green", "label":"Weeee", "starting_time": 1355752800000, "ending_time": 1355759900000}, {"color":"blue", "label":"Weeee", "starting_time": 1355767900000, "ending_time": 1355774400000}]},
-        {class:"troll", times: [{"color":"pink", "label":"Weeee", "starting_time": 1355759910000, "ending_time": 1355761900000}, ]},
-        {class:"wat", times: [{"color":"yellow", "label":"Weeee", "starting_time": 1355761910000, "ending_time": 1355763910000}]},
+ //      var labelColorTestData = [
+ //        {class:"jackie", label: "Person 1",times: [{"color":"green", "label":"Weeee", "starting_time": 1355752800000, "ending_time": 1355759900000}, {"color":"blue", "label":"Weeee", "starting_time": 1355767900000, "ending_time": 1355774400000}]},
+ //        {class:"troll", times: [{"color":"pink", "label":"Weeee", "starting_time": 1355759910000, "ending_time": 1355761900000}, ]},
+ //        {class:"wat", times: [{"color":"yellow", "label":"Weeee", "starting_time": 1355761910000, "ending_time": 1355763910000}]},
 
-      ];
+ //      ];
 
-      var width = 900;
+ //      var width = 900;
 
-      function timelineLabelColor() {
-        var chart = d3.timeline()
-          .beginning(1355752800000)
-          .ending(1355774400000)
-          .stack()
-          .background("grey")
-          .margin({left:70, right:30, top:0, bottom:0})
-          ;
-        var svg = d3.select(".timeline1").append("svg").attr("width", width)
-          .datum(labelColorTestData).call(chart);
-      }
+ //      function timelineLabelColor() {
+ //        var chart = d3.timeline()
+ //          .beginning(1355752800000)
+ //          .ending(1355774400000)
+ //          .stack()
+ //          .background("grey")
+ //          .margin({left:70, right:30, top:0, bottom:0})
+ //          ;
+ //        var svg = d3.select(".timeline1").append("svg").attr("width", width)
+ //          .datum(labelColorTestData).call(chart);
+ //      }
 
-      timelineLabelColor(); 
+ //      timelineLabelColor(); 
       
-  	}
-      </script> -->
+ //  	} -->
+      
 
       <script>
         var w = 900,
@@ -298,14 +314,8 @@
 				}
 			}
 
-			console.log(startDates);
-			console.log(endDates);
-
-			var maxDate = new Date(Math.max.apply(null,startDates));
-			var minDate = new Date(Math.min.apply(null,endDates));
-
-			console.log(maxDate);
-			console.log(minDate);
+		var maxDate = new Date(Math.max.apply(null,startDates));
+		var minDate = new Date(Math.min.apply(null,endDates));
             
         // define the x scale
         var xScale = d3.time.scale()
@@ -327,8 +337,6 @@
             .orient("left")
             .scale(yScale);
 
-        
-
             
         // draw y axis with labels and move in from the size by the amount of padding
         tvis.append("g")
@@ -342,9 +350,20 @@
             .call(xAxis);
 
 
-        				
-        var trect-x = trext.attr("x", function(d,i){
-        					for (var i = 0;i<d[i].length; i++){
+        var trect = tvis.selectAll("rect")
+        				.data(TJSON)
+        				.enter()
+        				.append("rect")
+        				.attr("y", function(d,i){
+        					return i*yScale(1);
+        				})
+        				.attr("height", function(d){
+        					return (h - padding)/TJSON.length;
+        				});
+         
+
+        var trect_x = trect.attr("x", function(d,i){
+        					for (var i = 0; i<d[i].length; i++){
         						for(var j = 0; j<d[i].jobs.length; j++){
         							return xScale(d[i].jobs[j].start);
         						}
@@ -352,7 +371,7 @@
         					
         				});
 
-        var trect-width = trect.attr("width", function(d,i){
+        var trect_width = trect.attr("width", function(d,i){
         					for (var i = 0;i<d[i].length; i++){
         						for(var j; j<d[i].jobs.length; j++){
         							return xScale(d[i].jobs[j].end) - xScale(d[i].jobs[j].start);
@@ -361,21 +380,9 @@
         					
         				});
 
-
-                var trect = tvis.selectAll("rect")
-        				.data(TJSON)
-        				.enter()
-        				.append("rect")
-        				.attr("y", function(d,i){
-        					return i*yScale(1);
-        				})
-        				.attr("height", function(d){
-        					return (h - padding)/yScale(range.length);
-        				});
-         
-    }); 
-	// End of JSON function
+	    });// End of JSON function 
 	
+
     </script>
 
 </body>
