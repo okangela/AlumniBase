@@ -3,7 +3,7 @@
 <head>
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-  <script src="../src/d3-timeline.js"></script>
+  <script src="../src/d3-timeline-v2.js"></script>
 
   <style type="text/css">
     .axis path,
@@ -52,14 +52,14 @@
       ];
 
       var labelTestData = [
-        {label: "person a", times: [{"starting_time": 1355752800000, "ending_time": 1355759900000}, {"starting_time": 1355767900000, "ending_time": 1355774400000}]},
+        {label: "person a", times: [{"starting_time": 1355752800000, "ending_time": 1355759900000, location: "sf", industry: "internet", ctype: "abc"}, {"starting_time": 1355767900000, "ending_time": 1355774400000}]},
         {label: "person b", times: [{"starting_time": 1355759910000, "ending_time": 1355761900000}, ]},
         {label: "person c", times: [{"starting_time": 1355761910000, "ending_time": 1355763910000}]},
       ];
 
       var iconTestData = [
         {class:"jackie", icon: "jackie.png", times: [
-          {"starting_time": 1355752800000, "ending_time": 1355759900000}, 
+          {"starting_time": 1355752800000, "ending_time": 1355759900000,  "location": "sf", "industry": "internet", "ctype": "abc", "color": "gold"}, 
           {"starting_time": 1355767900000, "ending_time": 1355774400000}]},
         {class:"troll", icon: "troll.png", times: [
           {"starting_time": 1355759910000, "ending_time": 1355761900000,
@@ -271,21 +271,21 @@
             .datum(labelTestData).call(chart);
       }
 
-      timelineRect();
-      timelineRectNoAxis();
-      timelineCircle();
-      timelineRectAndCircle();
-      timelineHover();
+      // timelineRect();
+      // timelineRectNoAxis();
+      // timelineCircle();
+      // timelineRectAndCircle();
+      // timelineHover();
       timelineStackedIcons();
-      timelineLabelColor();
-      timelineRotatedTicks();
-      timelineRectColors();
-      timelineRectColorsPerTime();
-      timelineRelativeTime();
-      timelineAxisTop();
-      timelineBgndTick();
-      timelineBgnd();
-      timelineComplex();
+      // timelineLabelColor();
+      // timelineRotatedTicks();
+      // timelineRectColors();
+      // timelineRectColorsPerTime();
+      // timelineRelativeTime();
+      // timelineAxisTop();
+      // timelineBgndTick();
+      // timelineBgnd();
+      // timelineComplex();
     }
   </script>
 </head>

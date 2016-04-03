@@ -33,19 +33,15 @@
             	<ul class="nav navbar-nav" id ="school">
 	        		<li class="dropdown">
 
-		                <a href="#" data-toggle="dropdown" class="dropdown-toggle">HCI, Georgia Institue of Technology<b class="caret"></b></a>
+		                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Ask questions about your network<b class="caret"></b></a>
 
 		                <ul class="dropdown-menu">
 
-		                    <li><a href="#">Architecture, Indian Institute of Technology Roorkee</a></li>
-
-		                    <li class="divider"></li>
-
-		                    <li><p class="other-schools">Explore other schools</p></li>
-		                    <li><a href="#">HCI, Carnegie Mellon University</a></li>
-		                    <li><a href="#">HCI, University of Michigan</a></li>
-		                    <li><a href="#">HCI, UC Berkeley</a></li>
-		                    <li><a href="#">see more...</a></li>
+		                    <li><a href="#">How many alumni work in the Bay Area?</a></li>
+		                    <li><a href="#">How many people are pursuing Design in Atlanta?</a></li>
+		                    <li><a href="#">How often do people change industries?</a></li>
+		                    <li><a href="#">Who are the people who work in start-ups?</a></li>
+		                    <li><a class="other-schools" href="#">see more...</a></li>
 
 		                </ul>
 
@@ -54,21 +50,37 @@
 
 	            <ul class="nav navbar-nav">
 	                <li>
-	                    <a href="#">How to use?</a>
+	                    <ul class="nav navbar-nav" id ="school">
+	        		<li class="dropdown">
+
+		                <a href="#" data-toggle="dropdown" class="dropdown-toggle">HCI@Georgia Institue of Technology<b class="caret"></b></a>
+
+		                <ul class="dropdown-menu">
+
+		                    <li><a href="#">Architecture@Indian Institute of Technology Roorkee</a></li>
+
+		                    <li class="divider"></li>
+
+		                    <li><p class="other-schools">Explore other schools</p></li>
+		                    <li><a href="#">HCI, Carnegie Mellon University</a></li>
+		                    <li><a href="#">HCI, University of Michigan</a></li>
+		                    <li><a href="#">HCI, UC Berkeley</a></li>
+		                    <li><a class="other-schools" href="#">see more...</a></li>
+
+		                </ul>
+
+		            </li>
+		          </ul>
 	                </li>
 	                <li>
-	                    <a href="#"><i class="fa fa-user icon"></i>Profile</a>
-	                </li>
-	                <li>
-	                    <a href="#"><i class="fa fa-cog icon"></i>Settings</a>
+	                    <a href="#"><i class="fa fa-user icon"></i>David <i class="fa fa-caret-down"></i></a>
 	                </li>
 	                
 	            </ul>
             </div><!-- /.navbar-collapse -->
     </nav>
 
-   	<!-- Questions -->
-    <nav class="questions" role="navigation">
+<!--     <nav class="questions" role="navigation">
             <div class="questions-bar">
             	<p class = "questions_intro"> Begin asking some questions about your Alumni Network</p>
                 <ul class="questions-list">
@@ -88,74 +100,114 @@
                         <a href="#">more...</a>
                     </li>
                 </ul>
-            </div><!-- /.navbar-header -->
-    </nav>
+            </div>
+    </nav> -->
 
 
    <section>
    		<div class = "container-fluid">
-   		<div class = "row sankeyChart"></div>
+   		<div class = "row">
+	   		<div class = "col-lg-8 sankeyChart"></div>
+	   		<div class = "col-lg-4 clusterChart"></div>
+   		</div>
    		</div>
    	</div>
    </section>
 
-    <div class = "container-fluid">
-    <div class = "timeline-wrapper">
-	    <div class = "tab-menu">
-		<div class = "first-tabs-radio">
-			<p class = "tabs-heading" >Color Careers by</p>
-			 <form role="form">
-				 <label class="radio-inline"><input type="radio" name="optradio">Location Change</label>
-				<label class="radio-inline"><input type="radio" name="optradio">Industry</label>
-				<label class="radio-inline"><input type="radio" name="optradio">Type of Employer</label> 
-			</form>
+
+ <div class = "container-fluid">
+    <div class = "row">
+	    <div class = "timeline-wrapper col-lg-8">
+		   <div class = "tab-menu">
+				<div class = "first-tabs-radio">
+					<p class = "tabs-heading" >Color Careers by</p>
+					 <form role="form">
+						 <label class="radio-inline"><input type="radio" name="optradio">Location Change</label>
+						<label class="radio-inline"><input type="radio" name="optradio">Industry</label>
+						<label class="radio-inline"><input type="radio" name="optradio">Type of Employer</label> 
+					</form>
+				</div>
+
+				<div class="tabs-radio">
+					<p class = "tabs-heading" >Sort By</p>
+					<form role="form">
+					 	<label class="radio-inline"><input type="radio" name="optradio">Most recently graduated</label>
+					</form>
+				</div>
+
+				<div class="tabs-radio">
+					<p class = "tabs-heading" >Cluster by</p>
+					<form role="form">
+						 <label class="radio-inline"><input type="radio" name="optradio">Industry</label>
+						<label class="radio-inline"><input type="radio" name="optradio">Program</label>
+						<label class="radio-inline"><input type="radio" name="optradio">Location</label>
+					</form>
+				</div> 
+			</div><!-- End of tab-menu-->
+		   		
+		   	<br/>
+					
+		   	<div class = "timeline"></div>
+	   </div><!-- Timeline Wrapper-->
+
+
+    <div class ="profile-wrapper col-lg-4">
+   		<div class = "profile">
+			<div class = "profile-des">
+	   			
+	   			<div class ="row"> 
+	   				<div class = "col-lg-6"><img class = "img-responsive" src="images/david.jpg"></div>
+	   				<div class = "col-lg-6 name-title">
+	   					<p>David Richard</p>
+	   					<p>Sr. UX Designer at AT&T</p>
+	   					<p>Atlanta</p>
+	   					<br/>
+	   					<p>Design Technlogist with more than 10+ years of experience in User Experience.</p>
+	   				</div>
+	   			</div>
+	   			<br/>
+
+				<div class ="row"> 
+			        <ul>
+			        	<p>Education</p>
+				        <li><a href="#">MS HCI@Georgia Institute of Technology</a></li>
+				        <li><a href="#">Architecture@Indian Institute of Technology Roorkee</a></li>
+			    	</ul>
+			    </div>
+
+				<div class ="row"> 
+			        <ul>
+			        	<p>Work Experience</p>
+				        <li><a href="#">Sr. UX Designer at At&t</a></li>
+				        <li><a href="#">Full stack developer at Apple</a></li>
+				        <li><a href="#">Front End Developer at Big Nerd Ranch</a></li>
+			    	</ul>
+			    </div>			    
+
+			    <div class = "row">
+			    	<button type="button" class="btn btn-primary">Send Message</button>
+			    	<button type="button" class="btn btn-primary"> + Add Contact</button>
+			    </div>
 		</div>
 
-		<div class="tabs-radio">
-			<p class = "tabs-heading" >Sort By</p>
-			<form role="form">
-			 	<label class="radio-inline"><input type="radio" name="optradio">Year of Graduation</label>
-			</form>
-		</div>
+	   </div><!-- Profile-->
+	</div> <!-- Profile Wrapper--> 
 
-		<div class="tabs-radio">
-			<p class = "tabs-heading">View Mode</p>
-			<form role="form">
-			 	<label class="radio-inline"><input type="radio" name="optradio">Overview</label>
-				<label class="radio-inline"><input type="radio" name="optradio">Detailed</label>
-			</form>
-		</div>
-
-		<div class="tabs-radio">
-			<p class = "tabs-heading" >Cluster by</p>
-			<form role="form">
-				 <label class="radio-inline"><input type="radio" name="optradio">Industry</label>
-				<label class="radio-inline"><input type="radio" name="optradio">Program</label>
-				<label class="radio-inline"><input type="radio" name="optradio">Location</label>
-			</form>
-		</div> 
-		</div><!-- End of tab-menu-->
-	   		
-	   	<br/>
-				
-	   	<div class = "timeline"></div>
-   </div><!-- Timeline Wrapper-->
-
-   <div class ="profile-wrapper">
-   		<div class = "profile"></div>
-   </div><!-- Profile Wrapper-->
-</div>
+</div> <!-- End of Row-->
+</div><!-- End of Container-->
 
    <!-- _____________D3 begins here_____________-->
 	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="sankeyPugin.js"></script>
-	<script src="d3-timeline-master/d3-timeline-master/src/d3-timeline.js"></script>
-	
+	<script src="d3-timeline-master/d3-timeline-master/src/d3-timeline-v2.js"></script>
+	<script type="text/javascript" src="d3.layout.js"></script>
+
 	<!-- Sankey-->
 	
 	<script>
 	var margin = {top: 1, right: 30, bottom: 30, left:10},
-	    width = 1400 - margin.left - margin.right,
+	    width = 900 - margin.left - margin.right,
 	    height = 500 - margin.top - margin.bottom;
 	    
 	var category20b_sq = [
@@ -260,103 +312,310 @@
 	});
 	</script>
 
+	<script>
+
+	var widthTimeline = 900;
+
+	 var locationScale = d3.scale.ordinal()
+	 						  .range(['#393b79', 
+	 						  		  '#5254a3', 
+	 						  		  '#6b6ecf', 
+	 						  		  '#9c9ede',
+									  '#8c6d31', 
+									  '#bd9e39', 
+									  '#e7ba52', 
+									  '#e7cb94',
+									  '#843c39', 
+									  '#ad494a', 
+									  '#d6616b', 
+									  '#e7969c'])
+	    					  .domain(['Atlanta',
+	    					  	 	   'Unknown',
+	    					  	 	   'SF Bay Area',
+	    					  	 	   'New York',
+	    					  	 	   'Seattle',
+	    					  	 	   'Boston',
+	    					  	 	   'Austin',
+	    					  	 	   'India',
+	    					  	 	   'Los Angeles',
+	    					  	 	   'Chicago',
+	    					  	 	   'Raleigh-Durham',
+	    					  	 	   'Other']);
+
+	 var industryScale = d3.scale.ordinal()
+	 						  .range(['#393b79', 
+	 						  		  '#5254a3', 
+	 						  		  '#6b6ecf', 
+	 						  		  '#9c9ede',
+									  '#8c6d31', 
+									  '#bd9e39', 
+									  '#e7ba52', 
+									  '#e7cb94',
+									  '#843c39', 
+									  '#ad494a', 
+									  '#d6616b', 
+									  '#e7969c',
+									  '#637939'])
+	    					  .domain(['Unknown',
+	    					  	 	   'Internet',
+	    					  	 	   'IT & Services',
+	    					  	 	   'University',
+	    					  	 	   'Computer Software',
+	    					  	 	   'Design',
+	    					  	 	   'Research',
+	    					  	 	   'Financial Services',
+	    					  	 	   'Marketing and Advertising',
+	    					  	 	   'Consultant',
+	    					  	 	   'Entertainment',
+	    					  	 	   'Health',
+	    					  	 	   'Other']);
+
+
+	 var companyTypeScale = d3.scale.ordinal()
+	 						  .range(['#393b79', 
+	 						  		  '#5254a3', 
+	 						  		  '#6b6ecf', 
+	 						  		  '#9c9ede',
+									  '#8c6d31', 
+									  '#bd9e39', 
+									  '#e7ba52', 
+									  '#e7cb94',
+									  '#843c39'])
+	    					  .domain(['5001-10,000 employees',
+	    					  	 	   '10,001+ employees',
+	    					  	 	   '11-50 employees',
+	    					  	 	   '1001-5000 employees',
+	    					  	 	   '501-1000 employees',
+	    					  	 	   'Unknown',
+	    					  	 	   '51-200 employees',
+	    					  	 	   '201-500 employees',
+	    					  	 	   '1-10 employees']);
+
+	 var colorScales = {
+      "location" : locationScale,
+      "industry" : industryScale,
+      "companyType" : companyTypeScale
+    }
+
+
+	d3.json("timelinedata.json", function(timeLineData){
+
+		console.log (timeLineData);
+
+	function timelineStackedIcons() {
+
+        var chart = d3.timeline()
+			          .showTimeAxisTick() // toggles tick marks
+			          .stack() // toggles graph stacking
+			          .margin({left:10, right:30, top:0, bottom:0})
+			          .itemHeight(10)
+			          .itemMargin(2)
+			          .tickFormat({
+						format: d3.time.format("%Y"),
+						tickTime: d3.time.year,
+						tickInterval: 1,
+						tickSize: 6
+			          })
+			          .orient("bottom")
+			          .hover(function (d, i, datum) {
+
+			          });
+
+        var svg = d3.select(".timeline").append("svg").attr("width", widthTimeline)
+          .datum(timeLineData).call(chart);
+      }
+
+
+
+var chart = d3.timeline()
+            .colors(locationScale)
+            .colorProperty('location');
+
+      timelineStackedIcons();
+
+
+	});
+
+
+
+
+	</script>
+
+
+    
+<script>
+
+var w = 500,
+    h = 500,
+    r = 450,
+    x = d3.scale.linear().range([0, r]),
+    y = d3.scale.linear().range([0, r]),
+    node,
+    root;
+
+var pack = d3.layout.pack()
+    .size([r, r])
+    .value(function(d) { return d.size; })
+
+var vis = d3.select(".clusterChart").insert("svg:svg", "h2")
+    .attr("width", w)
+    .attr("height", h)
+  .append("svg:g")
+    .attr("transform", "translate(" + (w - r) / 2 + "," + (h - r) / 2 + ")");
+
+d3.json("flare.json", function(data) {
+  node = root = data;
+
+  var nodes = pack.nodes(root);
+
+  vis.selectAll("circle")
+      .data(nodes)
+    .enter().append("svg:circle")
+      .attr("class", function(d) { return d.children ? "parent" : "child"; })
+      .attr("cx", function(d) { return d.x; })
+      .attr("cy", function(d) { return d.y; })
+      .attr("r", function(d) { return d.r; })
+      .on("click", function(d) { return zoom(node == d ? root : d); });
+
+  vis.selectAll("text")
+      .data(nodes)
+    .enter().append("svg:text")
+      .attr("class", function(d) { return d.children ? "parent" : "child"; })
+      .attr("x", function(d) { return d.x; })
+      .attr("y", function(d) { return d.y; })
+      .attr("dy", ".35em")
+      .attr("text-anchor", "middle")
+      .style("opacity", function(d) { return d.r > 20 ? 1 : 0; })
+      .text(function(d) { return d.name; });
+
+  d3.select(window).on("click", function() { zoom(root); });
+});
+
+function zoom(d, i) {
+  var k = r / d.r / 2;
+  x.domain([d.x - d.r, d.x + d.r]);
+  y.domain([d.y - d.r, d.y + d.r]);
+
+  var t = vis.transition()
+      .duration(d3.event.altKey ? 7500 : 750);
+
+  t.selectAll("circle")
+      .attr("cx", function(d) { return x(d.x); })
+      .attr("cy", function(d) { return y(d.y); })
+      .attr("r", function(d) { return k * d.r; });
+
+  t.selectAll("text")
+      .attr("x", function(d) { return x(d.x); })
+      .attr("y", function(d) { return y(d.y); })
+      .style("opacity", function(d) { return k * d.r > 20 ? 1 : 0; });
+
+  node = d;
+  d3.event.stopPropagation();
+}
+
+</script>	
+
      
-     <script>
-        var w = 900,
-            h = 400,
-            padding = 20;
+      <script>
+  //       var w = 900,
+  //           h = 500,
+  //           padding = 20;
             
-        // create an svg container
-        var tvis = d3.select(".timeline")
-            	.append("svg")
-                .attr("width", w)
-                .attr("height", h);
+  //       // create an svg container
+  //       var tvis = d3.select(".timeline")
+  //           	.append("svg")
+  //               .attr("width", w)
+  //               .attr("height", h);
                 
 
-		d3.json("timeline.json", function(TJSON) {	
+		// d3.json("timeline.json", function(TJSON) {	
 
-			var startDates = [];
-			var endDates = [];
+		// 	var startDates = [];
+		// 	var endDates = [];
 
-			for (var a = 0; a <TJSON.length; a++){
-				for(var b = 0; b<TJSON[a].jobs.length; b++){
-					TJSON[a].jobs[b].start = new Date(TJSON[a].jobs[b].start);
-					TJSON[a].jobs[b].end = new Date(TJSON[a].jobs[b].end);
-					startDates.push(new Date(TJSON[a].jobs[b].start));
-					endDates.push(new Date(TJSON[a].jobs[b].end));
-				}
-			}
+		// 	for (var a = 0; a <TJSON.length; a++){
+		// 		for(var b = 0; b<TJSON[a].jobs.length; b++){
+		// 			TJSON[a].jobs[b].start = new Date(TJSON[a].jobs[b].start);
+		// 			TJSON[a].jobs[b].end = new Date(TJSON[a].jobs[b].end);
+		// 			startDates.push(new Date(TJSON[a].jobs[b].start));
+		// 			endDates.push(new Date(TJSON[a].jobs[b].end));
+		// 		}
+		// 	}
 
-		var maxDate = new Date(Math.max.apply(null,startDates));
-		var minDate = new Date(Math.min.apply(null,endDates));
-            
-        // define the x scale
-        var xScale = d3.time.scale()
-	        .domain([minDate, maxDate])
-		.range([padding, w - padding * 2]);   
+		// var maxDate = new Date(Math.max.apply(null,endDates));
+		// var minDate = new Date(Math.min.apply(null,startDates));
+        
+  //       // define the x scale
+  //       var xScale = d3.time.scale()
+	 //        .domain([minDate, maxDate])
+		// .range([padding, w - padding * 2]);   
 	
-        // define the x axis
-        var xAxis = d3.svg.axis()
-            .orient("bottom")
-            .scale(xScale);
+  //       // define the x axis
+  //       var xAxis = d3.svg.axis()
+  //           .orient("bottom")
+  //           .scale(xScale);
 
-        // define the y scale
-        var yScale = d3.scale.linear()
-	        .domain([0, TJSON.length]) 
-		.range([h - padding, padding]);         
+  //       // define the y scale
+  //       var yScale = d3.scale.linear()
+	 //        .domain([0, TJSON.length]) 
+		// .range([h - padding, padding]);         
 
-        // define the y axis
-        var yAxis = d3.svg.axis()
-            .orient("left")
-            .scale(yScale);
+  //       // define the y axis
+  //       var yAxis = d3.svg.axis()
+  //           .orient("left")
+  //           .scale(yScale);
 
             
-        // draw y axis with labels and move in from the size by the amount of padding
-        tvis.append("g")
-            .attr("transform", "translate("+padding+",0)")
-            .call(yAxis);
+  //       // draw y axis with labels and move in from the size by the amount of padding
+  //       tvis.append("g")
+  //           .attr("transform", "translate("+padding+",0)")
+  //           .call(yAxis);
 
-        // draw x axis with labels and move to the bottom of the chart area
-        tvis.append("g")
-            .attr("class", "xaxis")   // give it a class so it can be used to select only xaxis labels  below
-            .attr("transform", "translate(0," + (h - padding) + ")")
-            .call(xAxis);
+  //       // draw x axis with labels and move to the bottom of the chart area
+  //       tvis.append("g")
+  //           .attr("class", "xaxis")   // give it a class so it can be used to select only xaxis labels  below
+  //           .attr("transform", "translate(0," + (h - padding) + ")")
+  //           .call(xAxis);
 
 
-        var trect = tvis.selectAll("rect")
-        				.data(TJSON)
-        				.enter()
-        				.append("rect")
-        				.attr("y", function(d,i){
-        					return i*yScale(1);
-        				})
-        				.attr("height", function(d){
-        					return (h - padding)/TJSON.length;
-        				});
+  //       var trect = tvis.selectAll("rect")
+  //       				.data(TJSON)
+  //       				.enter()
+  //       				.append("rect")
+  //       				.attr("y", function(d,i){
+  //       					console.log(i);
+  //       					console.log(i);
+  //       					console.log(i*yScale(1));
+  //       					return i*yScale(1);
+  //       				})
+  //       				.attr("width")
+  //       				.attr("height", function(d){
+  //       					return (h - padding)/TJSON.length;
+  //       				});
          
 
-        var trect_x = trect.attr("x", function(d,i){
-        					for (var i = 0; i<d[i].length; i++){
-        						for(var j = 0; j<d[i].jobs.length; j++){
-        							return xScale(d[i].jobs[j].start);
-        						}
-        					}
+  //       var trect_x = trect.attr("x", function(d,i){
+  //       					for (var i = 0; i<d[i].length; i++){
+  //       						for(var j = 0; j<d[i].jobs.length; j++){
+  //       							return xScale(d[i].jobs[j].start);
+  //       						}
+  //       					}
         					
-        				});
+  //       				});
 
-        var trect_width = trect.attr("width", function(d,i){
-        					for (var i = 0;i<d[i].length; i++){
-        						for(var j; j<d[i].jobs.length; j++){
-        							return xScale(d[i].jobs[j].end) - xScale(d[i].jobs[j].start);
-        						}
-        					}
+  //       var trect_width = trect.attr("width", function(d,i){
+  //       					for (var i = 0;i<d[i].length; i++){
+  //       						for(var j; j<d[i].jobs.length; j++){
+  //       							return xScale(d[i].jobs[j].end) - xScale(d[i].jobs[j].start);
+  //       						}
+  //       					}
         					
-        				});
+  //       				});
 
-	    });// End of JSON function 
+	 //    });// End of JSON function 
 	
 
-    </script>
+ </script>
 
 </body>
 </html>

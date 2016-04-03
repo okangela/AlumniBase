@@ -1,89 +1,10 @@
 [
-  {
-    "name": "brighton",
-    "jobs": [
-      {
-        "name": "gtri",
-        "start": "2010-01-01",
-        "end": "2011-05-05",
-        "location": "atl"
-      },
-      {
-        "name": "vmware",
-        "start": "2013-01-01",
-        "end": "2014-05-05",
-        "location": "sjc"
-      },
-      {
-        "name": "startup",
-        "start": "2015-01-01",
-        "end": "2016-05-05",
-        "location": "nyc"
-      }
-    ]
-  },
-  {
-    "name": "Xie",
-    "jobs": [
-      {
-        "name": "bloomberg",
-        "start": "2007-01-01",
-        "end": "2009-05-05",
-        "location": "atl"
-      },
-      {
-        "name": "mailchimp",
-        "start": "2013-01-01",
-        "end": "2012-05-05",
-        "location": "sjc"
-      },
-      {
-        "name": "startup",
-        "start": "2014-01-01",
-        "end": "2015-05-05",
-        "location": "nyc"
-      },
-      {
-        "name": "startup",
-        "start": "2015-01-01",
-        "end": "2016-05-05",
-        "location": "nyc"
-      }
-    ]
-  },
-    {
-    "name": "Pri",
-    "jobs": [
-      {
-        "name": "gtri",
-        "start": "2007-01-01",
-        "end": "2009-05-05",
-        "location": "atl"
-      },
-      {
-        "name": "vmware",
-        "start": "2013-01-01",
-        "end": "2014-05-05",
-        "location": "sjc"
-      }
-    ]
-  },
-    {
-    "name": "Aru",
-    "jobs": [
-      {
-        "name": "gtri",
-        "start": "2001-01-01",
-        "end": "2009-05-05",
-        "location": "atl"
-      },
-      {
-        "name": "vmware",
-        "start": "2007-01-01",
-        "end": "2014-05-05",
-        "location": "sjc"
-      }
-    ]
-  }
-  
-]
+        {class:"jackie", icon: "jackie.png", times: [
+          {"starting_time": 1355752800000, "ending_time": 1355759900000,  "location": "sf", "industry": "internet", "ctype": "abc", "color": "gold"}, 
+          {"starting_time": 1355767900000, "ending_time": 1355774400000}]},
+        {class:"troll", icon: "troll.png", times: [
+          {"starting_time": 1355759910000, "ending_time": 1355761900000,
+          "display":"circle"}, ]},
+        {class:"wat", icon: "wat.png", times: [
+          {"starting_time": 1355761910000, "ending_time": 1355763910000}]},
+      ]

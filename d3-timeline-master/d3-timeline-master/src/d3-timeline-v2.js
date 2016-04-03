@@ -1,6 +1,26 @@
 // vim: ts=2 sw=2
 (function () {
   d3.timeline = function() {
+
+    // Color Scales for Location, Industry and Company Type
+    // var locationScale = d3.scale.ordinal()
+    //                       .domain(["sf","GA", "Others"])
+    //                       .range(["black","gray","gold"]);
+
+    // var industryScale = d3.scale.ordinal()
+    //                       .domain(["SF","GA", "Others"])
+    //                       .range(["black","gray","gold"]);
+
+    // var companyTypeScale = d3.scale.ordinal()
+    //                       .domain(["SF","GA", "Others"])
+    //                       .range(["black","gray","gold"]);
+  
+    // var colorScales = {
+    //   "location" : locationScale,
+    //   "industry" : industryScale,
+    //   "companyType" : companyTypeScale
+    // }
+
     var DISPLAY_TYPES = ["circle", "rect"];
 
     var hover = function () {},
@@ -31,8 +51,8 @@
         rotateTicks = false,
         timeIsRelative = false,
         fullLengthBackgrounds = false,
-            itemHeight = 5, // changes here
-            itemMargin = 2, // changes here
+        itemHeight = 20,
+        itemMargin = 5,
         navMargin = 60,
         showTimeAxis = true,
         showAxisTop = false,
@@ -236,6 +256,7 @@
       g.each(function(d, i) {
         chartData = d;
         d.forEach( function(datum, index){
+          var colorData = datum.color;
           var data = datum.times;
           var hasLabel = (typeof(datum.label) != "undefined");
 
@@ -245,7 +266,6 @@
           }
 
           if (backgroundColor) { appendBackgroundBar(yAxisMapping, index, g, data, datum); }
-
           g.selectAll("svg").data(data).enter()
             .append(function(d, i) {
                 return document.createElementNS(d3.ns.prefix.svg, "display" in d? d.display:display);
@@ -262,20 +282,27 @@
             .attr("r", itemHeight / 2)
             .attr("height", itemHeight)
             .style("fill", function(d, i){
+              console.log(d);
               var dColorPropName;
+              
+              if(d.location) {
+                var dropdownKey = "location" // from a global dropdown
+                var dropdownValue = d[dropdownKey]; // sf
+                var dropdownScale = colorScales[dropdownKey]; // locationScale
+                var valueColor = dropdownScale(dropdownValue);
+                return valueColor;
+              }
+              
               if (d.color) return d.color;
               if( colorPropertyName ){
                 dColorPropName = d[colorPropertyName];
                 if ( dColorPropName ) {
-                  return black;
-                  //return colorCycle( dColorPropName );
+                  return colorCycle( dColorPropName );
                 } else {
-                  return blue;
-                  //return colorCycle( datum[colorPropertyName] );
+                  return colorCycle( datum[colorPropertyName] );
                 }
               }
-              return gray;
-              // return colorCycle(index);
+              return colorCycle(index);
             })
             .on("mousemove", function (d, i) {
               hover(d, index, datum);
