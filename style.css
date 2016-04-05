@@ -24,6 +24,10 @@ p {
   margin-right: 0px;
 }
 
+hr{
+  margin: 5px 0px;
+}
+
 
 /*__________Nav and Questions bar_________*/
 .navbar-nav{
@@ -230,6 +234,15 @@ li #display-toggle{
   height:10px;
 }
 
+.filterDropdown p, .filterDropdown a, .filterDropdown button{
+  font-size: 11px;
+  line-height: 11px;
+}
+
+.filterBar{
+  padding-bottom: 10px;
+}
+
 
 
 /*_________Sankey_________*/
@@ -239,9 +252,13 @@ body {
   margin: 10px;
 }
 
+#sankey{
+  margin-top: 60px;
+}
+
 .sankeyChart{
   display: block;
-  margin-top: 60px;
+  margin-top: 10px;
   font: 500 14px "arial", sans-serif;
   fill: #023848;
   display: inline-block;
@@ -267,6 +284,10 @@ body {
   fill: none;
   stroke: #969696;
   stroke-opacity: .1;
+}
+
+#sankey .col-lg-2{
+  padding: 0px 0px;
 }
 
 .sankeyChart .link:hover {
