@@ -14,6 +14,16 @@ p {
 	font-weight: 400;
 }
 
+.container {
+  width:98%;
+  padding: 0px 0px;
+}
+
+.row{
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
 
 /*__________Nav and Questions bar_________*/
 .navbar-nav{
@@ -182,40 +192,48 @@ li #display-toggle{
 
 /*_________Cluster_________*/
 
-text {
+.clusterChart{
+  margin-left: -30px;
+}
+.clusterChart text {
   font-size: 11px;
   pointer-events: none;
 }
 
-text.parent {
+.clusterChart text.parent {
   fill: #1f77b4;
 }
 
-circle {
+.clusterChart circle {
   fill: #ccc;
   stroke: #999;
   pointer-events: all;
 }
 
-circle.parent {
+.clusterChart circle.parent {
   fill: #1f77b4;
   fill-opacity: .1;
   stroke: steelblue;
 }
 
-circle.parent:hover {
+.clusterChart circle.parent:hover {
   stroke: #ff7f0e;
-  stroke-width: .5px;
+  stroke-width: 1px;
 }
 
-circle.child {
+.clusterChart circle.child {
   pointer-events: none;
 }
 
+.clusterChart .pill{
+  background-color: blue;
+  height:10px;
+}
 
-/*_________D3 CSS_________*/
 
-/*Sankey*/
+
+/*_________Sankey_________*/
+
 body {
   background: #fcfcfa;
   margin: 10px;
@@ -224,39 +242,44 @@ body {
 .sankeyChart{
   display: block;
   margin-top: 60px;
-  margin-left: 10px;
   font: 500 14px "arial", sans-serif;
   fill: #023848;
-  display: block;
+  display: inline-block;
 }
 
-.node {
+.sankeyChart .node {
   transition: opacity 0.25s;
 }
 
-.node rect {
+.sankeyChart .node rect {
   fill-opacity: .75;
   shape-rendering: crispEdges;
 }
 
-.node text {
+.sankeyChart .node text {
   pointer-events: none;
   font-size: 9px;
   opacity: 0;
   transition: opacity 0.25s;
 }
 
-.link {
+.sankeyChart .link {
   fill: none;
   stroke: #969696;
   stroke-opacity: .1;
 }
 
-.link:hover {
-  stroke-opacity: .6;
+.sankeyChart .link:hover {
+  stroke-opacity: .5;
 }
 
-/*Timeline*/
+.filterPills rect{
+  fill: grey;
+
+}
+
+
+/*_____Timeline_______*/
 .Timeline{
   display: block;
 }

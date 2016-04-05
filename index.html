@@ -80,36 +80,18 @@
             </div><!-- /.navbar-collapse -->
     </nav>
 
-<!--     <nav class="questions" role="navigation">
-            <div class="questions-bar">
-            	<p class = "questions_intro"> Begin asking some questions about your Alumni Network</p>
-                <ul class="questions-list">
-                    <li>
-                        <a href="#">Explore Yourself</a>
-                    </li>
-                    <li>
-                        <a href="#">How many alumni work in the Bay Area? </a>
-                    </li>
-                    <li>
-                        <a href="#">What do people do after graduation?</a>
-                    </li>
-                    <li>
-                        <a href="#">Who all are currenly working in research?</a>
-                    </li>
-                    <li id ="more">
-                        <a href="#">more...</a>
-                    </li>
-                </ul>
-            </div>
-    </nav> -->
-
-
    <section>
-   		<div class = "container-fluid">
+   	<div class="container">
    		<div class = "row">
 	   		<div class = "col-lg-8 sankeyChart"></div>
-	   		<div class = "col-lg-4 clusterChart"></div>
-   		</div>
+	   		<div class = "col-lg-4">
+	   			<div class = "row ">
+				<svg class = "filterPills" width="433" height="100">
+	   				</svg> 
+	   			</div>
+	   			<div class = "row clusterChart"></div>
+	   		</div>
+	   		
    		</div>
    	</div>
    </section>
@@ -201,11 +183,19 @@
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="sankeyPugin.js"></script>
 	<script src="d3-timeline-master/d3-timeline-master/src/d3-timeline-v2.js"></script>
-	<script type="text/javascript" src="d3.layout.js"></script>
+	<script type="text/javascript" src="d3/d3.layout.js"></script>
 
+	
 	<!-- Sankey-->
 	
 	<script>
+
+	var pillWidth = 90;
+	var pillHeight = 30;
+	var clickCounter = -1;
+	var nextBoxX = 0;
+	var pillPadding = 3;
+
 	var margin = {top: 1, right: 30, bottom: 30, left:10},
 	    width = 900 - margin.left - margin.right,
 	    height = 500 - margin.top - margin.bottom;
@@ -241,6 +231,7 @@
 	    .links(mydatabase.links)
 	    .layout(40);
 
+// link hover and pills
 
 	  var link = svg.append("g").selectAll(".link")
 	      .data(mydatabase.links)
@@ -250,6 +241,8 @@
 	      .style("stroke-width", function(d) { return Math.max(1, d.dy); })
 	      .sort(function(a, b) { return b.dy - a.dy; })
 	      .on("mouseover", function(d) {
+	      	d3.select(this).style("stroke-opacity", 0.5);
+
 	        d3.selectAll(".node")
 	          .style("opacity", 0.3)
 	          .filter(function(p) {
@@ -262,11 +255,75 @@
 	      })
 
 	      .on("mouseout", function(d) {
+	      	d3.select(this).style("stroke-opacity", 0.1);
 	        d3.selectAll(".node")
 	          .style("opacity", null)
 	          .selectAll("text")
 	          .style("opacity", 1);
-	      });
+	      })
+
+	      .on("click", function(d){
+			clickCounter ++;
+			var filterPillGroup = d3.select(".filterPills").append("g")
+								.attr("id", function(d){return "rect" + clickCounter});
+
+				var textBox = filterPillGroup.append("text")
+				.attr("x",function(d){
+					return (nextBoxX);
+				})
+				.attr("y", 60 + (pillHeight/2))
+				.attr("dy", ".35em")
+				.attr("alignment-baseline", "middle")
+				.attr("text-anchor", "left")
+				.attr("class","filterPillsText")
+				.text(function(){
+					return d.source.name + " " + "X";
+				});
+
+			var bbox = textBox.node().getBBox();
+
+				filterPillGroup.append("rect")
+				.style("opacity", "0.2")
+				.attr("width",bbox.width)
+				.attr("height", bbox.height)
+				.attr("rx",3).attr("ry",3)
+				.attr("x",bbox.x)
+				.attr("y", bbox.y);
+				
+			
+			nextBoxX = nextBoxX + bbox.width + 5;
+			clickCounter ++;
+
+			var filterPillGroup2 = d3.select(".filterPills").append("g")
+			.attr("id", function(d){return "rect" + clickCounter});
+
+				var textBox2 = filterPillGroup2.append("text")
+				.attr("x",function(d){
+					return (nextBoxX);
+				})
+				.attr("y", 60 + (pillHeight/2))
+				.attr("dy", ".35em")
+				.attr("alignment-baseline", "middle")
+				.attr("text-anchor", "left")
+				.attr("class","filterPillsText")
+				.text(function(){
+					return d.target.name + " " + "X";
+				});
+
+			var bbox2 = textBox2.node().getBBox();
+
+				filterPillGroup2.append("rect")
+				.style("opacity", "0.2")
+				.attr("width",bbox2.width)
+				.attr("height", bbox2.height)
+				.attr("rx",3).attr("ry",3)
+				.attr("x",bbox2.x)
+				.attr("y", bbox2.y);
+
+			nextBoxX = nextBoxX + bbox2.width + 5;
+		}); // end of onclick function
+
+// node hover and pills
 
 	  var node = svg.append("g").selectAll(".node")
 	      .data(mydatabase.nodes)
@@ -274,21 +331,61 @@
 	      .attr("class", "node")
 	      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
 	      .on("mouseover", function(d) { 
+	      	// console.log(d);
+	      	d3.selectAll(".link")
+	      		.style("stroke-opacity", 0.1)
+	      		.filter(function(p) {
+	      			return (p.source.name == d.name || p.target.name == d.name);
+	      		})
+	      		.style("stroke-opacity", 0.5);
+	  	  })
+	      .on("mouseout", function(d) {
 	        d3.selectAll(".link")
-	          .style("opacity", 0.3)
-	          .filter(function(p) {
-	            return p.source.name || p.target.name ; //why is this not showing all the links?
-	          })
-	          .style("opacity", 1)
+	          .style("stroke-opacity", 0.1)
 	          .selectAll("text")
 	          .style("opacity", 1);
 	      })
-	      .on("mouseout", function(d) {
-	        d3.selectAll(".link")
-	          .style("opacity", null)
-	          .selectAll("text")
-	          .style("opacity", 1);
-	      });
+		 .on("click", function(d){
+		 	
+		 	clickCounter ++;
+			var filterPillGroup = d3.select(".filterPills").append("g")
+			.attr("id", function(d){return "rect" + clickCounter});		
+				
+			var textBox = filterPillGroup.append("text")
+				.attr("x",function(d){
+					return (nextBoxX);
+				})
+				.attr("y", 60 + (pillHeight/2))
+				.attr("dy", ".35em")
+				.attr("alignment-baseline", "middle")
+				.attr("text-anchor", "left")
+				.attr("class","filterPillsText")
+				.text(function(){
+					return d.name + " " + "X";
+				});
+
+			var bbox = textBox.node().getBBox();
+
+				filterPillGroup.append("rect")
+				.style("opacity", "0.2")
+				.attr("width",bbox.width)
+				.attr("height", bbox.height)
+				.attr("rx",3).attr("ry",3)
+				.attr("x",bbox.x)
+				.attr("y", bbox.y);
+				
+			
+			nextBoxX = nextBoxX + bbox.width + 5;
+
+			filterPillGroup.on("click", function() {
+				var a = d3.select(this).id;
+				d3.select(this).remove(); 
+				console.log(a);
+			});
+
+
+		}); // end of onclick function
+
 
 	  node.append("rect")
 	      .attr("height", function(d) { return d.dy; })
@@ -309,8 +406,93 @@
 	      .attr("class", function(d) { return d.category ; })
 	      .attr("text-anchor", "end") 
 	      // .attr("transform", function(d) { return "translate (" + ((d.dy / 2) + 30) + "," + (d.dy / 2) + ") rotate(90)"; });
-	});
-	</script>
+	
+		// 	  .append("rect")
+		// 	  .attr("class", "pill")
+		// 	  .append("text")
+		// 	  .text(function(d) { return d.name; })
+		// 	   });
+});
+</script>
+
+
+<!-- zoomable cluster packing -->  
+<script>
+
+var w = 480,
+    h = 480,
+    r = 450,
+    x = d3.scale.linear().range([0, r]),
+    y = d3.scale.linear().range([0, r]),
+    node,
+    root;
+
+var pack = d3.layout.pack()
+    .size([r, r])
+    .value(function(d) { return d.size; })
+
+var vis = d3.select(".clusterChart").insert("svg:svg", "h2")
+    .attr("width", w)
+    .attr("height", h)
+  .append("svg:g")
+    .attr("transform", "translate(" + (w - r) / 2 + "," + (h - r) / 2 + ")");
+
+d3.json("testcluster.json", function(data) {
+  node = root = data;
+
+  var nodes = pack.nodes(root);
+
+  vis.selectAll("circle")
+      .data(nodes)
+    .enter().append("svg:circle")
+      .attr("class", function(d) { return d.children ? "parent" : "child"; })
+      .attr("cx", function(d) { return d.x; })
+      .attr("cy", function(d) { return d.y; })
+      .attr("r", function(d) { return d.r; })
+      .on("click", function(d) { return zoom(node == d ? root : d); });
+
+  vis.selectAll("text")
+      .data(nodes)
+    .enter().append("svg:text")
+      .attr("class", function(d) { return d.children ? "parent" : "child"; })
+      .attr("x", function(d) { return d.x; })
+      .attr("y", function(d) { return d.y; })
+      .attr("dy", ".35em")
+      .attr("text-anchor", "middle")
+      .style("opacity", function(d) { return d.r > 20 ? 1 : 0; })
+      .text(function(d) { return d.name; });
+
+  d3.select(window).on("click", function() { zoom(root); });
+});
+
+function zoom(d, i) {
+  var k = r / d.r / 2;
+  x.domain([d.x - d.r, d.x + d.r]);
+  y.domain([d.y - d.r, d.y + d.r]);
+
+  var t = vis.transition()
+      .duration(d3.event.altKey ? 7500 : 750);
+
+  t.selectAll("circle")
+      .attr("cx", function(d) { return x(d.x); })
+      .attr("cy", function(d) { return y(d.y); })
+      .attr("r", function(d) { return k * d.r; });
+
+  t.selectAll("text")
+      .attr("x", function(d) { return x(d.x); })
+      .attr("y", function(d) { return y(d.y); })
+      .style("opacity", function(d) { return k * d.r > 20 ? 1 : 0; });
+
+  node = d;
+  d3.event.stopPropagation();
+}
+
+</script>	
+
+
+
+
+<!-- timeline -->
 
 	<script>
 
@@ -400,7 +582,7 @@
 
 	d3.json("timelinedata.json", function(timeLineData){
 
-		console.log (timeLineData);
+		// console.log (timeLineData);
 
 	function timelineStackedIcons() {
 
@@ -426,7 +608,6 @@
       }
 
 
-
 var chart = d3.timeline()
             .colors(locationScale)
             .colorProperty('location');
@@ -438,184 +619,8 @@ var chart = d3.timeline()
 
 
 
+</script>
 
-	</script>
-
-
-    
-<script>
-
-var w = 500,
-    h = 500,
-    r = 450,
-    x = d3.scale.linear().range([0, r]),
-    y = d3.scale.linear().range([0, r]),
-    node,
-    root;
-
-var pack = d3.layout.pack()
-    .size([r, r])
-    .value(function(d) { return d.size; })
-
-var vis = d3.select(".clusterChart").insert("svg:svg", "h2")
-    .attr("width", w)
-    .attr("height", h)
-  .append("svg:g")
-    .attr("transform", "translate(" + (w - r) / 2 + "," + (h - r) / 2 + ")");
-
-d3.json("flare.json", function(data) {
-  node = root = data;
-
-  var nodes = pack.nodes(root);
-
-  vis.selectAll("circle")
-      .data(nodes)
-    .enter().append("svg:circle")
-      .attr("class", function(d) { return d.children ? "parent" : "child"; })
-      .attr("cx", function(d) { return d.x; })
-      .attr("cy", function(d) { return d.y; })
-      .attr("r", function(d) { return d.r; })
-      .on("click", function(d) { return zoom(node == d ? root : d); });
-
-  vis.selectAll("text")
-      .data(nodes)
-    .enter().append("svg:text")
-      .attr("class", function(d) { return d.children ? "parent" : "child"; })
-      .attr("x", function(d) { return d.x; })
-      .attr("y", function(d) { return d.y; })
-      .attr("dy", ".35em")
-      .attr("text-anchor", "middle")
-      .style("opacity", function(d) { return d.r > 20 ? 1 : 0; })
-      .text(function(d) { return d.name; });
-
-  d3.select(window).on("click", function() { zoom(root); });
-});
-
-function zoom(d, i) {
-  var k = r / d.r / 2;
-  x.domain([d.x - d.r, d.x + d.r]);
-  y.domain([d.y - d.r, d.y + d.r]);
-
-  var t = vis.transition()
-      .duration(d3.event.altKey ? 7500 : 750);
-
-  t.selectAll("circle")
-      .attr("cx", function(d) { return x(d.x); })
-      .attr("cy", function(d) { return y(d.y); })
-      .attr("r", function(d) { return k * d.r; });
-
-  t.selectAll("text")
-      .attr("x", function(d) { return x(d.x); })
-      .attr("y", function(d) { return y(d.y); })
-      .style("opacity", function(d) { return k * d.r > 20 ? 1 : 0; });
-
-  node = d;
-  d3.event.stopPropagation();
-}
-
-</script>	
-
-     
-      <script>
-  //       var w = 900,
-  //           h = 500,
-  //           padding = 20;
-            
-  //       // create an svg container
-  //       var tvis = d3.select(".timeline")
-  //           	.append("svg")
-  //               .attr("width", w)
-  //               .attr("height", h);
-                
-
-		// d3.json("timeline.json", function(TJSON) {	
-
-		// 	var startDates = [];
-		// 	var endDates = [];
-
-		// 	for (var a = 0; a <TJSON.length; a++){
-		// 		for(var b = 0; b<TJSON[a].jobs.length; b++){
-		// 			TJSON[a].jobs[b].start = new Date(TJSON[a].jobs[b].start);
-		// 			TJSON[a].jobs[b].end = new Date(TJSON[a].jobs[b].end);
-		// 			startDates.push(new Date(TJSON[a].jobs[b].start));
-		// 			endDates.push(new Date(TJSON[a].jobs[b].end));
-		// 		}
-		// 	}
-
-		// var maxDate = new Date(Math.max.apply(null,endDates));
-		// var minDate = new Date(Math.min.apply(null,startDates));
-        
-  //       // define the x scale
-  //       var xScale = d3.time.scale()
-	 //        .domain([minDate, maxDate])
-		// .range([padding, w - padding * 2]);   
-	
-  //       // define the x axis
-  //       var xAxis = d3.svg.axis()
-  //           .orient("bottom")
-  //           .scale(xScale);
-
-  //       // define the y scale
-  //       var yScale = d3.scale.linear()
-	 //        .domain([0, TJSON.length]) 
-		// .range([h - padding, padding]);         
-
-  //       // define the y axis
-  //       var yAxis = d3.svg.axis()
-  //           .orient("left")
-  //           .scale(yScale);
-
-            
-  //       // draw y axis with labels and move in from the size by the amount of padding
-  //       tvis.append("g")
-  //           .attr("transform", "translate("+padding+",0)")
-  //           .call(yAxis);
-
-  //       // draw x axis with labels and move to the bottom of the chart area
-  //       tvis.append("g")
-  //           .attr("class", "xaxis")   // give it a class so it can be used to select only xaxis labels  below
-  //           .attr("transform", "translate(0," + (h - padding) + ")")
-  //           .call(xAxis);
-
-
-  //       var trect = tvis.selectAll("rect")
-  //       				.data(TJSON)
-  //       				.enter()
-  //       				.append("rect")
-  //       				.attr("y", function(d,i){
-  //       					console.log(i);
-  //       					console.log(i);
-  //       					console.log(i*yScale(1));
-  //       					return i*yScale(1);
-  //       				})
-  //       				.attr("width")
-  //       				.attr("height", function(d){
-  //       					return (h - padding)/TJSON.length;
-  //       				});
-         
-
-  //       var trect_x = trect.attr("x", function(d,i){
-  //       					for (var i = 0; i<d[i].length; i++){
-  //       						for(var j = 0; j<d[i].jobs.length; j++){
-  //       							return xScale(d[i].jobs[j].start);
-  //       						}
-  //       					}
-        					
-  //       				});
-
-  //       var trect_width = trect.attr("width", function(d,i){
-  //       					for (var i = 0;i<d[i].length; i++){
-  //       						for(var j; j<d[i].jobs.length; j++){
-  //       							return xScale(d[i].jobs[j].end) - xScale(d[i].jobs[j].start);
-  //       						}
-  //       					}
-        					
-  //       				});
-
-	 //    });// End of JSON function 
-	
-
- </script>
 
 </body>
 </html>

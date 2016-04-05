@@ -282,7 +282,6 @@
             .attr("r", itemHeight / 2)
             .attr("height", itemHeight)
             .style("fill", function(d, i){
-              console.log(d);
               var dColorPropName;
               
               if(d.location) {
