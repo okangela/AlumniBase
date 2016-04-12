@@ -1,17 +1,17 @@
 /*_________Whole Document______*/
 
 body {
-	font-family: 'Source Sans Pro', sans-serif;
-	/*background-color: #00A0DC;*/
-	}
+  font-family: 'Source Sans Pro', sans-serif;
+  /*background-color: #00A0DC;*/
+  }
 h1 {
-	font-size: 48px;
-	font-weight: 600;
+  font-size: 48px;
+  font-weight: 600;
 }
 
 p {
-	font-size: 16px;
-	font-weight: 400;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .container {
@@ -209,24 +209,35 @@ li #display-toggle{
 }
 
 .clusterChart circle {
-  fill: #ccc;
+  fill: #C7C7C7;
   stroke: #999;
   pointer-events: all;
 }
 
+
 .clusterChart circle.parent {
-  fill: #1f77b4;
+  fill: #C7C7C7;
   fill-opacity: .1;
   stroke: steelblue;
 }
 
 .clusterChart circle.parent:hover {
   stroke: #ff7f0e;
-  stroke-width: 1px;
+  stroke-width: 2px;
 }
 
 .clusterChart circle.child {
-  pointer-events: none;
+  /*pointer-events: none;*/
+  pointer-events: all;
+    fill-opacity: .1;
+}
+
+.clusterChart circle.child:hover {
+  /*pointer-events: none;*/
+  pointer-events: all;
+  stroke: #ff7f0e;
+  stroke-width: 2px;
+  fill:#843c39;
 }
 
 .clusterChart .pill{
