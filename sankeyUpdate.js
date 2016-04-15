@@ -10,6 +10,7 @@ $(document).ready(function() {
         $(this).parents('.dropdown').find('.dropdown-toggle').html(text + ' <span class="caret"></span>');
         var sankeyText = $(this).attr("id");
         sankey1Value = sankeyText;
+        validateSankeyInput();
     });
 
     $(".sankey2 ul li a").click(function() {
@@ -18,6 +19,7 @@ $(document).ready(function() {
         $(this).parents('.dropdown').find('.dropdown-toggle').html(text + ' <span class="caret"></span>');
         var sankeyText = $(this).attr("id");
         sankey2Value = sankeyText;
+        validateSankeyInput();
     });
 
     $(".sankey3 ul li a").click(function() {
@@ -26,8 +28,39 @@ $(document).ready(function() {
         $(this).parents('.dropdown').find('.dropdown-toggle').html(text + ' <span class="caret"></span>');
         var sankeyText = $(this).attr("id");
         sankey3Value = sankeyText;
+        validateSankeyInput();
     });
 });
+
+function validateSankeyInput() {
+    if (sankey1Value == sankey2Value || sankey2Value == sankey3Value || sankey3Value == sankey1Value) {
+        showWarningSign();
+    } else {
+        hideWarningSign();
+    }
+}
+
+function showWarningSign() {
+    d3.select("#sankeyBadInput")
+        .style("visibility", "visible")
+        .transition()
+        .duration(200)
+        .style("opacity", 1);
+    d3.select(".sankey4")
+        .select("button")
+        .attr("disabled", "disabled");
+}
+
+function hideWarningSign() {
+    d3.select("#sankeyBadInput")
+        .transition()
+        .duration(200)
+        .style("opacity", 0)
+        .style("visibility", "hidden");
+    d3.select(".sankey4")
+        .select("button")
+        .attr("disabled", null);
+}
 
 function refreshSankey() {
     d3.json("cluster.json", function(clusterData) {
