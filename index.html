@@ -278,8 +278,6 @@
 	<script src="sankeyPugin.js"></script>
 	<script src="d3-timeline-master/d3-timeline-master/src/d3-timeline-v2.js"></script>
 	<!-- <script type="text/javascript" src="d3/d3.layout.js"></script> -->
-
-
 	<!-- Sankey-->
 
 	<script>
@@ -604,7 +602,15 @@
 	      .text(function(d) { return d.name; })
 	    .filter(function(d) { return d.x > width * .9; })
 	      .attr("class", function(d) { return d.category ; })
-	      .attr("text-anchor", "end")
+	      .attr("text-anchor", "end");
+
+    node.selectAll("text")
+      .transition()
+      .duration(300)
+      .delay(function(d, i) {
+        return parseInt(d.id) * 15 > 700 ? parseInt(d.id) * 10 : parseInt(d.id) * 15;
+      })
+      .style("opacity", 1);
 });
 </script>
 

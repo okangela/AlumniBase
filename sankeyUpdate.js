@@ -1,5 +1,5 @@
-var sankey1Value = "Year_Completion";
-var sankey2Value = "Current_Location";
+var sankey1Value = "Major";
+var sankey2Value = "Year_Completion";
 var sankey3Value = "Current_Employer";
 
 $(document).ready(function() {
@@ -344,5 +344,13 @@ function refreshSankey() {
                 return d.category;
             })
             .attr("text-anchor", "end");
+
+        node.selectAll("text")
+            .transition()
+            .duration(300)
+            .delay(function(d, i) {
+                return parseInt(d.id) * 15 > 700 ? parseInt(d.id) * 10 : parseInt(d.id) * 15;
+            })
+            .style("opacity", 1);
     });
 }
