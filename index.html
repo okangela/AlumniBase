@@ -81,7 +81,7 @@
 	                <li>
 	                    <a href="#"><i class="fa fa-user icon"></i>David <i class="fa fa-caret-down"></i></a>
 	                </li>
-	                
+
 	            </ul>
             </div><!-- /.navbar-collapse -->
     </nav>
@@ -149,13 +149,13 @@
 						  </button>
 					</div>
    				</div>
-   			</div> 
+   			</div>
 	   		<div class = "sankeyChart"></div>
 	   	</div>
 	   		<div class = "col-lg-4">
 	   			<div class = "row ">
 				<svg class = "filterPills" width="433" height="90">
-	   				</svg> 
+	   				</svg>
 	   			</div>
 	   			<hr/>
 	   			<div class = "row filterBar">
@@ -174,7 +174,7 @@
 						    <li><a id = "Current_Employer" href="#">Company</a></li>
 						    <li><a id = "Current_Employer_Type" href="#">Company Type</a></li>
 						  </ul>
-						</div>	   					
+						</div>
 	   				</div>
 
 	   				<div class = "col-lg-3">
@@ -192,13 +192,13 @@
 						    <li><a id = "Current_Employer" href="#">Company</a></li>
 						    <li><a id = "Current_Employer_Type" href="#">Company Type</a></li>
 						  </ul>
-						</div>	   					
+						</div>
 	   				</div>
 
 	   			</div>
 	   			<div class = "row clusterChart"></div>
 	   		</div>
-	   		
+
    		</div>
    	</div>
    </section>
@@ -221,9 +221,9 @@
 						    <li><a href="#">Company Type</a></li>
 						  </ul>
 						</div>
-		   		
+
 		   	<br/>
-					
+
 		   	<div class = "timeline"></div>
 	   </div><!-- Timeline Wrapper-->
 
@@ -231,8 +231,8 @@
     <div class ="profile-wrapper col-lg-4">
 <!--    		<div class = "profile"> -->
 <!-- 			<div class = "profile-des"> -->
-	   			
-	   			<!-- <div class ="row"> 
+
+	   			<!-- <div class ="row">
 	   				<div class = "col-lg-6"><img class = "img-responsive" src="images/david.jpg"></div>
 	   				<div class = "col-lg-6 name-title">
 	   					<p>David Richard</p>
@@ -244,7 +244,7 @@
 	   			</div>
 	   			<br/>
 
-				<div class ="row"> 
+				<div class ="row">
 			        <ul>
 			        	<p>Education</p>
 				        <li><a href="#">MS HCI@Georgia Institute of Technology</a></li>
@@ -252,14 +252,14 @@
 			    	</ul>
 			    </div>
 
-				<div class ="row"> 
+				<div class ="row">
 			        <ul>
 			        	<p>Work Experience</p>
 				        <li><a href="#">Sr. UX Designer at At&t</a></li>
 				        <li><a href="#">Full stack developer at Apple</a></li>
 				        <li><a href="#">Front End Developer at Big Nerd Ranch</a></li>
 			    	</ul>
-			    </div>			    
+			    </div>
 
 			    <div class = "row">
 			    	<button type="button" class="btn btn-primary">Send Message</button>
@@ -269,19 +269,19 @@
  -->
 <!-- 	   </div> -->
 <!-- 	</div>  -->
-	<!-- Profile Wrapper--> 
+	<!-- Profile Wrapper-->
 
 </div> <!-- End of Row-->
 </div><!-- End of Container-->
 
-   <!-- _____________D3 begins here_____________-->	
+   <!-- _____________D3 begins here_____________-->
 	<script src="sankeyPugin.js"></script>
 	<script src="d3-timeline-master/d3-timeline-master/src/d3-timeline-v2.js"></script>
-	<script type="text/javascript" src="d3/d3.layout.js"></script>
+	<!-- <script type="text/javascript" src="d3/d3.layout.js"></script> -->
 
-	
+
 	<!-- Sankey-->
-	
+
 	<script>
 
 	var pillWidth = 90;
@@ -293,7 +293,7 @@
 	var margin = {top: 1, right: 30, bottom: 30, left:10},
 	    width = 700 - margin.left - margin.right,
 	    height = 600 - margin.top - margin.bottom;
-	    
+
 	var category20b_sq = [
   '#5254a3',
   '#9c9ede', '#843c39','#bd9e39',
@@ -317,13 +317,10 @@
 	  				 .curvature(0.4);
 
 	d3.json("cluster.json", function(clusterData) {
-		
-		var column1 = "Current_Employer_Industry";
+
+		var column1 = "Major";
 		var column2 = "Year_Completion";
-		var column3 = "Current_Location";
-		
-	
-        console.log(column1 + " " + column2 + " " + column3);
+		var column3 = "Current_Employer";
 
         var id = 0;
         var nodes = {};
@@ -335,9 +332,9 @@
 		var column3_uniq = 0;
 
         clusterData.People.forEach(function(d) {
-        	
-            if (d[column1] == "Unknown" 
-            	|| d[column2] == "Unknown" 
+
+            if (d[column1] == "Unknown"
+            	|| d[column2] == "Unknown"
             	|| d[column3] == "Unknown"
             	|| d[column1] == "undefined"
             	|| d[column2] == "undefined"
@@ -383,10 +380,8 @@
 					types[d[column3]] = column3;
 					column3_uniq++;
 				}
-			}			
+			}
 		});
-
-		console.log(column1_uniq + " " + column2_uniq + " " + column3_uniq);
         sankeyLinks = [];
 
         for(var level1 in nodes) {
@@ -409,6 +404,10 @@
             }
         }
 
+        sankeyLinks.sort(function(a, b){
+          return parseInt(a.source) - parseInt(b.source);
+        });
+
 
         sankeyNodes = [];
         for (var level1 in nodes) {
@@ -425,12 +424,11 @@
         sankeyData = {};
         sankeyData["nodes"] = sankeyNodes;
         sankeyData["links"] = sankeyLinks;
-        console.log(JSON.stringify(sankeyData));
 
-	});
-	d3.json("sankey.json", function(mydatabase) {
-	  
-		// mydatabase = sankeyData;
+	// });
+	// d3.json("sankey.json", function(mydatabase) {
+
+		mydatabase = sankeyData;
 	 	sankey.nodes(mydatabase.nodes)
 	    .links(mydatabase.links)
 	    .layout(40);
@@ -493,8 +491,8 @@
 				.attr("rx",3).attr("ry",3)
 				.attr("x",bbox.x)
 				.attr("y", bbox.y);
-				
-			
+
+
 			nextBoxX = nextBoxX + bbox.width + 5;
 			clickCounter ++;
 
@@ -534,7 +532,7 @@
 	    .enter().append("g")
 	      .attr("class", "node")
 	      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
-	      .on("mouseover", function(d) { 
+	      .on("mouseover", function(d) {
 	      	// console.log(d);
 	      	d3.selectAll(".link")
 	      		.style("stroke-opacity", 0.1)
@@ -550,11 +548,11 @@
 	          .style("opacity", 1);
 	      })
 		 .on("click", function(d){
-		 	
+
 		 	clickCounter ++;
 			var filterPillGroup = d3.select(".filterPills").append("g")
-			.attr("id", function(d){return "rect" + clickCounter});		
-				
+			.attr("id", function(d){return "rect" + clickCounter});
+
 			var textBox = filterPillGroup.append("text")
 				.attr("x",function(d){
 					return (nextBoxX);
@@ -577,12 +575,12 @@
 				.attr("rx",3).attr("ry",3)
 				.attr("x",bbox.x)
 				.attr("y", bbox.y);
-				
-			
+
+
 			nextBoxX = nextBoxX + bbox.width + 5;
 
 			filterPillGroup.on("click", function() {
-				d3.select(this).remove(); 
+				d3.select(this).remove();
 			});
 
 
@@ -593,9 +591,9 @@
 	      .attr("height", function(d) { return d.dy; })
 	      .attr("width", sankey.nodeWidth())
 	      .style("fill", function(d) { return color(d.category); })
-	      .append("title")	
+	      .append("title")
 	      .text(function(d) { return d.name; });
-	      
+
 
 	  node.append("text")
 	      .attr("x", 6 + sankey.nodeWidth())
@@ -606,12 +604,12 @@
 	      .text(function(d) { return d.name; })
 	    .filter(function(d) { return d.x > width * .9; })
 	      .attr("class", function(d) { return d.category ; })
-	      .attr("text-anchor", "end") 
+	      .attr("text-anchor", "end")
 });
 </script>
 
 
-<!-- zoomable cluster packing -->  
+<!-- zoomable cluster packing -->
 <script>
 
 var w = 480,
@@ -651,7 +649,7 @@ var vis = d3.select(".clusterChart").insert("svg:svg", "h2")
   svg.call(tip);
 
 d3.json("testcluster.json", function(data) {
-  
+
   node = root = data;
   var nodes = pack.nodes(root);
 
@@ -662,16 +660,16 @@ d3.json("testcluster.json", function(data) {
       .attr("cx", function(d) { return d.x; })
       .attr("cy", function(d) { return d.y; })
       .attr("r", function(d) { return d.r; })
-      .on("click", function(d) { 
+      .on("click", function(d) {
       	if(d.depth == 2) {
       		tip.hide(d);
       	} else {
-      		return zoom(node == d ? root : d); 
+      		return zoom(node == d ? root : d);
       	}
       });
 
   	vis.selectAll("circle")
-  	.filter(function(d, i) {  		
+  	.filter(function(d, i) {
   		return d.depth == 2;
   	})
  	.style("stroke", "gray")
@@ -685,10 +683,10 @@ d3.json("testcluster.json", function(data) {
     })
     .on("mouseout", function(d, i){
     	tip.hide(d);
-        d3.select(this).style("stroke", "gray");   
+        d3.select(this).style("stroke", "gray");
         d3.select(this).style("stroke-opacity", 0.2);
     });
-  	
+
   	vis.selectAll("circle")
   	.filter(function(d, i) {
   		return d.depth == 1;
@@ -701,14 +699,14 @@ d3.json("testcluster.json", function(data) {
 
     vis.selectAll("circle")
   	.filter(function(d, i) {
-  		return d.depth == 0; 
+  		return d.depth == 0;
   	})
   	.style("stroke", "white")
   	.style("fill", "white")
   	.style("fill-opacity", 0);
 
   vis.selectAll("text")
-      .data(nodes)      
+      .data(nodes)
       .enter().append("svg:text")
       .filter(function(d, i) {
       	return d.depth == 1;
@@ -717,7 +715,7 @@ d3.json("testcluster.json", function(data) {
       .attr("x", function(d) { return d.x; })
       .attr("y", function(d) { return d.y; })
       .attr("dy", ".35em")
-      .attr("text-anchor", "middle")      
+      .attr("text-anchor", "middle")
       .style("opacity", function(d) { return d.r > 25 ? 1 : 0; })
       .text(function(d) { return d.name; });
 
@@ -738,7 +736,7 @@ function zoom(d, i) {
       .attr("r", function(d) { return k * d.r; });
 
  	vis.selectAll("circle")
-  	.filter(function(d, i) {  		
+  	.filter(function(d, i) {
   		return d.depth == 2;
   	})
  	.style("stroke", "gray")
@@ -752,7 +750,7 @@ function zoom(d, i) {
     })
     .on("mouseout", function(d, i){
     	tip.hide(d);
-        d3.select(this).style("stroke", "gray");   
+        d3.select(this).style("stroke", "gray");
         d3.select(this).style("stroke-opacity", 0.2);
     });
 
@@ -763,14 +761,14 @@ function zoom(d, i) {
   	.style("stroke", "purple")
   	.style("fill", "#efefef")
   	.style("fill-opacity", 1);
-  
+
     t.selectAll("circle")
   	.filter(function(d, i) {
-  		return d.depth == 0; 
+  		return d.depth == 0;
   	})
   	.style("stroke", "white")
   	.style("fill", "white")
-  	.style("fill-opacity", 0);  	
+  	.style("fill-opacity", 0);
 
   t.selectAll("text")
       .attr("x", function(d) { return x(d.x); })
@@ -781,7 +779,7 @@ function zoom(d, i) {
   d3.event.stopPropagation();
 }
 
-</script>	
+</script>
 
 
 
@@ -793,7 +791,7 @@ function zoom(d, i) {
 	var widthTimeline = 900;
 
 	 var locationScale = d3.scale.ordinal()
-	 						  .range(['#393b79','#5254a3','#6b6ecf','#9c9ede','#8c6d31', '#bd9e39', '#e7ba52', '#e7cb94','#843c39', '#ad494a', '#d6616b', 
+	 						  .range(['#393b79','#5254a3','#6b6ecf','#9c9ede','#8c6d31', '#bd9e39', '#e7ba52', '#e7cb94','#843c39', '#ad494a', '#d6616b',
 									  '#e7969c'])
 	    					  .domain(['Atlanta','Unknown','SF Bay Area','New York','Seattle','Boston','Austin','India','Los Angeles','Chicago','Raleigh-Durham','Other']);
 
