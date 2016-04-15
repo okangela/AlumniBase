@@ -96,13 +96,12 @@
 						    <span class="caret"></span>
 						  </button>
 						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-						    <li><a href="#">Year of Graduation</a></li>
-						    <li><a href="#">Industry</a></li>
-						    <li><a href="#">Program</a></li>
-						    <li><a href="#">Location</a></li>
-						    <li><a href="#">Company</a></li>
-						    <li><a href="#">Company Type</a></li>
-						    <li><a href="#">Gender</a></li>
+						    <li><a id = "Year_Completion" href="#">Year of Graduation</a></li>
+						    <li><a id = "Current_Employer_Industry" href="#">Industry</a></li>
+						    <li><a id = "Major" href="#">Program</a></li>
+						    <li><a id = "Current_Location" href="#">Location</a></li>
+						    <li><a id = "Current_Employer" href="#">Company</a></li>
+						    <li><a id = "Current_Employer_Type" href="#">Company Type</a></li>
 						  </ul>
 						</div>
    				</div>
@@ -114,13 +113,12 @@
 						    <span class="caret"></span>
 						  </button>
 						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-						    <li><a href="#">Year of Graduation</a></li>
-						    <li><a href="#">Industry</a></li>
-						    <li><a href="#">Program</a></li>
-						    <li><a href="#">Location</a></li>
-						    <li><a href="#">Company</a></li>
-						    <li><a href="#">Company Type</a></li>
-						    <li><a href="#">Gender</a></li>
+						    <li><a id = "Year_Completion" href="#">Year of Graduation</a></li>
+						    <li><a id = "Current_Employer_Industry" href="#">Industry</a></li>
+						    <li><a id = "Major" href="#">Program</a></li>
+						    <li><a id = "Current_Location" href="#">Location</a></li>
+						    <li><a id = "Current_Employer" href="#">Company</a></li>
+						    <li><a id = "Current_Employer_Type" href="#">Company Type</a></li>
 						  </ul>
 						</div>
    				</div>
@@ -132,75 +130,15 @@
 						    <span class="caret"></span>
 						  </button>
 						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-						    <li><a href="#">Year of Graduation</a></li>
-						    <li><a href="#">Industry</a></li>
-						    <li><a href="#">Program</a></li>
-						    <li><a href="#">Location</a></li>
-						    <li><a href="#">Company</a></li>
-						    <li><a href="#">Company Type</a></li>
-						    <li><a href="#">Gender</a></li>
+						    <li><a id = "Year_Completion" href="#">Year of Graduation</a></li>
+						    <li><a id = "Current_Employer_Industry" href="#">Industry</a></li>
+						    <li><a id = "Major" href="#">Program</a></li>
+						    <li><a id = "Current_Location" href="#">Location</a></li>
+						    <li><a id = "Current_Employer" href="#">Company</a></li>
+						    <li><a id = "Current_Employer_Type" href="#">Company Type</a></li>
 						  </ul>
 						</div>
    				</div>
-
-   				<div class = "col-lg-2 text-center">
-   					<div class="dropdown filterDropdown">
-						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-						    Company Type
-						    <span class="caret"></span>
-						  </button>
-						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-						    <li><a href="#">Year of Graduation</a></li>
-						    <li><a href="#">Industry</a></li>
-						    <li><a href="#">Program</a></li>
-						    <li><a href="#">Location</a></li>
-						    <li><a href="#">Company</a></li>
-						    <li><a href="#">Company Type</a></li>
-						    <li><a href="#">Gender</a></li>
-						  </ul>
-						</div>
-   				</div>
-
-   			<form id="search" action="" method="post" >
-   				<div class = "col-lg-2 text-center">
-   					<div class="dropdown filterDropdown">
-   						<input type="hidden" name="selection">
-						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-						    Industry
-						    <span class="caret"></span>
-						  </button>
-						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-						    <li><a href="#">Year of Graduation</a></li>
-						    <li><a href="#">Industry</a></li>
-						    <li><a href="#">Program</a></li>
-						    <li><a href="#">Location</a></li>
-						    <li><a href="#">Company</a></li>
-						    <li><a href="#">Company Type</a></li>
-						    <li><a href="#">Gender</a></li>
-						  </ul>
-						</div>
-   				</div>
-   			</form>
-
-   				<div class = "col-lg-2 text-center">
-   					<div class="dropdown filterDropdown">
-						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-						    Location
-						    <span class="caret"></span>
-						  </button>
-						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-						    <li><a href="#">Year of Graduation</a></li>
-						    <li><a href="#">Industry</a></li>
-						    <li><a href="#">Program</a></li>
-						    <li><a href="#">Location</a></li>
-						    <li><a href="#">Company</a></li>
-						    <li><a href="#">Company Type</a></li>
-						    <li><a href="#">Gender</a></li>
-						  </ul>
-						</div>
-   				</div>
-
-
    			</div> 
 	   		<div class = "sankeyChart"></div>
 	   	</div>
@@ -344,7 +282,7 @@
 	var pillPadding = 3;
 
 	var margin = {top: 1, right: 30, bottom: 30, left:10},
-	    width = 900 - margin.left - margin.right,
+	    width = 700 - margin.left - margin.right,
 	    height = 600 - margin.top - margin.bottom;
 	    
 	var category20b_sq = [
@@ -371,9 +309,9 @@
 
 	d3.json("cluster.json", function(clusterData) {
 		
+		var column3 = "Year_Completion";
 		var column1 = "Current_Employer";
-		var column2 = "Year_Completion";
-		var column3 = "Current_Location";
+		var column2 = "Current_Location";
 		
 		var id = 0;
 		var nodes = {};
@@ -381,40 +319,45 @@
 		var types = {};
 		clusterData.People.forEach(function(d){
 			
-			if(links[d[column1]] == undefined) {
-				links[d[column1]] = {};
-			} else if(links[d[column1]][d[column2]] == undefined) {
-				links[d[column1]][d[column2]] = 1
-			} else {
-				links[d[column1]][d[column2]]++;
-			}
+			if(d[column1] == "Unknown" || d[column2] == "Unknown" || d[column3] == "Unknown") {
 
-			if(links[d[column2]] == undefined) {
-				links[d[column2]] = {};
 			}
-			if(links[d[column2]][d[column3]] == undefined) {
-				links[d[column2]][d[column3]] = 1
-			} else {
-				links[d[column2]][d[column3]]++;
-			}
+			else {
+				if(links[d[column1]] == undefined) {
+					links[d[column1]] = {};
+				} else if(links[d[column1]][d[column2]] == undefined) {
+					links[d[column1]][d[column2]] = 1
+				} else {
+					links[d[column1]][d[column2]]++;
+				}
 
-			if(nodes[d[column1]] == undefined) {
-				nodes[d[column1]] = id;
-				types[d[column1]] = column1;
-				id++;
-			}
+				if(links[d[column2]] == undefined) {
+					links[d[column2]] = {};
+				}
+				if(links[d[column2]][d[column3]] == undefined) {
+					links[d[column2]][d[column3]] = 1
+				} else {
+					links[d[column2]][d[column3]]++;
+				}
 
-			if(nodes[d[column2]] == undefined) {
-				nodes[d[column2]] = id;
-				types[d[column2]] = column2;
-				id++;
-			}
+				if(nodes[d[column1]] == undefined) {
+					nodes[d[column1]] = id;
+					types[d[column1]] = column1;
+					id++;
+				}
 
-			if(nodes[d[column3]] == undefined) {
-				nodes[d[column3]] = id;
-				types[d[column3]] = column3;
-				id++;
-			}
+				if(nodes[d[column2]] == undefined) {
+					nodes[d[column2]] = id;
+					types[d[column2]] = column2;
+					id++;
+				}
+
+				if(nodes[d[column3]] == undefined) {
+					nodes[d[column3]] = id;
+					types[d[column3]] = column3;
+					id++;
+				}
+			}			
 		});
 
 		sankeyLinks = [];
@@ -424,7 +367,9 @@
 				tempLink["source"] = nodes[level1];
 				tempLink["target"] = nodes[level2];
 				tempLink["value"] = links[level1][level2];
-				sankeyLinks.push(tempLink);
+				if (tempLink["value"] > -1) {
+					sankeyLinks.push(tempLink);
+				}
 			}
 		}
 
