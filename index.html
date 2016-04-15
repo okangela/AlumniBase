@@ -6,11 +6,14 @@
 	<title>AlumniBase - Find the "right" alumni</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="d3.js"></script>
 	<link rel="stylesheet" href="bootstrap3/css/bootstrap.min.css">
 	<script type="text/javascript" src="jquery.js"></script>
+	<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 	<script type="text/javascript" src="bootstrap3/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="script.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 </head>
@@ -324,7 +327,6 @@
 </div><!-- End of Container-->
 
    <!-- _____________D3 begins here_____________-->
-	<script src="http://d3js.org/d3.v3.min.js"></script>
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="sankeyPugin.js"></script>
 	<script src="d3-timeline-master/d3-timeline-master/src/d3-timeline-v2.js"></script>
@@ -367,9 +369,87 @@
 	var path = sankey.link()
 	  				 .curvature(0.4);
 
-	d3.json("sankey.json", function(mydatabase) {
-	  sankey
-	    .nodes(mydatabase.nodes)
+	d3.json("cluster.json", function(clusterData) {
+		
+		var column1 = "Current_Employer";
+		var column2 = "Year_Completion";
+		var column3 = "Current_Location";
+		
+		var id = 0;
+		var nodes = {};
+		var links = {};
+		var types = {};
+		clusterData.People.forEach(function(d){
+			
+			if(links[d[column1]] == undefined) {
+				links[d[column1]] = {};
+			} else if(links[d[column1]][d[column2]] == undefined) {
+				links[d[column1]][d[column2]] = 1
+			} else {
+				links[d[column1]][d[column2]]++;
+			}
+
+			if(links[d[column2]] == undefined) {
+				links[d[column2]] = {};
+			}
+			if(links[d[column2]][d[column3]] == undefined) {
+				links[d[column2]][d[column3]] = 1
+			} else {
+				links[d[column2]][d[column3]]++;
+			}
+
+			if(nodes[d[column1]] == undefined) {
+				nodes[d[column1]] = id;
+				types[d[column1]] = column1;
+				id++;
+			}
+
+			if(nodes[d[column2]] == undefined) {
+				nodes[d[column2]] = id;
+				types[d[column2]] = column2;
+				id++;
+			}
+
+			if(nodes[d[column3]] == undefined) {
+				nodes[d[column3]] = id;
+				types[d[column3]] = column3;
+				id++;
+			}
+		});
+
+		sankeyLinks = [];
+		for(var level1 in links) {
+			for(var level2 in links[level1]) {
+				var tempLink = {};
+				tempLink["source"] = nodes[level1];
+				tempLink["target"] = nodes[level2];
+				tempLink["value"] = links[level1][level2];
+				sankeyLinks.push(tempLink);
+			}
+		}
+
+
+		sankeyNodes = [];
+		for(var level1 in nodes) {
+			var tempNode = {};
+			tempNode["name"] = level1;
+			tempNode["category"] = types[level1];
+			tempNode["id"] = nodes[level1];
+			sankeyNodes.push(tempNode);
+		}
+
+		sankeyData = {};
+		sankeyData["nodes"] = sankeyNodes;
+		sankeyData["links"] = sankeyLinks;
+
+		console.log(JSON.stringify(sankeyData));
+
+	// });
+	// d3.json("sankey.json", function(mydatabase) {
+	  
+	mydatabase = sankeyData;
+
+	 	sankey.nodes(mydatabase.nodes)
 	    .links(mydatabase.links)
 	    .layout(40);
 
@@ -562,6 +642,10 @@ var w = 480,
 
 var pack = d3.layout.pack()
     .size([r, r])
+    .padding(10)
+    .sort(function (a, b) {
+  		return b.value - a.value;
+	})
     .value(function(d) { return d.size; })
 
 var vis = d3.select(".clusterChart").insert("svg:svg", "h2")
@@ -570,29 +654,89 @@ var vis = d3.select(".clusterChart").insert("svg:svg", "h2")
   .append("svg:g")
     .attr("transform", "translate(" + (w - r) / 2 + "," + (h - r) / 2 + ")");
 
-d3.json("testcluster.json", function(data) {
-  node = root = data;
 
+ var tip = d3.tip()
+  	.attr('class', 'd3-tip')
+  	.offset([-10, 0])
+  	.html(function(d) {
+  		var personText = " people, ";
+  		if(d.size == 1) {
+  			personText = " person, ";
+  		}
+    	return "<span style='color:white'>" + d.size + "</span>" + personText + "<span style='color:white'>" + d.name + "</span>";
+  });
+
+  svg.call(tip);
+
+d3.json("testcluster.json", function(data) {
+  
+  node = root = data;
   var nodes = pack.nodes(root);
 
   vis.selectAll("circle")
       .data(nodes)
-    .enter().append("svg:circle")
+      .enter().append("svg:circle")
       .attr("class", function(d) { return d.children ? "parent" : "child"; })
       .attr("cx", function(d) { return d.x; })
       .attr("cy", function(d) { return d.y; })
       .attr("r", function(d) { return d.r; })
-      .on("click", function(d) { return zoom(node == d ? root : d); });
+      .on("click", function(d) { 
+      	if(d.depth == 2) {
+      		tip.hide(d);
+      	} else {
+      		return zoom(node == d ? root : d); 
+      	}
+      });
+
+  	vis.selectAll("circle")
+  	.filter(function(d, i) {  		
+  		return d.depth == 2;
+  	})
+ 	.style("stroke", "gray")
+    .style("stroke-opacity", 0.2)
+    .style("fill", "gray")
+    .style("fill-opacity", 0.2)
+    .on("mouseover", function(d, i){
+    	tip.show(d);
+        d3.select(this).style("stroke", "black");
+        d3.select(this).style("stroke-opacity", 0.5);
+    })
+    .on("mouseout", function(d, i){
+    	tip.hide(d);
+        d3.select(this).style("stroke", "gray");   
+        d3.select(this).style("stroke-opacity", 0.2);
+    });
+  	
+  	vis.selectAll("circle")
+  	.filter(function(d, i) {
+  		return d.depth == 1;
+  	})
+  	.style("stroke", "purple")
+  	.style("fill", "#efefef")
+  	.style("fill-opacity", 1)
+  	.on("mouseover", tip.show)
+    .on("mouseout", tip.hide);
+
+    vis.selectAll("circle")
+  	.filter(function(d, i) {
+  		return d.depth == 0; 
+  	})
+  	.style("stroke", "white")
+  	.style("fill", "white")
+  	.style("fill-opacity", 0);
 
   vis.selectAll("text")
-      .data(nodes)
-    .enter().append("svg:text")
+      .data(nodes)      
+      .enter().append("svg:text")
+      .filter(function(d, i) {
+      	return d.depth == 1;
+      })
       .attr("class", function(d) { return d.children ? "parent" : "child"; })
       .attr("x", function(d) { return d.x; })
       .attr("y", function(d) { return d.y; })
       .attr("dy", ".35em")
-      .attr("text-anchor", "middle")
-      .style("opacity", function(d) { return d.r > 20 ? 1 : 0; })
+      .attr("text-anchor", "middle")      
+      .style("opacity", function(d) { return d.r > 25 ? 1 : 0; })
       .text(function(d) { return d.name; });
 
   d3.select(window).on("click", function() { zoom(root); });
@@ -611,16 +755,53 @@ function zoom(d, i) {
       .attr("cy", function(d) { return y(d.y); })
       .attr("r", function(d) { return k * d.r; });
 
+ 	vis.selectAll("circle")
+  	.filter(function(d, i) {  		
+  		return d.depth == 2;
+  	})
+ 	.style("stroke", "gray")
+    .style("stroke-opacity", 0.2)
+    .style("fill", "gray")
+    .style("fill-opacity", 0.2)
+    .on("mouseover", function(d, i){
+    	tip.show(d);
+        d3.select(this).style("stroke", "black");
+        d3.select(this).style("stroke-opacity", 0.5);
+    })
+    .on("mouseout", function(d, i){
+    	tip.hide(d);
+        d3.select(this).style("stroke", "gray");   
+        d3.select(this).style("stroke-opacity", 0.2);
+    });
+
+    t.selectAll("circle")
+  	.filter(function(d, i) {
+  		return d.depth == 1;
+  	})
+  	.style("stroke", "purple")
+  	.style("fill", "#efefef")
+  	.style("fill-opacity", 1);
+  
+    t.selectAll("circle")
+  	.filter(function(d, i) {
+  		return d.depth == 0; 
+  	})
+  	.style("stroke", "white")
+  	.style("fill", "white")
+  	.style("fill-opacity", 0);  	
+
   t.selectAll("text")
       .attr("x", function(d) { return x(d.x); })
       .attr("y", function(d) { return y(d.y); })
-      .style("opacity", function(d) { return k * d.r > 20 ? 1 : 0; });
+      .style("opacity", function(d) { return k * d.r > 25 ? 1 : 0; });
 
   node = d;
   d3.event.stopPropagation();
 }
 
 </script>	
+
+
 
 
 <!-- timeline -->
@@ -630,7 +811,8 @@ function zoom(d, i) {
 	var widthTimeline = 900;
 
 	 var locationScale = d3.scale.ordinal()
-	 						  .range(['#393b79','#5254a3','#6b6ecf','#9c9ede','#8c6d31', '#bd9e39', '#e7ba52', '#e7cb94','#843c39', '#ad494a', '#d6616b','#e7969c'])
+	 						  .range(['#393b79','#5254a3','#6b6ecf','#9c9ede','#8c6d31', '#bd9e39', '#e7ba52', '#e7cb94','#843c39', '#ad494a', '#d6616b', 
+									  '#e7969c'])
 	    					  .domain(['Atlanta','Unknown','SF Bay Area','New York','Seattle','Boston','Austin','India','Los Angeles','Chicago','Raleigh-Durham','Other']);
 
 	 var industryScale = d3.scale.ordinal()

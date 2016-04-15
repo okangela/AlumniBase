@@ -209,35 +209,35 @@ li #display-toggle{
 }
 
 .clusterChart circle {
-  fill: #C7C7C7;
-  stroke: #999;
+  /*fill: #C7C7C7;
+  stroke: #999;*/
   pointer-events: all;
 }
 
 
 .clusterChart circle.parent {
-  fill: #C7C7C7;
+  /*fill: #C7C7C7;*/
+  /*stroke: steelblue;*/
   fill-opacity: .1;
-  stroke: steelblue;
 }
 
 .clusterChart circle.parent:hover {
-  stroke: #ff7f0e;
+  /*stroke: #ff7f0e;*/
   stroke-width: 2px;
 }
 
 .clusterChart circle.child {
   /*pointer-events: none;*/
   pointer-events: all;
-    fill-opacity: .1;
+  fill-opacity: .1;
 }
 
 .clusterChart circle.child:hover {
   /*pointer-events: none;*/
   pointer-events: all;
-  stroke: #ff7f0e;
   stroke-width: 2px;
-  fill:#843c39;
+  /*stroke: black;*/
+  /*fill:#843c39;*/
 }
 
 .clusterChart .pill{
@@ -345,3 +345,32 @@ body {
   height:20px; width:20px; float:left;
 }
 
+/*___________D3 Tooltip________*/
+.d3-tip {
+  line-height: 1;
+  font-weight: normal;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  border-radius: 8px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}

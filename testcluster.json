@@ -1,81 +1,185 @@
-{"name":"",
-"children": [
-	{
-		"name": 1998,
-		 "children":[
-		 	{"name": "Internet",
-		 	"size":12},
-		 	{"name": "Design Research",
-		 	"size":24},
-		 	{"name": "University",
-		 	"size":10},
-		 	{"name": "Health",
-		 	"size":15},
-		 	{"name": "Computer Software",
-		 	"size":45}
-
-		 ]
-		  
-	},
-	{
-		"name": 1998,
-		 "children":[
-		 	{"name": "Internet",
-		 	"size":3,
-		 	"children":[
-			 	{"name": "Atlanta",
-			 	"size":8},
-			 	{"name": "Bay Area",
-			 	"size":4},
-			 	{"name": "Austin",
-			 	"size":5}	
-		 	]
-		 	},
-		 	{"name": "Design Research",
-		 	"size":6},
-		 	{"name": "University",
-		 	"size":2},
-		 	{"name": "Health",
-		 	"size":1},
-		 	{"name": "Computer Software",
-		 	"size":28}
-
-		 ]
-		  
-	},
-	{
-		"name": 1998,
-		 "children":[
-		 	{"name": "Internet",
-		 	"size":12},
-		 	{"name": "Design Research",
-		 	"size":88},
-		 	{"name": "University",
-		 	"size":10},
-		 	{"name": "Health",
-		 	"size":15},
-		 	{"name": "Computer Software",
-		 	"size":34}
-
-		 ]
-		  
-	},
-	{
-		"name": 1998,
-		 "children":[
-		 	{"name": "Internet",
-		 	"size":12},
-		 	{"name": "Design Research",
-		 	"size":5},
-		 	{"name": "University",
-		 	"size":10},
-		 	{"name": "Health",
-		 	"size":15},
-		 	{"name": "Computer Software",
-		 	"size":60}
-
-		 ]
-		  
-	}
-	]		
+{
+  "name": "",
+  "children": [
+    {
+      "name": "Atlanta",
+      "children": [
+        {
+          "name": "HCI",
+          "size": 101
+        },
+        {
+          "name": "IDT",
+          "size": 21
+        },
+        {
+          "name": "DM",
+          "size": 9
+        }
+      ],
+      "size": 131
+    },
+    {
+      "name": "Other",
+      "children": [
+        {
+          "name": "HCI",
+          "size": 65
+        },
+        {
+          "name": "IDT",
+          "size": 18
+        },
+        {
+          "name": "DM",
+          "size": 5
+        }
+      ],
+      "size": 88
+    },
+    {
+      "name": "Boston",
+      "children": [
+        {
+          "name": "HCI",
+          "size": 8
+        },
+        {
+          "name": "IDT",
+          "size": 2
+        }
+      ],
+      "size": 10
+    },
+    {
+      "name": "SF Bay Area",
+      "children": [
+        {
+          "name": "HCI",
+          "size": 76
+        },
+        {
+          "name": "IDT",
+          "size": 18
+        },
+        {
+          "name": "DM",
+          "size": 3
+        }
+      ],
+      "size": 97
+    },
+    {
+      "name": "Los Angeles",
+      "children": [
+        {
+          "name": "HCI",
+          "size": 5
+        },
+        {
+          "name": "IDT",
+          "size": 2
+        }
+      ],
+      "size": 7
+    },
+    {
+      "name": "Unknown",
+      "children": [
+        {
+          "name": "HCI",
+          "size": 88
+        },
+        {
+          "name": "IDT",
+          "size": 13
+        },
+        {
+          "name": "DM",
+          "size": 1
+        }
+      ],
+      "size": 102
+    },
+    {
+      "name": "Austin",
+      "children": [
+        {
+          "name": "HCI",
+          "size": 9
+        }
+      ],
+      "size": 9
+    },
+    {
+      "name": "New York",
+      "children": [
+        {
+          "name": "IDT",
+          "size": 10
+        },
+        {
+          "name": "HCI",
+          "size": 19
+        },
+        {
+          "name": "DM",
+          "size": 3
+        }
+      ],
+      "size": 32
+    },
+    {
+      "name": "Raleigh-Durham",
+      "children": [
+        {
+          "name": "IDT",
+          "size": 1
+        },
+        {
+          "name": "HCI",
+          "size": 5
+        }
+      ],
+      "size": 6
+    },
+    {
+      "name": "Seattle",
+      "children": [
+        {
+          "name": "HCI",
+          "size": 9
+        },
+        {
+          "name": "IDT",
+          "size": 2
+        },
+        {
+          "name": "DM",
+          "size": 1
+        }
+      ],
+      "size": 12
+    },
+    {
+      "name": "India",
+      "children": [
+        {
+          "name": "HCI",
+          "size": 8
+        }
+      ],
+      "size": 8
+    },
+    {
+      "name": "Chicago",
+      "children": [
+        {
+          "name": "HCI",
+          "size": 7
+        }
+      ],
+      "size": 7
+    }
+  ]
 }
