@@ -318,22 +318,33 @@
 
 	d3.json("cluster.json", function(clusterData) {
 		
-		var column3 = "Year_Completion";
-		var column1 = "Current_Employer";
-		var column2 = "Current_Location";
+		var column1 = "Current_Employer_Industry";
+		var column2 = "Year_Completion";
+		var column3 = "Current_Location";
 		
-		var id = 0;
-		var nodes = {};
-		var links = {};
-		var types = {};
-		clusterData.People.forEach(function(d){
-			
-			if (d[column1] == "Unknown" 
+	
+        console.log(column1 + " " + column2 + " " + column3);
+
+        var id = 0;
+        var nodes = {};
+        var links = {};
+        var types = {};
+
+		var column1_uniq = 0;
+		var column2_uniq = 0;
+		var column3_uniq = 0;
+
+        clusterData.People.forEach(function(d) {
+        	
+            if (d[column1] == "Unknown" 
             	|| d[column2] == "Unknown" 
             	|| d[column3] == "Unknown"
             	|| d[column1] == "undefined"
             	|| d[column2] == "undefined"
             	|| d[column3] == "undefined"
+            	|| d[column1] === undefined
+            	|| d[column2] === undefined
+            	|| d[column3] === undefined
             	) {
 
 			}
@@ -356,59 +367,70 @@
 				}
 
 				if(nodes[d[column1]] == undefined) {
-					nodes[d[column1]] = id;
+					nodes[d[column1]] = column1_uniq;
 					types[d[column1]] = column1;
-					id++;
+					column1_uniq++;
 				}
 
 				if(nodes[d[column2]] == undefined) {
-					nodes[d[column2]] = id;
+					nodes[d[column2]] = column2_uniq;
 					types[d[column2]] = column2;
-					id++;
+					column2_uniq++;
 				}
 
 				if(nodes[d[column3]] == undefined) {
-					nodes[d[column3]] = id;
+					nodes[d[column3]] = column3_uniq;
 					types[d[column3]] = column3;
-					id++;
+					column3_uniq++;
 				}
 			}			
 		});
 
-		sankeyLinks = [];
-		for(var level1 in links) {
-			for(var level2 in links[level1]) {
-				var tempLink = {};
-				tempLink["source"] = nodes[level1];
-				tempLink["target"] = nodes[level2];
-				tempLink["value"] = links[level1][level2];
-				if (tempLink["value"] > -1) {
-					sankeyLinks.push(tempLink);
-				}
+		console.log(column1_uniq + " " + column2_uniq + " " + column3_uniq);
+        sankeyLinks = [];
+
+        for(var level1 in nodes) {
+			if (types[level1] == column2) {
+				nodes[level1] = nodes[level1] + column1_uniq;
+			} else if (types[level1] == column3) {
+				nodes[level1] = nodes[level1] + column1_uniq + column2_uniq;
 			}
 		}
 
+        for (var level1 in links) {
+            for (var level2 in links[level1]) {
+                var tempLink = {};
+                tempLink["source"] = nodes[level1];
+                tempLink["target"] = nodes[level2];
+                tempLink["value"] = links[level1][level2];
+                if (tempLink["source"] != tempLink["target"]) {
+                    sankeyLinks.push(tempLink);
+                }
+            }
+        }
 
-		sankeyNodes = [];
-		for(var level1 in nodes) {
-			var tempNode = {};
-			tempNode["name"] = level1;
-			tempNode["category"] = types[level1];
-			tempNode["id"] = nodes[level1];
-			sankeyNodes.push(tempNode);
-		}
 
-		sankeyData = {};
-		sankeyData["nodes"] = sankeyNodes;
-		sankeyData["links"] = sankeyLinks;
+        sankeyNodes = [];
+        for (var level1 in nodes) {
+            var tempNode = {};
+            tempNode["name"] = level1;
+            tempNode["category"] = types[level1];
+            tempNode["id"] = nodes[level1];
+            sankeyNodes.push(tempNode);
+        }
+        sankeyNodes.sort(function(a, b){
+        	return parseInt(a.id) - parseInt(b.id);
+        });
 
-		// console.log(JSON.stringify(sankeyData));
+        sankeyData = {};
+        sankeyData["nodes"] = sankeyNodes;
+        sankeyData["links"] = sankeyLinks;
+        console.log(JSON.stringify(sankeyData));
 
-	// });
-	// d3.json("sankey.json", function(mydatabase) {
+	});
+	d3.json("sankey.json", function(mydatabase) {
 	  
-	mydatabase = sankeyData;
-
+		// mydatabase = sankeyData;
 	 	sankey.nodes(mydatabase.nodes)
 	    .links(mydatabase.links)
 	    .layout(40);
