@@ -44,6 +44,7 @@
             </ul>
           </li>
         </ul>
+
         <ul class="nav navbar-nav">
           <li>
             <ul class="nav navbar-nav" id="school">
@@ -60,6 +61,7 @@
                 </ul>
               </li>
             </ul>
+
           </li>
           <li>
             <a href="#"><i class="fa fa-user icon"></i>David <i class="fa fa-caret-down"></i></a>
@@ -137,9 +139,13 @@
             <div class="sankeyChart"></div>
           </div>
           <div class="col-lg-6">
-            <div class="row ">
-              <svg class="filterPills" width="433" height="90">
+
+            <div class="row">
+            <svg width="433" height="90">
+              <rect width="433" height="90"></rect>
+              <svg class="filterPills" width="433" height="90"><svg>
             </svg>
+
             </div>
             <hr/>
             <div class="row filterBar row-centered">
@@ -424,7 +430,7 @@
 
             filterPillGroup.append("rect")
               .style("opacity", "0.2")
-              .attr("width", bbox.width + 10)
+              .attr("width", bbox.width)
               .attr("height", bbox.height)
               .attr("rx", 3).attr("ry", 3)
               .attr("x", bbox.x)
