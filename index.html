@@ -1,859 +1,830 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<meta charset="utf-8">
-<head>
-	<title>AlumniBase - Find the "right" alumni</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script src="d3.js"></script>
-	<script src="sankeyUpdate.js"></script>
-	<link rel="stylesheet" href="bootstrap3/css/bootstrap.min.css">
-	<script type="text/javascript" src="jquery.js"></script>
-	<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
-	<script type="text/javascript" src="bootstrap3/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="script.js"></script>
-	<link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="utf-8">
+  <head>
+    <title>AlumniBase - Find the "right" alumni</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="d3.js"></script>
+    <script src="sankeyUpdate.js"></script>
+    <link rel="stylesheet" href="bootstrap3/css/bootstrap.min.css">
+    <script type="text/javascript" src="jquery.js"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    <script type="text/javascript" src="bootstrap3/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  </head>
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
-</head>
-
-<body>
-
-	 <!-- Navigation -->
+  <body>
+    <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">AlumniBase</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse">
-            	<ul class="nav navbar-nav" id ="school">
-	        		<li class="dropdown">
-
-		                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Ask questions about your network<b class="caret"></b></a>
-
-		                <ul class="dropdown-menu">
-
-		                    <li><a href="#">How many alumni work in the Bay Area?</a></li>
-		                    <li><a href="#">How many people are pursuing Design in Atlanta?</a></li>
-		                    <li><a href="#">How often do people change industries?</a></li>
-		                    <li><a href="#">Who are the people who work in start-ups?</a></li>
-		                    <li><a class="other-schools" href="#">see more...</a></li>
-
-		                </ul>
-
-		            </li>
-		          </ul>
-
-	            <ul class="nav navbar-nav">
-	                <li>
-	                    <ul class="nav navbar-nav" id ="school">
-	        		<li class="dropdown">
-
-		                <a href="#" data-toggle="dropdown" class="dropdown-toggle">HCI@Georgia Institue of Technology<b class="caret"></b></a>
-
-		                <ul class="dropdown-menu">
-
-		                    <li><a href="#">Architecture@Indian Institute of Technology Roorkee</a></li>
-
-		                    <li class="divider"></li>
-
-		                    <li><p class="other-schools">Explore other schools</p></li>
-		                    <li><a href="#">HCI, Carnegie Mellon University</a></li>
-		                    <li><a href="#">HCI, University of Michigan</a></li>
-		                    <li><a href="#">HCI, UC Berkeley</a></li>
-		                    <li><a class="other-schools" href="#">see more...</a></li>
-
-		                </ul>
-
-		            </li>
-		          </ul>
-	                </li>
-	                <li>
-	                    <a href="#"><i class="fa fa-user icon"></i>David <i class="fa fa-caret-down"></i></a>
-	                </li>
-	                
-	            </ul>
-            </div><!-- /.navbar-collapse -->
+        <a class="navbar-brand" href="#">AlumniBase</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav" id="school">
+          <li class="dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Ask questions about your network<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">How many alumni work in the Bay Area?</a></li>
+              <li><a href="#">How many people are pursuing Design in Atlanta?</a></li>
+              <li><a href="#">How often do people change industries?</a></li>
+              <li><a href="#">Who are the people who work in start-ups?</a></li>
+              <li><a class="other-schools" href="#">see more...</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav">
+          <li>
+            <ul class="nav navbar-nav" id="school">
+              <li class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">HCI@Georgia Institue of Technology<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Architecture@Indian Institute of Technology Roorkee</a></li>
+                  <li class="divider"></li>
+                  <li><p class="other-schools">Explore other schools</p></li>
+                  <li><a href="#">HCI, Carnegie Mellon University</a></li>
+                  <li><a href="#">HCI, University of Michigan</a></li>
+                  <li><a href="#">HCI, UC Berkeley</a></li>
+                  <li><a class="other-schools" href="#">see more...</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-user icon"></i>David <i class="fa fa-caret-down"></i></a>
+          </li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
     </nav>
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6" id="sankey">
+            <div class="row">
+              <div class="col-lg-2 text-center">
+                <div class="dropdown filterDropdown sankey1">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Program
+                <span class="caret"></span>
+              </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a id="Year_Completion" href="#">Year of Graduation</a></li>
+                    <li><a id="Current_Employer_Industry" href="#">Industry</a></li>
+                    <li><a id="Major" href="#">Program</a></li>
+                    <li><a id="Current_Location" href="#">Location</a></li>
+                    <li><a id="Current_Employer" href="#">Company</a></li>
+                    <li><a id="Current_Employer_Type" href="#">Company Type</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-2 text-center">
+                <div class="dropdown filterDropdown sankey2">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Year of Graduation
+                <span class="caret"></span>
+              </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a id="Year_Completion" href="#">Year of Graduation</a></li>
+                    <li><a id="Current_Employer_Industry" href="#">Industry</a></li>
+                    <li><a id="Major" href="#">Program</a></li>
+                    <li><a id="Current_Location" href="#">Location</a></li>
+                    <li><a id="Current_Employer" href="#">Company</a></li>
+                    <li><a id="Current_Employer_Type" href="#">Company Type</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-2 text-center">
+                <div class="dropdown filterDropdown sankey3">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Company
+                <span class="caret"></span>
+              </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a id="Year_Completion" href="#">Year of Graduation</a></li>
+                    <li><a id="Current_Employer_Industry" href="#">Industry</a></li>
+                    <li><a id="Major" href="#">Program</a></li>
+                    <li><a id="Current_Location" href="#">Location</a></li>
+                    <li><a id="Current_Employer" href="#">Company</a></li>
+                    <li><a id="Current_Employer_Type" href="#">Company Type</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-2 text-center">
+                <div style="display:inline" class="dropdown filterDropdown sankey4">
+                  <button onclick="refreshSankey()"
+                          class="btn btn-default" type="button" aria-expanded="true">
+                  Apply
+                  </button>
+                </div>
+                <i style="visibility: hidden" id="sankeyBadInput" class="fa fa-exclamation-triangle fa-lg"></i>
+              </div>
+            </div>
+            <div class="sankeyChart"></div>
+          </div>
+          <div class="col-lg-6">
+            <div class="row ">
+              <svg class="filterPills" width="433" height="90">
+            </svg>
+            </div>
+            <hr/>
+            <div class="row filterBar">
+              <div class="col-lg-2">
+                <div class="dropdown filterDropdown ">
+                  <p>1st Cluster By</p>
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Select
+                <span class="caret"></span>
+              </button>
+                  <ul class="dropdown-menu cluster1" aria-labelledby="dropdownMenu1">
+                    <li><a id="Year_Completion" href="#">Year of Graduation</a></li>
+                    <li><a id="Current_Employer_Industry" href="#">Industry</a></li>
+                    <li><a id="Major" href="#">Program</a></li>
+                    <li><a id="Current_Location" href="#">Location</a></li>
+                    <li><a id="Current_Employer" href="#">Company</a></li>
+                    <li><a id="Current_Employer_Type" href="#">Company Type</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-2">
+                <div class="dropdown filterDropdown cluster2">
+                  <p>2nd Cluster By</p>
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Select
+                <span class="caret"></span>
+              </button>
+                  <ul class="dropdown-menu " aria-labelledby="dropdownMenu1">
+                    <li><a id="Year_Completion" href="#">Year of Graduation</a></li>
+                    <li><a id="Current_Employer_Industry" href="#">Industry</a></li>
+                    <li><a id="Major" href="#">Program</a></li>
+                    <li><a id="Current_Location" href="#">Location</a></li>
+                    <li><a id="Current_Employer" href="#">Company</a></li>
+                    <li><a id="Current_Employer_Type" href="#">Company Type</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="row clusterChart"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="timeline-wrapper col-lg-8">
+          <hr/>
+          <div class="dropdown filterDropdown">
+            <p>Color By</p>
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Select
+                <span class="caret"></span>
+              </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li><a href="#">Industry</a></li>
+              <li><a href="#">Program</a></li>
+              <li><a href="#">Location</a></li>
+              <li><a href="#">Company Type</a></li>
+            </ul>
+          </div>
+          <br/>
+          <div class="timeline"></div>
+        </div>
+        <!-- Timeline Wrapper-->
+        <div class="profile-wrapper col-lg-4">
+        </div>
+        <!-- End of Row-->
+      </div>
+      <!-- End of Container-->
+      <!-- _____________D3 begins here_____________-->
+      <script src="sankeyPugin.js"></script>
+      <script src="d3-timeline-master/d3-timeline-master/src/d3-timeline-v2.js"></script>
+      <!-- <script type="text/javascript" src="d3/d3.layout.js"></script> -->
+      <!-- Sankey-->
 
-   <section>
-   	<div class="container">
-   		<div class = "row">
-   		<div class = "col-lg-8" id = "sankey">
-   			<div class = "row">
-   				<div class = "col-lg-2 text-center">
-   					<div class="dropdown filterDropdown sankey1">
-						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-						    Program
-						    <span class="caret"></span>
-						  </button>
-						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-						    <li><a id = "Year_Completion" href="#">Year of Graduation</a></li>
-						    <li><a id = "Current_Employer_Industry" href="#">Industry</a></li>
-						    <li><a id = "Major" href="#">Program</a></li>
-						    <li><a id = "Current_Location" href="#">Location</a></li>
-						    <li><a id = "Current_Employer" href="#">Company</a></li>
-						    <li><a id = "Current_Employer_Type" href="#">Company Type</a></li>
-						  </ul>
-						</div>
-   				</div>
+      <script>
+        var pillWidth = 90;
+        var pillHeight = 30;
+        var clickCounter = -1;
+        var nextBoxX = 0;
+        var pillPadding = 3;
 
-   				<div class = "col-lg-2 text-center">
-   					<div class="dropdown filterDropdown sankey2">
-						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-						    Year of Graduation
-						    <span class="caret"></span>
-						  </button>
-						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-						    <li><a id = "Year_Completion" href="#">Year of Graduation</a></li>
-						    <li><a id = "Current_Employer_Industry" href="#">Industry</a></li>
-						    <li><a id = "Major" href="#">Program</a></li>
-						    <li><a id = "Current_Location" href="#">Location</a></li>
-						    <li><a id = "Current_Employer" href="#">Company</a></li>
-						    <li><a id = "Current_Employer_Type" href="#">Company Type</a></li>
-						  </ul>
-						</div>
-   				</div>
+        var margin = {
+            top: 1,
+            right: 30,
+            bottom: 30,
+            left: 10
+          },
+          width = 700 - margin.left - margin.right,
+          height = 600 - margin.top - margin.bottom;
 
-   				<div class = "col-lg-2 text-center">
-   					<div class="dropdown filterDropdown sankey3">
-						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-						    Company
-						    <span class="caret"></span>
-						  </button>
-						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-						    <li><a id = "Year_Completion" href="#">Year of Graduation</a></li>
-						    <li><a id = "Current_Employer_Industry" href="#">Industry</a></li>
-						    <li><a id = "Major" href="#">Program</a></li>
-						    <li><a id = "Current_Location" href="#">Location</a></li>
-						    <li><a id = "Current_Employer" href="#">Company</a></li>
-						    <li><a id = "Current_Employer_Type" href="#">Company Type</a></li>
-						  </ul>
-						</div>
-   				</div>
+        var category20b_sq = [
+          '#5254a3',
+          '#9c9ede', '#843c39', '#bd9e39',
+          '#a55194', '#8ca252'
+        ];
 
-   				<div class = "col-lg-2 text-center">
-   					<div class="dropdown filterDropdown sankey3">
-						  <button onclick="refreshSankey()" class="btn btn-default" type="button" aria-expanded="true">
-						    Apply
-						  </button>
-					</div>
-   				</div>
-   			</div> 
-	   		<div class = "sankeyChart"></div>
-	   	</div>
-	   		<div class = "col-lg-4">
-	   			<div class = "row ">
-				<svg class = "filterPills" width="433" height="90">
-	   				</svg> 
-	   			</div>
-	   			<hr/>
-	   			<div class = "row filterBar">
-	   				<div class = "col-lg-3">
-						<div class="dropdown filterDropdown ">
-						<p>1st Cluster By</p>
-						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-						    Select
-						    <span class="caret"></span>
-						  </button>
-						  <ul class="dropdown-menu cluster1" aria-labelledby="dropdownMenu1">
-						    <li><a id = "Year_Completion" href="#">Year of Graduation</a></li>
-						    <li><a id = "Current_Employer_Industry" href="#">Industry</a></li>
-						    <li><a id = "Major" href="#">Program</a></li>
-						    <li><a id = "Current_Location" href="#">Location</a></li>
-						    <li><a id = "Current_Employer" href="#">Company</a></li>
-						    <li><a id = "Current_Employer_Type" href="#">Company Type</a></li>
-						  </ul>
-						</div>	   					
-	   				</div>
+        var color = d3.scale.ordinal()
+          .range(category20b_sq);
 
-	   				<div class = "col-lg-3">
-						<div class="dropdown filterDropdown cluster2">
-						<p>2nd Cluster By</p>
-						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-						    Select
-						    <span class="caret"></span>
-						  </button>
-						  <ul class="dropdown-menu " aria-labelledby="dropdownMenu1">
-						    <li><a id = "Year_Completion" href="#">Year of Graduation</a></li>
-						    <li><a id = "Current_Employer_Industry" href="#">Industry</a></li>
-						    <li><a id = "Major" href="#">Program</a></li>
-						    <li><a id = "Current_Location" href="#">Location</a></li>
-						    <li><a id = "Current_Employer" href="#">Company</a></li>
-						    <li><a id = "Current_Employer_Type" href="#">Company Type</a></li>
-						  </ul>
-						</div>	   					
-	   				</div>
+        var svg = d3.select(".sankeyChart").append("svg")
+          .attr("width", width + margin.left + margin.right)
+          .attr("height", height + margin.top + margin.bottom)
+          .append("g")
+          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-	   			</div>
-	   			<div class = "row clusterChart"></div>
-	   		</div>
-	   		
-   		</div>
-   	</div>
-   </section>
+        var sankey = d3.sankey()
+          .nodeWidth(16)
+          .nodePadding(8)
+          .size([width, height]);
 
+        var path = sankey.link()
+          .curvature(0.4);
 
- <div class = "container-fluid">
-    <div class = "row">
-	    <div class = "timeline-wrapper col-lg-8">
-	    	<hr/>
-	    	<div class="dropdown filterDropdown">
-						<p>Color By</p>
-						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-						    Select
-						    <span class="caret"></span>
-						  </button>
-						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-						    <li><a href="#">Industry</a></li>
-						    <li><a href="#">Program</a></li>
-						    <li><a href="#">Location</a></li>
-						    <li><a href="#">Company Type</a></li>
-						  </ul>
-						</div>
-		   		
-		   	<br/>
-					
-		   	<div class = "timeline"></div>
-	   </div><!-- Timeline Wrapper-->
+        d3.json("cluster.json", function(clusterData) {
 
+          var column1 = "Major";
+          var column2 = "Year_Completion";
+          var column3 = "Current_Employer";
 
-    <div class ="profile-wrapper col-lg-4">
-<!--    		<div class = "profile"> -->
-<!-- 			<div class = "profile-des"> -->
-	   			
-	   			<!-- <div class ="row"> 
-	   				<div class = "col-lg-6"><img class = "img-responsive" src="images/david.jpg"></div>
-	   				<div class = "col-lg-6 name-title">
-	   					<p>David Richard</p>
-	   					<p>Sr. UX Designer at AT&T</p>
-	   					<p>Atlanta</p>
-	   					<br/>
-	   					<p>Design Technlogist with more than 10+ years of experience in User Experience.</p>
-	   				</div>
-	   			</div>
-	   			<br/>
+          var id = 0;
+          var nodes = {};
+          var links = {};
+          var types = {};
 
-				<div class ="row"> 
-			        <ul>
-			        	<p>Education</p>
-				        <li><a href="#">MS HCI@Georgia Institute of Technology</a></li>
-				        <li><a href="#">Architecture@Indian Institute of Technology Roorkee</a></li>
-			    	</ul>
-			    </div>
+          var column1_uniq = 0;
+          var column2_uniq = 0;
+          var column3_uniq = 0;
 
-				<div class ="row"> 
-			        <ul>
-			        	<p>Work Experience</p>
-				        <li><a href="#">Sr. UX Designer at At&t</a></li>
-				        <li><a href="#">Full stack developer at Apple</a></li>
-				        <li><a href="#">Front End Developer at Big Nerd Ranch</a></li>
-			    	</ul>
-			    </div>			    
+          clusterData.People.forEach(function(d) {
 
-			    <div class = "row">
-			    	<button type="button" class="btn btn-primary">Send Message</button>
-			    	<button type="button" class="btn btn-primary"> + Add Contact</button>
-			    </div>
-		</div>
- -->
-<!-- 	   </div> -->
-<!-- 	</div>  -->
-	<!-- Profile Wrapper--> 
+            if (d[column1] == "Unknown" ||
+              d[column2] == "Unknown" ||
+              d[column3] == "Unknown" ||
+              d[column1] == "undefined" ||
+              d[column2] == "undefined" ||
+              d[column3] == "undefined" ||
+              d[column1] === undefined ||
+              d[column2] === undefined ||
+              d[column3] === undefined
+            ) {
 
-</div> <!-- End of Row-->
-</div><!-- End of Container-->
+            } else {
+              if (links[d[column1]] == undefined) {
+                links[d[column1]] = {};
+              } else if (links[d[column1]][d[column2]] == undefined) {
+                links[d[column1]][d[column2]] = 1
+              } else {
+                links[d[column1]][d[column2]]++;
+              }
 
-   <!-- _____________D3 begins here_____________-->	
-	<script src="sankeyPugin.js"></script>
-	<script src="d3-timeline-master/d3-timeline-master/src/d3-timeline-v2.js"></script>
-	<script type="text/javascript" src="d3/d3.layout.js"></script>
+              if (links[d[column2]] == undefined) {
+                links[d[column2]] = {};
+              }
+              if (links[d[column2]][d[column3]] == undefined) {
+                links[d[column2]][d[column3]] = 1
+              } else {
+                links[d[column2]][d[column3]]++;
+              }
 
-	
-	<!-- Sankey-->
-	
-	<script>
+              if (nodes[d[column1]] == undefined) {
+                nodes[d[column1]] = column1_uniq;
+                types[d[column1]] = column1;
+                column1_uniq++;
+              }
 
-	var pillWidth = 90;
-	var pillHeight = 30;
-	var clickCounter = -1;
-	var nextBoxX = 0;
-	var pillPadding = 3;
+              if (nodes[d[column2]] == undefined) {
+                nodes[d[column2]] = column2_uniq;
+                types[d[column2]] = column2;
+                column2_uniq++;
+              }
 
-	var margin = {top: 1, right: 30, bottom: 30, left:10},
-	    width = 700 - margin.left - margin.right,
-	    height = 600 - margin.top - margin.bottom;
-	    
-	var category20b_sq = [
-  '#5254a3',
-  '#9c9ede', '#843c39','#bd9e39',
-  '#a55194', '#8ca252'];
-
-	var color = d3.scale.ordinal()
-	  .range(category20b_sq);
-
-	var svg = d3.select(".sankeyChart").append("svg")
-	  .attr("width", width + margin.left + margin.right)
-	  .attr("height", height + margin.top + margin.bottom)
-	  .append("g")
-	  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-	var sankey = d3.sankey()
-				   .nodeWidth(16)
-				   .nodePadding(8)
-				   .size([width, height]);
-
-	var path = sankey.link()
-	  				 .curvature(0.4);
-
-	d3.json("cluster.json", function(clusterData) {
-		
-		var column1 = "Current_Employer_Industry";
-		var column2 = "Year_Completion";
-		var column3 = "Current_Location";
-		
-	
-        console.log(column1 + " " + column2 + " " + column3);
-
-        var id = 0;
-        var nodes = {};
-        var links = {};
-        var types = {};
-
-		var column1_uniq = 0;
-		var column2_uniq = 0;
-		var column3_uniq = 0;
-
-        clusterData.People.forEach(function(d) {
-        	
-            if (d[column1] == "Unknown" 
-            	|| d[column2] == "Unknown" 
-            	|| d[column3] == "Unknown"
-            	|| d[column1] == "undefined"
-            	|| d[column2] == "undefined"
-            	|| d[column3] == "undefined"
-            	|| d[column1] === undefined
-            	|| d[column2] === undefined
-            	|| d[column3] === undefined
-            	) {
-
-			}
-			else {
-				if(links[d[column1]] == undefined) {
-					links[d[column1]] = {};
-				} else if(links[d[column1]][d[column2]] == undefined) {
-					links[d[column1]][d[column2]] = 1
-				} else {
-					links[d[column1]][d[column2]]++;
-				}
-
-				if(links[d[column2]] == undefined) {
-					links[d[column2]] = {};
-				}
-				if(links[d[column2]][d[column3]] == undefined) {
-					links[d[column2]][d[column3]] = 1
-				} else {
-					links[d[column2]][d[column3]]++;
-				}
-
-				if(nodes[d[column1]] == undefined) {
-					nodes[d[column1]] = column1_uniq;
-					types[d[column1]] = column1;
-					column1_uniq++;
-				}
-
-				if(nodes[d[column2]] == undefined) {
-					nodes[d[column2]] = column2_uniq;
-					types[d[column2]] = column2;
-					column2_uniq++;
-				}
-
-				if(nodes[d[column3]] == undefined) {
-					nodes[d[column3]] = column3_uniq;
-					types[d[column3]] = column3;
-					column3_uniq++;
-				}
-			}			
-		});
-
-		console.log(column1_uniq + " " + column2_uniq + " " + column3_uniq);
-        sankeyLinks = [];
-
-        for(var level1 in nodes) {
-			if (types[level1] == column2) {
-				nodes[level1] = nodes[level1] + column1_uniq;
-			} else if (types[level1] == column3) {
-				nodes[level1] = nodes[level1] + column1_uniq + column2_uniq;
-			}
-		}
-
-        for (var level1 in links) {
-            for (var level2 in links[level1]) {
-                var tempLink = {};
-                tempLink["source"] = nodes[level1];
-                tempLink["target"] = nodes[level2];
-                tempLink["value"] = links[level1][level2];
-                if (tempLink["source"] != tempLink["target"]) {
-                    sankeyLinks.push(tempLink);
-                }
+              if (nodes[d[column3]] == undefined) {
+                nodes[d[column3]] = column3_uniq;
+                types[d[column3]] = column3;
+                column3_uniq++;
+              }
             }
-        }
+          });
+          sankeyLinks = [];
 
+          for (var level1 in nodes) {
+            if (types[level1] == column2) {
+              nodes[level1] = nodes[level1] + column1_uniq;
+            } else if (types[level1] == column3) {
+              nodes[level1] = nodes[level1] + column1_uniq + column2_uniq;
+            }
+          }
 
-        sankeyNodes = [];
-        for (var level1 in nodes) {
+          for (var level1 in links) {
+            for (var level2 in links[level1]) {
+              var tempLink = {};
+              tempLink["source"] = nodes[level1];
+              tempLink["target"] = nodes[level2];
+              tempLink["value"] = links[level1][level2];
+              if (tempLink["source"] != tempLink["target"]) {
+                sankeyLinks.push(tempLink);
+              }
+            }
+          }
+
+          sankeyLinks.sort(function(a, b) {
+            return parseInt(a.source) - parseInt(b.source);
+          });
+
+          sankeyNodes = [];
+          for (var level1 in nodes) {
             var tempNode = {};
             tempNode["name"] = level1;
             tempNode["category"] = types[level1];
             tempNode["id"] = nodes[level1];
             sankeyNodes.push(tempNode);
-        }
-        sankeyNodes.sort(function(a, b){
-        	return parseInt(a.id) - parseInt(b.id);
+          }
+          sankeyNodes.sort(function(a, b) {
+            return parseInt(a.id) - parseInt(b.id);
+          });
+
+          sankeyData = {};
+          sankeyData["nodes"] = sankeyNodes;
+          sankeyData["links"] = sankeyLinks;
+
+          // });
+          // d3.json("sankey.json", function(mydatabase) {
+
+          mydatabase = sankeyData;
+          sankey.nodes(mydatabase.nodes)
+            .links(mydatabase.links)
+            .layout(40);
+
+          // link hover and pills
+          var link = svg.append("g").selectAll(".link")
+            .data(mydatabase.links)
+            .enter().append("path")
+            .attr("class", "link")
+            .attr("d", path)
+            .style("stroke-width", function(d) {
+              return Math.max(1, d.dy);
+            })
+            .sort(function(a, b) {
+              return b.dy - a.dy;
+            })
+            .on("mouseover", function(d) {
+              d3.select(this).style("stroke-opacity", 0.5);
+              d3.selectAll(".node")
+                .style("opacity", 0.3)
+                .filter(function(p) {
+                  return d.source.name == p.name ||
+                    d.target.name == p.name;
+                })
+                .style("opacity", 1)
+                .selectAll("text")
+                .style("opacity", 1);
+            })
+          .on("mouseout", function(d) {
+            d3.select(this).style("stroke-opacity", 0.1);
+            d3.selectAll(".node")
+              .style("opacity", null)
+              .selectAll("text")
+              .style("opacity", 1);
+          })
+          .on("click", function(d) {
+            clickCounter++;
+            var filterPillGroup = d3.select(".filterPills").append("g")
+              .attr("id", function(d) {
+                return "rect" + clickCounter
+              });
+
+            var textBox = filterPillGroup.append("text")
+              .attr("x", function(d) {
+                return (nextBoxX);
+              })
+              .attr("y", 60 + (pillHeight / 2))
+              .attr("dy", ".35em")
+              .attr("alignment-baseline", "middle")
+              .attr("text-anchor", "left")
+              .attr("class", "filterPillsText")
+              .text(function() {
+                return d.source.name + " " + "X";
+              });
+
+            var bbox = textBox.node().getBBox();
+
+            filterPillGroup.append("rect")
+              .style("opacity", "0.2")
+              .attr("width", bbox.width)
+              .attr("height", bbox.height)
+              .attr("rx", 3).attr("ry", 3)
+              .attr("x", bbox.x)
+              .attr("y", bbox.y);
+
+            nextBoxX = nextBoxX + bbox.width + 5;
+            clickCounter++;
+
+            var filterPillGroup2 = d3.select(".filterPills").append("g")
+              .attr("id", function(d) {
+                return "rect" + clickCounter
+              });
+
+            var textBox2 = filterPillGroup2.append("text")
+              .attr("x", function(d) {
+                return (nextBoxX);
+              })
+              .attr("y", 60 + (pillHeight / 2))
+              .attr("dy", ".35em")
+              .attr("alignment-baseline", "middle")
+              .attr("text-anchor", "left")
+              .attr("class", "filterPillsText")
+              .text(function() {
+                return d.target.name + " " + "X";
+              });
+
+            var bbox2 = textBox2.node().getBBox();
+
+            filterPillGroup2.append("rect")
+              .style("opacity", "0.2")
+              .attr("width", bbox2.width)
+              .attr("height", bbox2.height)
+              .attr("rx", 3).attr("ry", 3)
+              .attr("x", bbox2.x)
+              .attr("y", bbox2.y);
+
+            nextBoxX = nextBoxX + bbox2.width + 5;
+          }); // end of onclick function
+
+          // node hover and pills
+
+          var node = svg.append("g").selectAll(".node")
+            .data(mydatabase.nodes)
+            .enter().append("g")
+            .attr("class", "node")
+            .attr("transform", function(d) {
+              return "translate(" + d.x + "," + d.y + ")";
+            })
+            .on("mouseover", function(d) {
+              // console.log(d);
+              d3.selectAll(".link")
+                .style("stroke-opacity", 0.1)
+                .filter(function(p) {
+                  return (p.source.name == d.name || p.target.name == d.name);
+                })
+                .style("stroke-opacity", 0.5);
+            })
+            .on("mouseout", function(d) {
+              d3.selectAll(".link")
+                .style("stroke-opacity", 0.1)
+                .selectAll("text")
+                .style("opacity", 1);
+            })
+            .on("click", function(d) {
+
+              clickCounter++;
+              var filterPillGroup = d3.select(".filterPills").append("g")
+                .attr("id", function(d) {
+                  return "rect" + clickCounter
+                });
+
+              var textBox = filterPillGroup.append("text")
+                .attr("x", function(d) {
+                  return (nextBoxX);
+                })
+                .attr("y", 60 + (pillHeight / 2))
+                .attr("dy", ".35em")
+                .attr("alignment-baseline", "middle")
+                .attr("text-anchor", "left")
+                .attr("class", "filterPillsText")
+                .text(function() {
+                  return d.name + " " + "X";
+                });
+
+              var bbox = textBox.node().getBBox();
+
+              filterPillGroup.append("rect")
+                .style("opacity", "0.2")
+                .attr("width", bbox.width)
+                .attr("height", bbox.height)
+                .attr("rx", 3).attr("ry", 3)
+                .attr("x", bbox.x)
+                .attr("y", bbox.y);
+              nextBoxX = nextBoxX + bbox.width + 5;
+
+              filterPillGroup.on("click", function() {
+                d3.select(this).remove();
+              });
+            }); // end of onclick function
+          node.append("rect")
+            .attr("height", function(d) {
+              return d.dy;
+            })
+            .attr("width", sankey.nodeWidth())
+            .style("fill", function(d) {
+              return color(d.category);
+            })
+            .append("title")
+            .text(function(d) {
+              return d.name;
+            });
+          node.append("text")
+            .attr("x", 6 + sankey.nodeWidth())
+            .attr("y", function(d) {
+              return d.dy / 2;
+            })
+            .attr("dy", ".35em")
+            .attr("text-anchor", "start")
+            .attr("transform", null)
+            .text(function(d) {
+              return d.name;
+            })
+            .filter(function(d) {
+              return d.x > width * .9;
+            })
+            .attr("class", function(d) {
+              return d.category;
+            })
+            .attr("text-anchor", "end");
+
+          node.selectAll("text")
+            .transition()
+            .duration(300)
+            .delay(function(d, i) {
+              return parseInt(d.id) * 15 > 700 ? parseInt(d.id) * 10 : parseInt(d.id) * 15;
+            })
+            .style("opacity", 1);
+        });
+      </script>
+
+
+      <!-- zoomable cluster packing -->
+      <script>
+        var w = 700,
+          h = 600,
+          r = 580,
+          x = d3.scale.linear().range([0, r]),
+          y = d3.scale.linear().range([0, r]),
+          node,
+          root;
+
+        var pack = d3.layout.pack()
+          .size([r, r])
+          .padding(10)
+          .sort(function(a, b) {
+            return b.value - a.value;
+          })
+          .value(function(d) {
+            return d.size;
+          })
+
+        var vis = d3.select(".clusterChart").insert("svg:svg", "h2")
+          .attr("width", w)
+          .attr("height", h)
+          .append("svg:g")
+          .attr("transform", "translate( 50, 0)");
+        var tip = d3.tip()
+          .attr('class', 'd3-tip')
+          .offset([-10, 0])
+          .html(function(d) {
+            var personText = " people, ";
+            if (d.size == 1) {
+              personText = " person, ";
+            }
+            return "<span style='color:white'>" + d.size + "</span>" + personText + "<span style='color:white'>" + d.name + "</span>";
+          });
+
+        svg.call(tip);
+
+        d3.json("testcluster.json", function(data) {
+
+          node = root = data;
+          var nodes = pack.nodes(root);
+
+          vis.selectAll("circle")
+            .data(nodes)
+            .enter().append("svg:circle")
+            .attr("class", function(d) {
+              return d.children ? "parent" : "child";
+            })
+            .attr("cx", function(d) {
+              return d.x;
+            })
+            .attr("cy", function(d) {
+              return d.y;
+            })
+            .attr("r", function(d) {
+              return d.r;
+            })
+            .on("click", function(d) {
+              if (d.depth == 2) {
+                tip.hide(d);
+              } else {
+                return zoom(node == d ? root : d);
+              }
+            });
+
+          vis.selectAll("circle")
+            .filter(function(d, i) {
+              return d.depth == 2;
+            })
+            .style("stroke", "gray")
+            .style("stroke-opacity", 0.2)
+            .style("fill", "gray")
+            .style("fill-opacity", 0.2)
+            .on("mouseover", function(d, i) {
+              tip.show(d);
+              d3.select(this).style("stroke", "black");
+              d3.select(this).style("stroke-opacity", 0.5);
+            })
+            .on("mouseout", function(d, i) {
+              tip.hide(d);
+              d3.select(this).style("stroke", "gray");
+              d3.select(this).style("stroke-opacity", 0.2);
+            });
+
+          vis.selectAll("circle")
+            .filter(function(d, i) {
+              return d.depth == 1;
+            })
+            .style("stroke", "purple")
+            .style("fill", "#efefef")
+            .style("fill-opacity", 1)
+            .on("mouseover", tip.show)
+            .on("mouseout", tip.hide);
+
+          vis.selectAll("circle")
+            .filter(function(d, i) {
+              return d.depth == 0;
+            })
+            .style("stroke", "white")
+            .style("fill", "white")
+            .style("fill-opacity", 0);
+
+          vis.selectAll("text")
+            .data(nodes)
+            .enter().append("svg:text")
+            .filter(function(d, i) {
+              return d.depth == 1;
+            })
+            .attr("class", function(d) {
+              return d.children ? "parent" : "child";
+            })
+            .attr("x", function(d) {
+              return d.x;
+            })
+            .attr("y", function(d) {
+              return d.y;
+            })
+            .attr("dy", ".35em")
+            .attr("text-anchor", "middle")
+            .style("opacity", function(d) {
+              return d.r > 25 ? 1 : 0;
+            })
+            .text(function(d) {
+              return d.name;
+            });
+
+          d3.select(window).on("click", function() {
+            zoom(root);
+          });
         });
 
-        sankeyData = {};
-        sankeyData["nodes"] = sankeyNodes;
-        sankeyData["links"] = sankeyLinks;
-        console.log(JSON.stringify(sankeyData));
-
-	});
-	d3.json("sankey.json", function(mydatabase) {
-	  
-		// mydatabase = sankeyData;
-	 	sankey.nodes(mydatabase.nodes)
-	    .links(mydatabase.links)
-	    .layout(40);
-
-// link hover and pills
-
-	  var link = svg.append("g").selectAll(".link")
-	      .data(mydatabase.links)
-	    .enter().append("path")
-	      .attr("class", "link")
-	      .attr("d", path)
-	      .style("stroke-width", function(d) { return Math.max(1, d.dy); })
-	      .sort(function(a, b) { return b.dy - a.dy; })
-	      .on("mouseover", function(d) {
-	      	d3.select(this).style("stroke-opacity", 0.5);
-
-	        d3.selectAll(".node")
-	          .style("opacity", 0.3)
-	          .filter(function(p) {
-	            return d.source.name == p.name ||
-	                   d.target.name == p.name;
-	          })
-	          .style("opacity", 1)
-	          .selectAll("text")
-	          .style("opacity", 1);
-	      })
-
-	      .on("mouseout", function(d) {
-	      	d3.select(this).style("stroke-opacity", 0.1);
-	        d3.selectAll(".node")
-	          .style("opacity", null)
-	          .selectAll("text")
-	          .style("opacity", 1);
-	      })
-
-	      .on("click", function(d){
-			clickCounter ++;
-			var filterPillGroup = d3.select(".filterPills").append("g")
-								.attr("id", function(d){return "rect" + clickCounter});
-
-				var textBox = filterPillGroup.append("text")
-				.attr("x",function(d){
-					return (nextBoxX);
-				})
-				.attr("y", 60 + (pillHeight/2))
-				.attr("dy", ".35em")
-				.attr("alignment-baseline", "middle")
-				.attr("text-anchor", "left")
-				.attr("class","filterPillsText")
-				.text(function(){
-					return d.source.name + " " + "X";
-				});
-
-			var bbox = textBox.node().getBBox();
-
-				filterPillGroup.append("rect")
-				.style("opacity", "0.2")
-				.attr("width",bbox.width)
-				.attr("height", bbox.height)
-				.attr("rx",3).attr("ry",3)
-				.attr("x",bbox.x)
-				.attr("y", bbox.y);
-				
-			
-			nextBoxX = nextBoxX + bbox.width + 5;
-			clickCounter ++;
-
-			var filterPillGroup2 = d3.select(".filterPills").append("g")
-			.attr("id", function(d){return "rect" + clickCounter});
-
-				var textBox2 = filterPillGroup2.append("text")
-				.attr("x",function(d){
-					return (nextBoxX);
-				})
-				.attr("y", 60 + (pillHeight/2))
-				.attr("dy", ".35em")
-				.attr("alignment-baseline", "middle")
-				.attr("text-anchor", "left")
-				.attr("class","filterPillsText")
-				.text(function(){
-					return d.target.name + " " + "X";
-				});
-
-			var bbox2 = textBox2.node().getBBox();
-
-				filterPillGroup2.append("rect")
-				.style("opacity", "0.2")
-				.attr("width",bbox2.width)
-				.attr("height", bbox2.height)
-				.attr("rx",3).attr("ry",3)
-				.attr("x",bbox2.x)
-				.attr("y", bbox2.y);
-
-			nextBoxX = nextBoxX + bbox2.width + 5;
-		}); // end of onclick function
-
-// node hover and pills
-
-	  var node = svg.append("g").selectAll(".node")
-	      .data(mydatabase.nodes)
-	    .enter().append("g")
-	      .attr("class", "node")
-	      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
-	      .on("mouseover", function(d) { 
-	      	// console.log(d);
-	      	d3.selectAll(".link")
-	      		.style("stroke-opacity", 0.1)
-	      		.filter(function(p) {
-	      			return (p.source.name == d.name || p.target.name == d.name);
-	      		})
-	      		.style("stroke-opacity", 0.5);
-	  	  })
-	      .on("mouseout", function(d) {
-	        d3.selectAll(".link")
-	          .style("stroke-opacity", 0.1)
-	          .selectAll("text")
-	          .style("opacity", 1);
-	      })
-		 .on("click", function(d){
-		 	
-		 	clickCounter ++;
-			var filterPillGroup = d3.select(".filterPills").append("g")
-			.attr("id", function(d){return "rect" + clickCounter});		
-				
-			var textBox = filterPillGroup.append("text")
-				.attr("x",function(d){
-					return (nextBoxX);
-				})
-				.attr("y", 60 + (pillHeight/2))
-				.attr("dy", ".35em")
-				.attr("alignment-baseline", "middle")
-				.attr("text-anchor", "left")
-				.attr("class","filterPillsText")
-				.text(function(){
-					return d.name + " " + "X";
-				});
-
-			var bbox = textBox.node().getBBox();
-
-				filterPillGroup.append("rect")
-				.style("opacity", "0.2")
-				.attr("width",bbox.width)
-				.attr("height", bbox.height)
-				.attr("rx",3).attr("ry",3)
-				.attr("x",bbox.x)
-				.attr("y", bbox.y);
-				
-			
-			nextBoxX = nextBoxX + bbox.width + 5;
-
-			filterPillGroup.on("click", function() {
-				d3.select(this).remove(); 
-			});
-
-
-		}); // end of onclick function
-
-
-	  node.append("rect")
-	      .attr("height", function(d) { return d.dy; })
-	      .attr("width", sankey.nodeWidth())
-	      .style("fill", function(d) { return color(d.category); })
-	      .append("title")	
-	      .text(function(d) { return d.name; });
-	      
-
-	  node.append("text")
-	      .attr("x", 6 + sankey.nodeWidth())
-	      .attr("y", function(d) { return d.dy / 2; })
-	      .attr("dy", ".35em")
-	      .attr("text-anchor", "start")
-	      .attr("transform", null)
-	      .text(function(d) { return d.name; })
-	    .filter(function(d) { return d.x > width * .9; })
-	      .attr("class", function(d) { return d.category ; })
-	      .attr("text-anchor", "end") 
-});
-</script>
-
-
-<!-- zoomable cluster packing -->  
-<script>
-
-var w = 480,
-    h = 480,
-    r = 450,
-    x = d3.scale.linear().range([0, r]),
-    y = d3.scale.linear().range([0, r]),
-    node,
-    root;
-
-var pack = d3.layout.pack()
-    .size([r, r])
-    .padding(10)
-    .sort(function (a, b) {
-  		return b.value - a.value;
-	})
-    .value(function(d) { return d.size; })
-
-var vis = d3.select(".clusterChart").insert("svg:svg", "h2")
-    .attr("width", w)
-    .attr("height", h)
-  .append("svg:g")
-    .attr("transform", "translate(" + (w - r) / 2 + "," + (h - r) / 2 + ")");
-
-
- var tip = d3.tip()
-  	.attr('class', 'd3-tip')
-  	.offset([-10, 0])
-  	.html(function(d) {
-  		var personText = " people, ";
-  		if(d.size == 1) {
-  			personText = " person, ";
-  		}
-    	return "<span style='color:white'>" + d.size + "</span>" + personText + "<span style='color:white'>" + d.name + "</span>";
-  });
-
-  svg.call(tip);
-
-d3.json("testcluster.json", function(data) {
-  
-  node = root = data;
-  var nodes = pack.nodes(root);
-
-  vis.selectAll("circle")
-      .data(nodes)
-      .enter().append("svg:circle")
-      .attr("class", function(d) { return d.children ? "parent" : "child"; })
-      .attr("cx", function(d) { return d.x; })
-      .attr("cy", function(d) { return d.y; })
-      .attr("r", function(d) { return d.r; })
-      .on("click", function(d) { 
-      	if(d.depth == 2) {
-      		tip.hide(d);
-      	} else {
-      		return zoom(node == d ? root : d); 
-      	}
-      });
-
-  	vis.selectAll("circle")
-  	.filter(function(d, i) {  		
-  		return d.depth == 2;
-  	})
- 	.style("stroke", "gray")
-    .style("stroke-opacity", 0.2)
-    .style("fill", "gray")
-    .style("fill-opacity", 0.2)
-    .on("mouseover", function(d, i){
-    	tip.show(d);
-        d3.select(this).style("stroke", "black");
-        d3.select(this).style("stroke-opacity", 0.5);
-    })
-    .on("mouseout", function(d, i){
-    	tip.hide(d);
-        d3.select(this).style("stroke", "gray");   
-        d3.select(this).style("stroke-opacity", 0.2);
-    });
-  	
-  	vis.selectAll("circle")
-  	.filter(function(d, i) {
-  		return d.depth == 1;
-  	})
-  	.style("stroke", "purple")
-  	.style("fill", "#efefef")
-  	.style("fill-opacity", 1)
-  	.on("mouseover", tip.show)
-    .on("mouseout", tip.hide);
-
-    vis.selectAll("circle")
-  	.filter(function(d, i) {
-  		return d.depth == 0; 
-  	})
-  	.style("stroke", "white")
-  	.style("fill", "white")
-  	.style("fill-opacity", 0);
-
-  vis.selectAll("text")
-      .data(nodes)      
-      .enter().append("svg:text")
-      .filter(function(d, i) {
-      	return d.depth == 1;
-      })
-      .attr("class", function(d) { return d.children ? "parent" : "child"; })
-      .attr("x", function(d) { return d.x; })
-      .attr("y", function(d) { return d.y; })
-      .attr("dy", ".35em")
-      .attr("text-anchor", "middle")      
-      .style("opacity", function(d) { return d.r > 25 ? 1 : 0; })
-      .text(function(d) { return d.name; });
-
-  d3.select(window).on("click", function() { zoom(root); });
-});
-
-function zoom(d, i) {
-  var k = r / d.r / 2;
-  x.domain([d.x - d.r, d.x + d.r]);
-  y.domain([d.y - d.r, d.y + d.r]);
-
-  var t = vis.transition()
-      .duration(d3.event.altKey ? 7500 : 750);
-
-  t.selectAll("circle")
-      .attr("cx", function(d) { return x(d.x); })
-      .attr("cy", function(d) { return y(d.y); })
-      .attr("r", function(d) { return k * d.r; });
-
- 	vis.selectAll("circle")
-  	.filter(function(d, i) {  		
-  		return d.depth == 2;
-  	})
- 	.style("stroke", "gray")
-    .style("stroke-opacity", 0.2)
-    .style("fill", "gray")
-    .style("fill-opacity", 0.2)
-    .on("mouseover", function(d, i){
-    	tip.show(d);
-        d3.select(this).style("stroke", "black");
-        d3.select(this).style("stroke-opacity", 0.5);
-    })
-    .on("mouseout", function(d, i){
-    	tip.hide(d);
-        d3.select(this).style("stroke", "gray");   
-        d3.select(this).style("stroke-opacity", 0.2);
-    });
-
-    t.selectAll("circle")
-  	.filter(function(d, i) {
-  		return d.depth == 1;
-  	})
-  	.style("stroke", "purple")
-  	.style("fill", "#efefef")
-  	.style("fill-opacity", 1);
-  
-    t.selectAll("circle")
-  	.filter(function(d, i) {
-  		return d.depth == 0; 
-  	})
-  	.style("stroke", "white")
-  	.style("fill", "white")
-  	.style("fill-opacity", 0);  	
-
-  t.selectAll("text")
-      .attr("x", function(d) { return x(d.x); })
-      .attr("y", function(d) { return y(d.y); })
-      .style("opacity", function(d) { return k * d.r > 25 ? 1 : 0; });
-
-  node = d;
-  d3.event.stopPropagation();
-}
-
-</script>	
-
-
-
-
-<!-- timeline -->
-
-	<script>
-
-	var widthTimeline = 900;
-
-	 var locationScale = d3.scale.ordinal()
-	 						  .range(['#393b79','#5254a3','#6b6ecf','#9c9ede','#8c6d31', '#bd9e39', '#e7ba52', '#e7cb94','#843c39', '#ad494a', '#d6616b', 
-									  '#e7969c'])
-	    					  .domain(['Atlanta','Unknown','SF Bay Area','New York','Seattle','Boston','Austin','India','Los Angeles','Chicago','Raleigh-Durham','Other']);
-
-	 var industryScale = d3.scale.ordinal()
-	 						  .range(['#393b79','#5254a3','#6b6ecf','#9c9ede','#8c6d31', '#bd9e39', '#e7ba52', '#e7cb94','#843c39', '#ad494a', '#d6616b', '#e7969c','#637939'])
-	    					  .domain(['Unknown','Internet','IT & Services','University','Computer Software','Design','Research','Financial Services','Marketing and Advertising','Consultant','Entertainment','Health','Other']);
-
-
-	 var companyTypeScale = d3.scale.ordinal()
-	 						  .range(['#393b79','#5254a3','#6b6ecf','#9c9ede','#8c6d31', '#bd9e39', '#e7ba52', '#e7cb94','#843c39'])
-	    					  .domain(['5001-10,000 employees','10,001+ employees','11-50 employees','1001-5000 employees','501-1000 employees','Unknown','51-200 employees','201-500 employees','1-10 employees']);
-
-	 var colorScales = {
-      "location" : locationScale,
-      "industry" : industryScale,
-      "companyType" : companyTypeScale
-    }
-
-
-	d3.json("timelinedata.json", function(timeLineData){
-
-		// console.log (timeLineData);
-
-	function timelineStackedIcons() {
-
-        var chart = d3.timeline()
-			          .showTimeAxisTick() // toggles tick marks
-			          .stack() // toggles graph stacking
-			          .margin({left:10, right:30, top:0, bottom:0})
-			          .itemHeight(15)
-			          .itemMargin(3)
-			          .tickFormat({
-						format: d3.time.format("%Y"),
-						tickTime: d3.time.year,
-						tickInterval: 1,
-						tickSize: 6
-			          })
-			          .orient("bottom")
-			          .hover(function (d, i, datum) {
-
-			          });
-
-        var svg = d3.select(".timeline").append("svg").attr("width", widthTimeline)
-          .datum(timeLineData).call(chart);
-      }
-
-
-var chart = d3.timeline()
+        function zoom(d, i) {
+          var k = r / d.r / 2;
+          x.domain([d.x - d.r, d.x + d.r]);
+          y.domain([d.y - d.r, d.y + d.r]);
+
+          var t = vis.transition()
+            .duration(d3.event.altKey ? 7500 : 750);
+
+          t.selectAll("circle")
+            .attr("cx", function(d) {
+              return x(d.x);
+            })
+            .attr("cy", function(d) {
+              return y(d.y);
+            })
+            .attr("r", function(d) {
+              return k * d.r;
+            });
+
+          vis.selectAll("circle")
+            .filter(function(d, i) {
+              return d.depth == 2;
+            })
+            .style("stroke", "gray")
+            .style("stroke-opacity", 0.2)
+            .style("fill", "gray")
+            .style("fill-opacity", 0.2)
+            .on("mouseover", function(d, i) {
+              tip.show(d);
+              d3.select(this).style("stroke", "black");
+              d3.select(this).style("stroke-opacity", 0.5);
+            })
+            .on("mouseout", function(d, i) {
+              tip.hide(d);
+              d3.select(this).style("stroke", "gray");
+              d3.select(this).style("stroke-opacity", 0.2);
+            });
+
+          t.selectAll("circle")
+            .filter(function(d, i) {
+              return d.depth == 1;
+            })
+            .style("stroke", "purple")
+            .style("fill", "#efefef")
+            .style("fill-opacity", 1);
+
+          t.selectAll("circle")
+            .filter(function(d, i) {
+              return d.depth == 0;
+            })
+            .style("stroke", "white")
+            .style("fill", "white")
+            .style("fill-opacity", 0);
+
+          t.selectAll("text")
+            .attr("x", function(d) {
+              return x(d.x);
+            })
+            .attr("y", function(d) {
+              return y(d.y);
+            })
+            .style("opacity", function(d) {
+              return k * d.r > 25 ? 1 : 0;
+            });
+
+          node = d;
+          d3.event.stopPropagation();
+        }
+      </script>
+
+
+      <!-- timeline -->
+      <script>
+        var widthTimeline = 900;
+        var locationScale = d3.scale.ordinal()
+          .range(['#393b79', '#5254a3', '#6b6ecf', '#9c9ede', '#8c6d31', '#bd9e39', '#e7ba52', '#e7cb94', '#843c39', '#ad494a', '#d6616b',
+            '#e7969c'
+          ])
+          .domain(['Atlanta', 'Unknown', 'SF Bay Area', 'New York', 'Seattle', 'Boston', 'Austin', 'India', 'Los Angeles', 'Chicago', 'Raleigh-Durham', 'Other']);
+        var industryScale = d3.scale.ordinal()
+          .range(['#393b79', '#5254a3', '#6b6ecf', '#9c9ede', '#8c6d31', '#bd9e39', '#e7ba52', '#e7cb94', '#843c39', '#ad494a', '#d6616b', '#e7969c', '#637939'])
+          .domain(['Unknown', 'Internet', 'IT & Services', 'University', 'Computer Software', 'Design', 'Research', 'Financial Services', 'Marketing and Advertising', 'Consultant', 'Entertainment', 'Health', 'Other']);
+        var companyTypeScale = d3.scale.ordinal()
+          .range(['#393b79', '#5254a3', '#6b6ecf', '#9c9ede', '#8c6d31', '#bd9e39', '#e7ba52', '#e7cb94', '#843c39'])
+          .domain(['5001-10,000 employees', '10,001+ employees', '11-50 employees', '1001-5000 employees', '501-1000 employees', 'Unknown', '51-200 employees', '201-500 employees', '1-10 employees']);
+
+        var colorScales = {
+          "location": locationScale,
+          "industry": industryScale,
+          "companyType": companyTypeScale
+        }
+        d3.json("timelinedata.json", function(timeLineData) {
+
+          // console.log (timeLineData);
+          function timelineStackedIcons() {
+            var chart = d3.timeline()
+              .showTimeAxisTick() // toggles tick marks
+              .stack() // toggles graph stacking
+              .margin({
+                left: 10,
+                right: 30,
+                top: 0,
+                bottom: 0
+              })
+              .itemHeight(20)
+              .itemMargin(3)
+              .tickFormat({
+                format: d3.time.format("%Y"),
+                tickTime: d3.time.year,
+                tickInterval: 1,
+                tickSize: 6
+              })
+              .orient("bottom")
+              .hover(function(d, i, datum) {
+                  // select(datum)
+                  // .append("text")
+                  // .text(datum.times(i));
+
+                  console.log(datum);
+                });
+
+            var svg = d3.select(".timeline").append("svg").attr("width", widthTimeline)
+              .datum(timeLineData).call(chart);
+          }
+          var chart = d3.timeline()
             .colors(locationScale)
-            .colorProperty('location');
+            .colorProperty('industry');
 
-      timelineStackedIcons();
-
-
-	});
-
-
-
-</script>
-
-
-</body>
+          timelineStackedIcons();
+        });
+      </script>
+  </body>
 </html>
