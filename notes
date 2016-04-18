@@ -1,16 +1,16 @@
 *Sankey*
-On loading 6 charts appear
 Add border on clicking on a node
 industry-location-company - not working
+adjust the text on the right most node
 
 
 *Cluster*
-Increase size of Cluster
+//Increase size of Cluster
 
 *Timeline*
-Get Timeline working
+//Get Timeline working
+//inverse timeline
 Add timeline data
-inverse timeline
 On hover (name of company, location)
 On click (display profile)
 

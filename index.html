@@ -18,7 +18,10 @@
   </head>
 
   <body>
-    <!-- Navigation -->
+<!-- ___________________________________________-->
+<!-- _______________Navigation__________________-->
+<!-- ___________________________________________-->
+
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -70,6 +73,11 @@
       </div>
       <!-- /.navbar-collapse -->
     </nav>
+
+<!-- ___________________________________________-->
+<!-- ____________Sankey Main __________________-->
+<!-- ___________________________________________-->
+
     <section>
       <div class="container">
         <div class="row">
@@ -130,24 +138,34 @@
                 </div>
                 <div style="display:inline" class="dropdown filterDropdown sankey4">
                   <button onclick="refreshSankey()"
-                          class="btn btn-default" type="button" aria-expanded="true">
+                          class="btn btn-default" id ="applyButton"type="button" aria-expanded="true">
                   Apply
                   </button>
                 </div>
                 <i style="visibility: hidden" id="sankeyBadInput" class="fa fa-exclamation-triangle fa-lg"></i>
             </div>
+
+<!-- ____________Sankey renders here __________________-->
             <div class="sankeyChart"></div>
+
           </div>
+
+
+<!-- ____________Filters from Sankey __________________-->
+
           <div class="col-lg-6">
-
-            <div class="row">
-            <svg width="433" height="90">
-              <rect width="433" height="90"></rect>
-              <svg class="filterPills" width="433" height="90"><svg>
+            <div class="row row-margin">
+            <svg width="700" height="40">
+              <rect width="700" height="40" fill = "#f7f7f7" rx="3px" ry ="3px"></rect>
+              <svg class="filterPills" width="700" height="40"><svg>
             </svg>
-
             </div>
+
             <hr/>
+<!-- ___________________________________________-->
+<!-- ____________Cluster Main __________________-->
+<!-- ___________________________________________-->
+
             <div class="row filterBar row-centered">
 
               <div class=" col-centered">
@@ -184,46 +202,90 @@
                 </div>
               </div>
             </div>
+
+
             <div class="row clusterChart"></div>
           </div>
         </div>
       </div>
     </section>
+
+<!-- ___________________________________________-->
+<!-- ____________Timeline Main __________________-->
+<!-- ___________________________________________-->
+
+
     <div class="container-fluid">
       <div class="row">
-        <div class="timeline-wrapper col-lg-8">
-          <hr/>
-          <div class="dropdown filterDropdown">
-            <p>Color By</p>
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Select
-                <span class="caret"></span>
-              </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li><a href="#">Industry</a></li>
-              <li><a href="#">Program</a></li>
-              <li><a href="#">Location</a></li>
-              <li><a href="#">Company Type</a></li>
-            </ul>
+
+        <div class="timeline-wrapper col-lg-9">
+          <div class = "col-lg-2"><h3>Career Timelines</h3>
           </div>
+
+          <div class = "col-lg-2">
+            <div class="dropdown filterDropdown">
+              <p>Color By</p>
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  Company Type
+                  <span class="caret"></span>
+                </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a href="#">Industry</a></li>
+                <li><a href="#">Location</a></li>
+                <li><a href="#">Company Type</a></li>
+              </ul>
+            </div>
+          </div>
+
           <br/>
           <div class="timeline"></div>
         </div>
         <!-- Timeline Wrapper-->
-        <div class="profile-wrapper col-lg-4">
+
+<!-- ___________________________________________-->
+<!-- ____________Profile Main __________________-->
+<!-- ___________________________________________-->
+
+
+        <div class="profile-wrapper col-lg-3">
+            <div class = "row">
+              <img src="images/profile.png" class="img-thumbnail" width ="50%">
+              <p class = "year">'99</p>
+            </div>
+            <br/>
+            <div class = "row">
+              <ul class = "profile-details">
+                <li>Name</li>
+                <li>Designation</li>
+                <li>Location</li>
+              </ul>
+            </div>
+            <div class = "row">
+              <button type="button" class="btn btn-primary">View Linkedin Profile</button>
+          </div>
         </div>
         <!-- End of Row-->
       </div>
       <!-- End of Container-->
+
+
+
       <!-- _____________D3 begins here_____________-->
+
+
       <script src="sankeyPugin.js"></script>
       <script src="d3-timeline-master/d3-timeline-master/src/d3-timeline-v2.js"></script>
       <!-- <script type="text/javascript" src="d3/d3.layout.js"></script> -->
       <!-- Sankey-->
 
+
+<!-- ___________________________________________-->
+<!-- ____________Sankey Script__________________-->
+<!-- ___________________________________________-->
+
       <script>
         var pillWidth = 90;
-        var pillHeight = 30;
+        var pillHeight = 40;
         var clickCounter = -1;
         var nextBoxX = 0;
         var pillPadding = 3;
@@ -410,20 +472,20 @@
             clickCounter++;
             var filterPillGroup = d3.select(".filterPills").append("g")
               .attr("id", function(d) {
-                return "rect" + clickCounter
+                return "rect" + clickCounter;
               });
 
             var textBox = filterPillGroup.append("text")
               .attr("x", function(d) {
                 return (nextBoxX);
               })
-              .attr("y", 60 + (pillHeight / 2))
+              .attr("y", (pillHeight / 2))
               .attr("dy", ".35em")
               .attr("alignment-baseline", "middle")
               .attr("text-anchor", "left")
               .attr("class", "filterPillsText")
               .text(function() {
-                return d.source.name + " " + "X";
+                return d.source.name + "  " + "X";
               });
 
             var bbox = textBox.node().getBBox();
@@ -436,7 +498,7 @@
               .attr("x", bbox.x)
               .attr("y", bbox.y);
 
-            nextBoxX = nextBoxX + bbox.width + 5;
+            nextBoxX = nextBoxX + bbox.width + 15;
             clickCounter++;
 
             var filterPillGroup2 = d3.select(".filterPills").append("g")
@@ -448,7 +510,7 @@
               .attr("x", function(d) {
                 return (nextBoxX);
               })
-              .attr("y", 60 + (pillHeight / 2))
+              .attr("y", (pillHeight / 2))
               .attr("dy", ".35em")
               .attr("alignment-baseline", "middle")
               .attr("text-anchor", "left")
@@ -467,7 +529,7 @@
               .attr("x", bbox2.x)
               .attr("y", bbox2.y);
 
-            nextBoxX = nextBoxX + bbox2.width + 5;
+            nextBoxX = nextBoxX + bbox2.width + 15;
           }); // end of onclick function
 
           // node hover and pills
@@ -506,25 +568,27 @@
                 .attr("x", function(d) {
                   return (nextBoxX);
                 })
-                .attr("y", 60 + (pillHeight / 2))
-                .attr("dy", ".35em")
+                .attr("y", pillHeight / 2 )
+                .attr("dy", "1em")
+                .attr("dx", "1em")
                 .attr("alignment-baseline", "middle")
                 .attr("text-anchor", "left")
                 .attr("class", "filterPillsText")
                 .text(function() {
-                  return d.name + " " + "X";
+                  return d.name + " " +  " " + "X";
                 });
 
               var bbox = textBox.node().getBBox();
 
               filterPillGroup.append("rect")
                 .style("opacity", "0.2")
-                .attr("width", bbox.width)
+                .attr("width", bbox.width + 10)
                 .attr("height", bbox.height)
                 .attr("rx", 3).attr("ry", 3)
                 .attr("x", bbox.x)
                 .attr("y", bbox.y);
-              nextBoxX = nextBoxX + bbox.width + 5;
+
+              nextBoxX = nextBoxX + bbox.width + 15;
 
               filterPillGroup.on("click", function() {
                 d3.select(this).remove();
@@ -572,10 +636,13 @@
       </script>
 
 
-      <!-- zoomable cluster packing -->
+<!-- ___________________________________________-->
+<!-- ____________Cluster Script _________________-->
+<!-- ___________________________________________-->
+
       <script>
         var w = 700,
-          h = 555,
+          h = 545,
           r = 580,
           x = d3.scale.linear().range([0, r]),
           y = d3.scale.linear().range([0, r]),
@@ -781,7 +848,10 @@
       </script>
 
 
-      <!-- timeline -->
+<!-- ___________________________________________-->
+<!-- ____________Timeline Script________________-->
+<!-- ___________________________________________-->
+
       <script>
         var widthTimeline = 1200;
         var locationScale = d3.scale.ordinal()
@@ -814,8 +884,8 @@
                 top: 0,
                 bottom: 0
               })
-              .itemHeight(20)
-              .itemMargin(3)
+              .itemHeight(18)
+              .itemMargin(6)
               .tickFormat({
                 format: d3.time.format("%Y"),
                 tickTime: d3.time.year,
@@ -837,5 +907,6 @@
           timelineStackedIcons();
         });
       </script>
+
   </body>
 </html>
