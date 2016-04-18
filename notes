@@ -1,0 +1,26 @@
+*Sankey*
+On loading 6 charts appear
+Add border on clicking on a node
+industry-location-company - not working
+
+
+*Cluster*
+Increase size of Cluster
+
+*Timeline*
+Get Timeline working
+Add timeline data
+inverse timeline
+On hover (name of company, location)
+On click (display profile)
+
+*People*
+Build people hover for Timeline
+
+*Overall*
+Create interactions for the general div appearance using JQuery
+Cluster and Timeline should appear on clicking a particular chart on Sankey
+
+
+
+

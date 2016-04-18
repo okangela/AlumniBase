@@ -73,7 +73,7 @@
         <div class="row">
           <div class="col-lg-6" id="sankey">
             <div class="row">
-              <div class="col-lg-2 text-center">
+
                 <div class="dropdown filterDropdown sankey1">
                   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 Program
@@ -88,8 +88,11 @@
                     <li><a id="Current_Employer_Type" href="#">Company Type</a></li>
                   </ul>
                 </div>
-              </div>
-              <div class="col-lg-2 text-center">
+
+                <div class= "filterDropdown">
+                  <p>vs</p>
+                </div>
+
                 <div class="dropdown filterDropdown sankey2">
                   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 Year of Graduation
@@ -104,8 +107,11 @@
                     <li><a id="Current_Employer_Type" href="#">Company Type</a></li>
                   </ul>
                 </div>
-              </div>
-              <div class="col-lg-2 text-center">
+
+                <div class= "filterDropdown">
+                  <p>vs</p>
+                </div>
+
                 <div class="dropdown filterDropdown sankey3">
                   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 Company
@@ -120,8 +126,6 @@
                     <li><a id="Current_Employer_Type" href="#">Company Type</a></li>
                   </ul>
                 </div>
-              </div>
-              <div class="col-lg-2 text-center">
                 <div style="display:inline" class="dropdown filterDropdown sankey4">
                   <button onclick="refreshSankey()"
                           class="btn btn-default" type="button" aria-expanded="true">
@@ -129,7 +133,6 @@
                   </button>
                 </div>
                 <i style="visibility: hidden" id="sankeyBadInput" class="fa fa-exclamation-triangle fa-lg"></i>
-              </div>
             </div>
             <div class="sankeyChart"></div>
           </div>
@@ -139,13 +142,13 @@
             </svg>
             </div>
             <hr/>
-            <div class="row filterBar">
-              <div class="col-lg-2">
+            <div class="row filterBar row-centered">
 
+              <div class=" col-centered">
                 <div class="dropdown filterDropdown ">
                   <p>1st Cluster By</p>
                   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Select
+                Location
                 <span class="caret"></span>
               </button>
                   <ul class="dropdown-menu cluster1" aria-labelledby="dropdownMenu1">
@@ -157,12 +160,11 @@
                     <li><a id="Current_Employer_Type" href="#">Company Type</a></li>
                   </ul>
                 </div>
-              </div>
-              <div class="col-lg-2">
+
                 <div class="dropdown filterDropdown cluster2">
                   <p>2nd Cluster By</p>
                   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Select
+                Program
                 <span class="caret"></span>
               </button>
                   <ul class="dropdown-menu " aria-labelledby="dropdownMenu1">
@@ -422,7 +424,7 @@
 
             filterPillGroup.append("rect")
               .style("opacity", "0.2")
-              .attr("width", bbox.width)
+              .attr("width", bbox.width + 10)
               .attr("height", bbox.height)
               .attr("rx", 3).attr("ry", 3)
               .attr("x", bbox.x)
@@ -567,7 +569,7 @@
       <!-- zoomable cluster packing -->
       <script>
         var w = 700,
-          h = 600,
+          h = 555,
           r = 580,
           x = d3.scale.linear().range([0, r]),
           y = d3.scale.linear().range([0, r]),

@@ -26,7 +26,22 @@ p {
 
 hr{
   margin: 5px 0px;
+  border-color:#7F7F7F;
 }
+
+/* centered columns styles */
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+
 
 
 /*__________Nav and Questions bar_________*/
@@ -197,7 +212,8 @@ li #display-toggle{
 /*_________Cluster_________*/
 
 .clusterChart{
-  margin-left: -30px;
+  background-color: #f7f7f7;
+  border-radius:3px;
 }
 .clusterChart text {
   font-size: 11px;
@@ -250,10 +266,21 @@ li #display-toggle{
   line-height: 11px;
 }
 
-.filterBar{
-  padding-bottom: 10px;
+.filterDropdown{
+  margin-right: 10px;
+  display: inline-block;
 }
 
+.filterBar{
+  background-color: #f7f7f7;
+  border-radius: 3px;
+  padding-top: 10px;
+  margin: 0 auto;
+}
+
+.filterpills{
+  fill: "blue";
+}
 
 
 /*_________Sankey_________*/
@@ -265,6 +292,9 @@ body {
 
 #sankey{
   margin-top: 60px;
+  background-color: #f7f7f7;
+  padding:10px;
+  border-radius: 3px;
 }
 
 .sankeyChart{
