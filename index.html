@@ -678,9 +678,6 @@
           vis.selectAll("text")
             .data(nodes)
             .enter().append("svg:text")
-            .filter(function(d, i) {
-              return d.depth == 1;
-            })
             .attr("class", function(d) {
               return d.children ? "parent" : "child";
             })
@@ -693,7 +690,11 @@
             .attr("dy", ".35em")
             .attr("text-anchor", "middle")
             .style("opacity", function(d) {
-              return d.r > 25 ? 1 : 0;
+              if(d.depth == 1) {
+                return d.r > 25 ? 1 : 0;
+              } else {
+                return 0;
+              }
             })
             .text(function(d) {
               return d.name;
@@ -758,6 +759,7 @@
             .style("fill", "white")
             .style("fill-opacity", 0);
 
+          var clusterDepth = d.depth + 1;
           t.selectAll("text")
             .attr("x", function(d) {
               return x(d.x);
@@ -766,7 +768,11 @@
               return y(d.y);
             })
             .style("opacity", function(d) {
-              return k * d.r > 25 ? 1 : 0;
+              if(clusterDepth == d.depth) {
+                return k * d.r > 25 ? 1 : 0;
+              } else {
+                return 0;
+              }
             });
 
           node = d;
