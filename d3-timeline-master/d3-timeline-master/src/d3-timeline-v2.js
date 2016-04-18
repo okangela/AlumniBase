@@ -366,7 +366,28 @@
                         .attr("y", getStackTextPosition)
                         .text(function(d) {
                             return d.label.substring(0, 4) + "..";
+                        })
+                        .attr("id", function(d, i) {
+                            if (datum.id && !d.id) {
+                                return 'timelineItem_' + datum.id;
+                            }
+                            return d.id ? d.id : "timelineTextItem_" + index + "_" + i;
+                        })
+                        .on("mouseover", function(d, i) {
+                            textItemId = d3.select(this).attr("id");
+                            boundingRectId = "timelineItem_" + textItemId.substring("timelineTextItem_".length);
+                            d3.select("#" + boundingRectId)
+                                .style("stroke", "#666666")
+                                .style("stroke-width", "2px");
+                        })
+                        .on("mouseout", function(d, i) {
+                            textItemId = d3.select(this).attr("id");
+                            boundingRectId = "timelineItem_" + textItemId.substring("timelineTextItem_".length);
+                            d3.select("#" + boundingRectId)
+                                .style("stroke", null)
+                                .style("stroke-width", null);
                         });
+
 
                     if (rowSeperatorsColor) {
                         var lineYAxis = (itemHeight + itemMargin / 2 + margin.top + (itemHeight + itemMargin) * yAxisMapping[index]);
