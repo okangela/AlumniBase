@@ -1,100 +1,100 @@
 [{
-    "class": "Name1",
-    "icon": "#",
-    "label": "Person A",
-    "times": [{
-      "label": "UX Designer",
-      "starting_time": 1199150003000,
-      "ending_time": 1230772403000,
-      "location": "Seattle",
-      "industry": "University",
-      "company": "abc",
-      "company_type": "5001-10,000 employees"
-    }, {
-      "label": "UX Manager",
-      "starting_time": 1262308403000,
-      "ending_time": 1325380403000,
-      "location": "India",
-      "industry": "Internet",
-      "company": "abc",
-      "company_type": "1001-5000 employees"
-    }, {
-      "label": "UX Lead",
-      "starting_time": 1325380403000,
-      "ending_time": 1388538803000,
-      "location": "India",
-      "industry": "Internet",
-      "company": "abc",
-      "company_type": "1001-5000 employees"
-    }, {
+        "class": "Name1",
+        "icon": "#",
+        "label": "A",
+        "times": [{
+            "label": "UX Designer",
+            "starting_time": 1199150003000,
+            "ending_time": 1230772403000,
+            "location": "Seattle",
+            "industry": "University",
+            "company": "abc",
+            "company_type": "5001-10,000 employees"
+        }, {
+            "label": "UX Manager",
+            "starting_time": 1262308403000,
+            "ending_time": 1325380403000,
+            "location": "India",
+            "industry": "Internet",
+            "company": "abc",
+            "company_type": "1001-5000 employees"
+        }, {
+            "label": "UX Lead",
+            "starting_time": 1325380403000,
+            "ending_time": 1388538803000,
+            "location": "India",
+            "industry": "Internet",
+            "company": "abc",
+            "company_type": "1001-5000 employees"
+        }, {
 
-      "label": "Head of User Expererience",
-      "starting_time": 1388538803000,
-      "ending_time": 1451610803000,
-      "location": "India",
-      "industry": "Internet",
-      "company": "abc",
-      "company_type": "1001-5000 employees"
-    }]
-  },
+            "label": "Head of User Expererience",
+            "starting_time": 1388538803000,
+            "ending_time": 1451610803000,
+            "location": "India",
+            "industry": "Internet",
+            "company": "abc",
+            "company_type": "1001-5000 employees"
+        }]
+    },
 
-  {
-    "class": "Name2",
-    "label": "Person B",
-    "times": [{
-      "label": "UX Lead",
-      "starting_time": 1357002803000,
-      "ending_time": 1388538803000,
-      "location": "New York",
-      "industry": "Internet",
-      "company": "abc",
-      "company_type": "201-500 employees"
-    }, {
-      "label": "UX Designer",
-      "starting_time": 1388538803000,
-      "ending_time": 1451610803000,
-      "location": "Seattle",
-      "industry": "University",
-      "company": "abc",
-      "company_type": "5001-10,000 employees"
-    }]
-  },
+    {
+        "class": "Name2",
+        "label": "B",
+        "times": [{
+            "label": "UX Lead",
+            "starting_time": 1357002803000,
+            "ending_time": 1388538803000,
+            "location": "New York",
+            "industry": "Internet",
+            "company": "abc",
+            "company_type": "201-500 employees"
+        }, {
+            "label": "UX Designer",
+            "starting_time": 1388538803000,
+            "ending_time": 1451610803000,
+            "location": "Seattle",
+            "industry": "University",
+            "company": "abc",
+            "company_type": "5001-10,000 employees"
+        }]
+    },
 
-  {
-    "class": "Name3",
-    "icon": "#",
-    "label": "Person C",
-    "times": [{
-      "label": "UX Designer",
-      "starting_time": 1136078003000,
-      "ending_time": 1451610803000,
-      "location": "Austin",
-      "industry": "Internet",
-      "company": "abc",
-      "company_type": "201-500 employees"
-    }, {
-      "label": "UX Designer",
-      "starting_time": 883617203000,
-      "ending_time": 1104542003000,
-      "location": "Boston",
-      "industry": "Consultant",
-      "company": "abc",
-      "company_type": "51-200 employees"
-    }]
-  },
+    {
+        "class": "Name3",
+        "icon": "#",
+        "label": "C",
+        "times": [{
+            "label": "UX Designer",
+            "starting_time": 1136078003000,
+            "ending_time": 1451610803000,
+            "location": "Austin",
+            "industry": "Internet",
+            "company": "abc",
+            "company_type": "201-500 employees"
+        }, {
+            "label": "UX Designer",
+            "starting_time": 883617203000,
+            "ending_time": 1104542003000,
+            "location": "Boston",
+            "industry": "Consultant",
+            "company": "abc",
+            "company_type": "51-200 employees"
+        }]
+    },
 
-  {
-    "class": "Name3",
-    "icon": "#",
-    "label": "Person C",
-    "times": [{
-      "label": "UX Designer",
-      "starting_time": 1420074803000,
-      "ending_time": 1451610803000,
-      "location": "Austin",
-      "industry": "Internet",
-      "company": "abc",
-      "company_type": "201-500 employees"
-    }]
-  }
+    {
+        "class": "Name3",
+        "icon": "#",
+        "label": "D",
+        "times": [{
+            "label": "UX Designer",
+            "starting_time": 1420074803000,
+            "ending_time": 1451610803000,
+            "location": "Austin",
+            "industry": "Internet",
+            "company": "abc",
+            "company_type": "201-500 employees"
+        }]
+    }
 ]
