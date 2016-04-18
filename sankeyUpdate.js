@@ -1,5 +1,5 @@
-var sankey1Value = "Year_Completion";
-var sankey2Value = "Current_Location";
+var sankey1Value = "Major";
+var sankey2Value = "Year_Completion";
 var sankey3Value = "Current_Employer";
 
 $(document).ready(function() {
@@ -10,6 +10,7 @@ $(document).ready(function() {
         $(this).parents('.dropdown').find('.dropdown-toggle').html(text + ' <span class="caret"></span>');
         var sankeyText = $(this).attr("id");
         sankey1Value = sankeyText;
+        validateSankeyInput();
     });
 
     $(".sankey2 ul li a").click(function() {
@@ -18,6 +19,7 @@ $(document).ready(function() {
         $(this).parents('.dropdown').find('.dropdown-toggle').html(text + ' <span class="caret"></span>');
         var sankeyText = $(this).attr("id");
         sankey2Value = sankeyText;
+        validateSankeyInput();
     });
 
     $(".sankey3 ul li a").click(function() {
@@ -26,8 +28,39 @@ $(document).ready(function() {
         $(this).parents('.dropdown').find('.dropdown-toggle').html(text + ' <span class="caret"></span>');
         var sankeyText = $(this).attr("id");
         sankey3Value = sankeyText;
+        validateSankeyInput();
     });
 });
+
+function validateSankeyInput() {
+    if (sankey1Value == sankey2Value || sankey2Value == sankey3Value || sankey3Value == sankey1Value) {
+        showWarningSign();
+    } else {
+        hideWarningSign();
+    }
+}
+
+function showWarningSign() {
+    d3.select("#sankeyBadInput")
+        .style("visibility", "visible")
+        .transition()
+        .duration(200)
+        .style("opacity", 1);
+    d3.select(".sankey4")
+        .select("button")
+        .attr("disabled", "disabled");
+}
+
+function hideWarningSign() {
+    d3.select("#sankeyBadInput")
+        .transition()
+        .duration(200)
+        .style("opacity", 0)
+        .style("visibility", "hidden");
+    d3.select(".sankey4")
+        .select("button")
+        .attr("disabled", null);
+}
 
 function refreshSankey() {
     d3.json("cluster.json", function(clusterData) {
@@ -36,79 +69,66 @@ function refreshSankey() {
         var column2 = sankey2Value;
         var column3 = sankey3Value;
 
-        console.log(column1 + " " + column2 + " " + column3);
-
         var id = 0;
         var nodes = {};
         var links = {};
         var types = {};
 
-		var column1_uniq = 0;
-		var column2_uniq = 0;
-		var column3_uniq = 0;
+        var column1_uniq = 0;
+        var column2_uniq = 0;
+        var column3_uniq = 0;
 
         clusterData.People.forEach(function(d) {
-        	
-            if (d[column1] == "Unknown" 
-            	|| d[column2] == "Unknown" 
-            	|| d[column3] == "Unknown"
-            	|| d[column1] == "undefined"
-            	|| d[column2] == "undefined"
-            	|| d[column3] == "undefined"
-            	|| d[column1] === undefined
-            	|| d[column2] === undefined
-            	|| d[column3] === undefined
-            	) {
 
-			}
-			else {
-				if(links[d[column1]] == undefined) {
-					links[d[column1]] = {};
-				} else if(links[d[column1]][d[column2]] == undefined) {
-					links[d[column1]][d[column2]] = 1
-				} else {
-					links[d[column1]][d[column2]]++;
-				}
+            if (d[column1] == "Unknown" || d[column2] == "Unknown" || d[column3] == "Unknown" || d[column1] == "undefined" || d[column2] == "undefined" || d[column3] == "undefined" || d[column1] === undefined || d[column2] === undefined || d[column3] === undefined) {
 
-				if(links[d[column2]] == undefined) {
-					links[d[column2]] = {};
-				}
-				if(links[d[column2]][d[column3]] == undefined) {
-					links[d[column2]][d[column3]] = 1
-				} else {
-					links[d[column2]][d[column3]]++;
-				}
+            } else {
+                if (links[d[column1]] == undefined) {
+                    links[d[column1]] = {};
+                } else if (links[d[column1]][d[column2]] == undefined) {
+                    links[d[column1]][d[column2]] = 1
+                } else {
+                    links[d[column1]][d[column2]]++;
+                }
 
-				if(nodes[d[column1]] == undefined) {
-					nodes[d[column1]] = column1_uniq;
-					types[d[column1]] = column1;
-					column1_uniq++;
-				}
+                if (links[d[column2]] == undefined) {
+                    links[d[column2]] = {};
+                }
+                if (links[d[column2]][d[column3]] == undefined) {
+                    links[d[column2]][d[column3]] = 1
+                } else {
+                    links[d[column2]][d[column3]]++;
+                }
 
-				if(nodes[d[column2]] == undefined) {
-					nodes[d[column2]] = column2_uniq;
-					types[d[column2]] = column2;
-					column2_uniq++;
-				}
+                if (nodes[d[column1]] == undefined) {
+                    nodes[d[column1]] = column1_uniq;
+                    types[d[column1]] = column1;
+                    column1_uniq++;
+                }
 
-				if(nodes[d[column3]] == undefined) {
-					nodes[d[column3]] = column3_uniq;
-					types[d[column3]] = column3;
-					column3_uniq++;
-				}
-			}			
-		});
+                if (nodes[d[column2]] == undefined) {
+                    nodes[d[column2]] = column2_uniq;
+                    types[d[column2]] = column2;
+                    column2_uniq++;
+                }
 
-		console.log(column1_uniq + " " + column2_uniq + " " + column3_uniq);
+                if (nodes[d[column3]] == undefined) {
+                    nodes[d[column3]] = column3_uniq;
+                    types[d[column3]] = column3;
+                    column3_uniq++;
+                }
+            }
+        });
+
         sankeyLinks = [];
 
-        for(var level1 in nodes) {
-			if (types[level1] == column2) {
-				nodes[level1] = nodes[level1] + column1_uniq;
-			} else if (types[level1] == column3) {
-				nodes[level1] = nodes[level1] + column1_uniq + column2_uniq;
-			}
-		}
+        for (var level1 in nodes) {
+            if (types[level1] == column2) {
+                nodes[level1] = nodes[level1] + column1_uniq;
+            } else if (types[level1] == column3) {
+                nodes[level1] = nodes[level1] + column1_uniq + column2_uniq;
+            }
+        }
 
         for (var level1 in links) {
             for (var level2 in links[level1]) {
@@ -122,6 +142,9 @@ function refreshSankey() {
             }
         }
 
+        sankeyLinks.sort(function(a, b) {
+            return parseInt(a.source) - parseInt(b.source);
+        });
 
         sankeyNodes = [];
         for (var level1 in nodes) {
@@ -131,14 +154,13 @@ function refreshSankey() {
             tempNode["id"] = nodes[level1];
             sankeyNodes.push(tempNode);
         }
-        sankeyNodes.sort(function(a, b){
-        	return parseInt(a.id) - parseInt(b.id);
+        sankeyNodes.sort(function(a, b) {
+            return parseInt(a.id) - parseInt(b.id);
         });
 
         sankeyData = {};
         sankeyData["nodes"] = sankeyNodes;
         sankeyData["links"] = sankeyLinks;
-        console.log(JSON.stringify(sankeyData));
 
         d3.select(".sankeyChart").select("svg").remove();
 
@@ -186,77 +208,77 @@ function refreshSankey() {
                     .selectAll("text")
                     .style("opacity", 1);
             })
-	        .on("mouseout", function(d) {
-	            d3.select(this).style("stroke-opacity", 0.1);
-	            d3.selectAll(".node")
-	                .style("opacity", null)
-	                .selectAll("text")
-	                .style("opacity", 1);
-	        })
-	        .on("click", function(d) {
-				clickCounter++;
-				var filterPillGroup = d3.select(".filterPills").append("g")
-										.attr("id", function(d) {
-											return "rect" + clickCounter;
-										});
+            .on("mouseout", function(d) {
+                d3.select(this).style("stroke-opacity", 0.1);
+                d3.selectAll(".node")
+                    .style("opacity", null)
+                    .selectAll("text")
+                    .style("opacity", 1);
+            })
+            .on("click", function(d) {
+                clickCounter++;
+                var filterPillGroup = d3.select(".filterPills").append("g")
+                    .attr("id", function(d) {
+                        return "rect" + clickCounter;
+                    });
 
-				var textBox = filterPillGroup.append("text")
-					.attr("x", function(d) {
-						return (nextBoxX);
-					})
-					.attr("y", 60 + (pillHeight / 2))
-					.attr("dy", ".35em")
-					.attr("alignment-baseline", "middle")
-					.attr("text-anchor", "left")
-					.attr("class", "filterPillsText")
-					.text(function() {
-						return d.source.name + " " + "X";
-					});
+                var textBox = filterPillGroup.append("text")
+                    .attr("x", function(d) {
+                        return (nextBoxX);
+                    })
+                    .attr("y", 60 + (pillHeight / 2))
+                    .attr("dy", ".35em")
+                    .attr("alignment-baseline", "middle")
+                    .attr("text-anchor", "left")
+                    .attr("class", "filterPillsText")
+                    .text(function() {
+                        return d.source.name + " " + "X";
+                    });
 
-            	var bbox = textBox.node().getBBox();
+                var bbox = textBox.node().getBBox();
 
-	            filterPillGroup.append("rect")
-	                .style("opacity", "0.2")
-	                .attr("width", bbox.width)
-	                .attr("height", bbox.height)
-	                .attr("rx", 3).attr("ry", 3)
-	                .attr("x", bbox.x)
-	                .attr("y", bbox.y);
+                filterPillGroup.append("rect")
+                    .style("opacity", "0.2")
+                    .attr("width", bbox.width)
+                    .attr("height", bbox.height)
+                    .attr("rx", 3).attr("ry", 3)
+                    .attr("x", bbox.x)
+                    .attr("y", bbox.y);
 
 
-	            nextBoxX = nextBoxX + bbox.width + 5;
-	            clickCounter++;
+                nextBoxX = nextBoxX + bbox.width + 5;
+                clickCounter++;
 
-	            var filterPillGroup2 = d3.select(".filterPills").append("g")
-	                .attr("id", function(d) {
-	                    return "rect" + clickCounter
-	                });
+                var filterPillGroup2 = d3.select(".filterPills").append("g")
+                    .attr("id", function(d) {
+                        return "rect" + clickCounter
+                    });
 
-	            var textBox2 = filterPillGroup2.append("text")
-	                .attr("x", function(d) {
-	                    return (nextBoxX);
-	                })
-	                .attr("y", 60 + (pillHeight / 2))
-	                .attr("dy", ".35em")
-	                .attr("alignment-baseline", "middle")
-	                .attr("text-anchor", "left")
-	                .attr("class", "filterPillsText")
-	                .text(function() {
-	                    return d.target.name + " " + "X";
-	                });
+                var textBox2 = filterPillGroup2.append("text")
+                    .attr("x", function(d) {
+                        return (nextBoxX);
+                    })
+                    .attr("y", 60 + (pillHeight / 2))
+                    .attr("dy", ".35em")
+                    .attr("alignment-baseline", "middle")
+                    .attr("text-anchor", "left")
+                    .attr("class", "filterPillsText")
+                    .text(function() {
+                        return d.target.name + " " + "X";
+                    });
 
-	            var bbox2 = textBox2.node().getBBox();
+                var bbox2 = textBox2.node().getBBox();
 
-	            filterPillGroup2.append("rect")
-	                .style("opacity", "0.2")
-	                .attr("width", bbox2.width)
-	                .attr("height", bbox2.height)
-	                .attr("rx", 3).attr("ry", 3)
-	                .attr("x", bbox2.x)
-	                .attr("y", bbox2.y);
+                filterPillGroup2.append("rect")
+                    .style("opacity", "0.2")
+                    .attr("width", bbox2.width)
+                    .attr("height", bbox2.height)
+                    .attr("rx", 3).attr("ry", 3)
+                    .attr("x", bbox2.x)
+                    .attr("y", bbox2.y);
 
-	            nextBoxX = nextBoxX + bbox2.width + 5;
-	        }); // end of onclick function
+                nextBoxX = nextBoxX + bbox2.width + 5;
+            }); // end of onclick function
 
         // node hover and pills
 
@@ -268,7 +290,6 @@ function refreshSankey() {
                 return "translate(" + d.x + "," + d.y + ")";
             })
             .on("mouseover", function(d) {
-                // console.log(d);
                 d3.selectAll(".link")
                     .style("stroke-opacity", 0.1)
                     .filter(function(p) {
@@ -356,5 +377,13 @@ function refreshSankey() {
                 return d.category;
             })
             .attr("text-anchor", "end");
+
+        node.selectAll("text")
+            .transition()
+            .duration(300)
+            .delay(function(d, i) {
+                return parseInt(d.id) * 15 > 700 ? parseInt(d.id) * 10 : parseInt(d.id) * 15;
+            })
+            .style("opacity", 1);
     });
 }
