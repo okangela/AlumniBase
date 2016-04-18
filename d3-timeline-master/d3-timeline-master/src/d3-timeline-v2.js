@@ -335,9 +335,15 @@
                         })
                         .on("mouseover", function(d, i) {
                             mouseover(d, i, datum);
+                            d3.select(this)
+                                .style("stroke", "#666666")
+                                .style("stroke-width", "2px");
                         })
                         .on("mouseout", function(d, i) {
                             mouseout(d, i, datum);
+                            d3.select(this)
+                                .style("stroke", null)
+                                .style("stroke-width", null);
                         })
                         .on("click", function(d, i) {
                             click(d, index, datum);

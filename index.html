@@ -238,7 +238,14 @@
           </div>
 
           <br/>
-          <div class="timeline"></div>
+          <table>
+          <tbody>
+            <th>
+              <td><div class="timeline"></div></td>
+              <td style="width:200px;"><div class="timelineDetails"></div></td>
+            </th>
+          </tbody>
+          </table>
         </div>
         <!-- Timeline Wrapper-->
 
@@ -853,7 +860,7 @@
 <!-- ___________________________________________-->
 
       <script>
-        var widthTimeline = 1200;
+        var widthTimeline = 950;
         var locationScale = d3.scale.ordinal()
           .range(['#393b79', '#5254a3', '#6b6ecf', '#9c9ede', '#8c6d31', '#bd9e39', '#e7ba52', '#e7cb94', '#843c39', '#ad494a', '#d6616b',
             '#e7969c'
@@ -894,7 +901,7 @@
               })
               .orient("bottom")
               .hover(function(d, i, datum) {
-                  console.log(datum);
+                  // console.log(datum);
                 });
 
             var svg = d3.select(".timeline").append("svg").attr("width", widthTimeline)
