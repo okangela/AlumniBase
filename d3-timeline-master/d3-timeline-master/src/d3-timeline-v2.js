@@ -300,6 +300,8 @@
             appendBackgroundBar(yAxisMapping, index, g, data, datum);
           }
 
+
+          //adds rectangles to timeline
           g.selectAll("svg").data(data).enter()
             .append(function(d, i) {
               return document.createElementNS(d3.ns.prefix.svg, "display" in d ? d.display : display);
@@ -355,8 +357,14 @@
                 })
                 .style("fill", "#7F7F7F")
                 .style("opacity", "0.3");
-
-              console.log(gParent.selectAll(".timeline-label").attr("yAxisMapping"));
+              gParent.selectAll(".timeline-label")
+                .attr("yAxisMapping", function(d, i) {
+                  return i + 1;
+                })
+                .filter(function(d, i) {
+                  return d3.select(this).attr("yAxisMapping") == currentMapping;
+                })
+                .style("font-weight", "bold");
             })
 
           .on("mouseout", function(d, i) {
@@ -365,14 +373,25 @@
               .style("stroke", null)
               .style("stroke-width", null);
             var currentMapping = d3.select(this).attr("yAxisMapping");
-            console.log(currentMapping);
             g.selectAll(".row-green-bar")
               .filter(function(d, i) {
                 return d3.select(this).attr("yAxisMapping") == currentMapping;
               }).style("fill", "none");
+            gParent.selectAll(".timeline-label")
+              .attr("yAxisMapping", function(d, i) {
+                return i + 1;
+              })
+              .filter(function(d, i) {
+                return d3.select(this).attr("yAxisMapping") == currentMapping;
+              })
+              .style("font-weight", "normal");
           })
             .on("click", function(d, i) {
               click(d, index, datum);
+              d3.selectAll("#name")
+                .text(function(d) {
+
+                });
             })
             .attr("class", function(d, i) {
               return datum.class ? "timelineSeries_" + datum.class : "timelineSeries_" + index;
@@ -382,11 +401,10 @@
               if (datum.id && !d.id) {
                 return 'timelineItem_' + datum.id;
               }
-
               return d.id ? d.id : "timelineItem_" + index + "_" + i;
             });
 
-
+          //adds text to timeline rectangles
           g.selectAll("svg").data(data).enter()
             .append("text")
             .attr("x", getXTextPos)
@@ -421,6 +439,7 @@
                 .style("stroke-width", null);
             });
 
+          //truncated text to fit in rectangle
           g.selectAll("text")
             .text(function(d) {
               var textWidth = parseInt(d3.select(this).attr("textWidth"));
