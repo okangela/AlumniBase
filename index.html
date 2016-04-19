@@ -255,9 +255,9 @@
             <br/>
             <div class = "row">
               <ul class = "profile-details">
-                <li>Name</li>
-                <li>Designation</li>
-                <li>Location</li>
+                <li id ="name">Name</li>
+                <li id ="designation">Designation</li>
+                <li id ="location">Location</li>
               </ul>
             </div>
             <div class = "row">
@@ -557,9 +557,9 @@
                 .style("opacity", 1);
             })
             .on("click", function(d) {
-
               clickCounter++;
-              var filterPillGroup = d3.select(".filterPills").append("g")
+              var filterPillGroup = d3.select(".filterPills")
+                .append("g")
                 .attr("id", function(d) {
                   return "rect" + clickCounter
                 });
@@ -606,8 +606,15 @@
             .text(function(d) {
               return d.name;
             });
+
           node.append("text")
-            .attr("x", 6 + sankey.nodeWidth())
+            .attr("x", function(d,i){
+              if(d.category == column3) {
+                return 0 - sankey.nodeWidth() * 0.3;
+              } else {
+                return 6 + sankey.nodeWidth();
+              }
+            })
             .attr("y", function(d) {
               return d.dy / 2;
             })
@@ -664,6 +671,8 @@
           .attr("height", h)
           .append("svg:g")
           .attr("transform", "translate( 50, 0)");
+
+
         var tip = d3.tip()
           .attr('class', 'd3-tip')
           .offset([-10, 0])
@@ -853,7 +862,19 @@
 <!-- ___________________________________________-->
 
       <script>
-        var widthTimeline = 950;
+      var timelineTip = d3.tip()
+          .attr('class', 'd3-tip2')
+          .offset([10, -70])
+          .html(function(d) {
+            return "<span>" + d.label + "</span>";
+
+          });
+
+        timelineTip.direction("se");
+
+        svg.call(timelineTip);
+
+        var widthTimeline = 1000;
         var locationScale = d3.scale.ordinal()
           .range(['#393b79', '#5254a3', '#6b6ecf', '#9c9ede', '#8c6d31', '#bd9e39', '#e7ba52', '#e7cb94', '#843c39', '#ad494a', '#d6616b',
             '#e7969c'
@@ -884,7 +905,7 @@
                 top: 0,
                 bottom: 0
               })
-              .itemHeight(18)
+              .itemHeight(24)
               .itemMargin(6)
               .tickFormat({
                 format: d3.time.format("%Y"),
@@ -892,10 +913,15 @@
                 tickInterval: 1,
                 tickSize: 6
               })
-              .orient("bottom")
-              .hover(function(d, i, datum) {
-                  // console.log(datum);
-                });
+              .background("none")
+              .orient("top");
+
+              chart.mouseover(function(d, i, datum) {
+                timelineTip.show(d);
+              })
+              .mouseout(function(d, i, datum) {
+                timelineTip.hide(d);
+              });
 
             var svg = d3.select(".timeline").append("svg").attr("width", widthTimeline)
               .datum(timeLineData).call(chart);

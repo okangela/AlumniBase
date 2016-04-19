@@ -1,25 +1,29 @@
 *Sankey*
-Add border on clicking on a node
-industry-location-company - not working
-adjust the text on the right most node
 
+-Add border on clicking on a node
+-industry-location-company - not working
+-Can we arrange these years in some order?
+-Adjust the text on the right most node (need to change the X position in the function - ask Bhargav)
 
 *Cluster*
-//Increase size of Cluster
+-Filters do not work after sankey update function.
 
 *Timeline*
-//Get Timeline working
-//inverse timeline
-Add timeline data
-On hover (name of company, location)
-On click (display profile)
+-Add timeline data
+-On hover (name of company, location)
+-On click (display profile)
+//Timeline axis shift to top
+//Add thumbnails of people
 
 *People*
-Build people hover for Timeline
+-Build people hover for Timeline
 
 *Overall*
-Create interactions for the general div appearance using JQuery
-Cluster and Timeline should appear on clicking a particular chart on Sankey
+-Create interactions for the general div appearance using JQuery
+-Cluster and Timeline should appear on clicking a particular chart on Sankey
+-Timeline shoudl appear a little on top
+
+
 
 
 
