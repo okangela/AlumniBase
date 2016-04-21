@@ -225,20 +225,31 @@ li #display-toggle{
 .profile-wrapper{
   background-color: #f1f1f1;
   margin-top: 10px;
+  display: none;
 }
 
 .profile-wrapper .row:nth-child(1){
   margin-top:15px;
 }
-
+.bbb{
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 5px;
+}
 .year{
-  display:inline-block;
-  vertical-align: bottom;
+  font-size: 24px;
+  line-height: 16px;
+  font-weight: 600;
+  margin-left: 5px;
+  text-align: left;
+}
+.year1{
   font-size: 24px;
   line-height: 16px;
   font-weight: 600;
   margin-left: 5px;
 }
+
 
 .profile-details li{
   text-decoration: none;
@@ -249,23 +260,36 @@ li #display-toggle{
   padding:0px;
 }
 
-.profile-details li:nth-child(1){
-  font-size: 24px;
-  line-height: 16px;
-  font-weight: 400;
+.basic-info{
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 5px;
+  padding: 3px;
+  width: 150px;
+  word-break: normal;
+  word-wrap: break-word;
 }
 
-.profile-details li:nth-child(2){
+.basic-info #name{
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 400;
+  word-wrap:break-word;
+  white-space: pre-wrap;
+}
+
+.basic-info #designation, #company{
   font-size: 16px;
-  line-height: 24px;
+  line-height: 16px;
   font-weight: 300;
   font-style: italic;
+  margin-bottom: 2px;
 }
 
-.profile-details li:nth-child(3){
-  font-size: 18px;
-  line-height: 24px;
-  font-weight: 400;
+.profile-details #description{
+  font-size: 13.5px;
+  line-height: 14px;
+  font-weight: 300;
 }
 
 
@@ -379,7 +403,9 @@ body {
 
 .sankeyChart .node text {
   pointer-events: none;
-  font-size: 9px;
+  font-size: 10.5px;
+  font-family: "Open Sans", sans-serif;
+  font-weight:400;
   opacity: 0;
   transition: opacity 0.25s;
 }
@@ -408,8 +434,9 @@ body {
 
 
 /*_____Timeline_______*/
-.Timeline{
-  display: block;
+
+.timeline text{
+  pointer-events:none;
 }
 
 .axis path,

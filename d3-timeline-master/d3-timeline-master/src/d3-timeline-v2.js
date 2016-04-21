@@ -388,10 +388,37 @@
           })
             .on("click", function(d, i) {
               click(d, index, datum);
+              var a = d.label; //storing the d value
+              d3.select(".profile-wrapper")
+                .style("display", "inherit");
+              console.log("Clicked");
+              console.log(d);
               d3.selectAll("#name")
                 .text(function(d) {
-
+                  console.log(a);
+                  return datum.label;
                 });
+              d3.selectAll("#designation")
+                .text(function(d) {
+                  return datum.current_designation + ",";
+                });
+              d3.selectAll("#company")
+                .text(function(d) {
+                  return datum.current_company;
+                });
+              d3.selectAll("#graduation")
+                .text(function(d) {
+                  return datum.graduate + " graduate";
+                });
+              d3.selectAll("#description")
+                .text(function(d) {
+                  return datum.description;
+                });
+              d3.selectAll("#profile-pic")
+                .attr("src", function(d) {
+                  return datum.image;
+                });
+
             })
             .attr("class", function(d, i) {
               return datum.class ? "timelineSeries_" + datum.class : "timelineSeries_" + index;
@@ -437,6 +464,40 @@
               d3.select("#" + boundingRectId)
                 .style("stroke", null)
                 .style("stroke-width", null);
+            })
+            .on("click", function(d, i) {
+              click(d, index, datum);
+              var a = d.label; //storing the d value
+              d3.select(".profile-wrapper")
+                .style("display", "inherit");
+              console.log("Clicked");
+              console.log(d);
+              d3.selectAll("#name")
+                .text(function(d) {
+                  console.log(a);
+                  return datum.label;
+                });
+              d3.selectAll("#designation")
+                .text(function(d) {
+                  return datum.current_designation + ",";
+                });
+              d3.selectAll("#company")
+                .text(function(d) {
+                  return datum.current_company;
+                });
+              d3.selectAll("#graduation")
+                .text(function(d) {
+                  return datum.graduate + " graduate";
+                });
+              d3.selectAll("#description")
+                .text(function(d) {
+                  return datum.description;
+                });
+              d3.selectAll("#profile-pic")
+                .attr("src", function(d) {
+                  return datum.image;
+                });
+
             });
 
           //truncated text to fit in rectangle

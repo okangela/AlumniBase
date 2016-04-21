@@ -249,15 +249,18 @@
 
         <div class="profile-wrapper col-lg-3">
             <div class = "row">
-              <img src="images/profile.png" class="img-thumbnail" width ="50%">
-              <p class = "year">'99</p>
+              <img id = "profile-pic"src="images/profile.png" class="img-thumbnail" width ="50%">
+              <div class = "basic-info">
+                <p id = "name">haha</p>
+                <p id= "designation">UX Designer</p>
+                <p id = "company">Uber</p>
+                <p id = "graduation">'99</p>
+              </div>
             </div>
             <br/>
             <div class = "row">
               <ul class = "profile-details">
-                <li id ="name">Name</li>
-                <li id ="designation">Designation</li>
-                <li id ="location">Location</li>
+                <li id ="description">Description</li>
               </ul>
             </div>
             <div class = "row">
@@ -297,7 +300,7 @@
             left: 10
           },
           width = 700 - margin.left - margin.right,
-          height = 600 - margin.top - margin.bottom;
+          height = 500 - margin.top - margin.bottom;
 
         var category20b_sq = [
           '#5254a3',
@@ -649,8 +652,8 @@
 
       <script>
         var w = 700,
-          h = 545,
-          r = 580,
+          h = 443,
+          r = 400,
           x = d3.scale.linear().range([0, r]),
           y = d3.scale.linear().range([0, r]),
           node,
@@ -866,7 +869,7 @@
           .attr('class', 'd3-tip2')
           .offset([10, -70])
           .html(function(d) {
-            return "<span>" + d.label + "</span>";
+            return  d.label + "</br>"+ d.company + ", " + d.location;
 
           });
 
@@ -874,7 +877,7 @@
 
         svg.call(timelineTip);
 
-        var widthTimeline = 1000;
+        var widthTimeline = 1100;
         var locationScale = d3.scale.ordinal()
           .range(['#393b79', '#5254a3', '#6b6ecf', '#9c9ede', '#8c6d31', '#bd9e39', '#e7ba52', '#e7cb94', '#843c39', '#ad494a', '#d6616b',
             '#e7969c'
@@ -901,7 +904,7 @@
               .stack() // toggles graph stacking
               .margin({
                 left: 10,
-                right: 30,
+                right: 50,
                 top: 0,
                 bottom: 0
               })
