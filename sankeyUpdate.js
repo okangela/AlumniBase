@@ -65,6 +65,12 @@ function hideWarningSign() {
 function refreshSankey() {
     d3.json("cluster.json", function(clusterData) {
 
+        var pillWidth = 90;
+        var pillHeight = 40;
+        var clickCounter = -1;
+        var nextBoxX = 0;
+        var pillPadding = 3;
+
         var column1 = sankey1Value;
         var column2 = sankey2Value;
         var column3 = sankey3Value;
@@ -215,73 +221,9 @@ function refreshSankey() {
                     .selectAll("text")
                     .style("opacity", 1);
             })
-            .on("click", function(d) {
-                clickCounter++;
-                var filterPillGroup = d3.select(".filterPills").append("g")
-                    .attr("id", function(d) {
-                        return "rect" + clickCounter;
-                    });
-
-                var textBox = filterPillGroup.append("text")
-                    .attr("x", function(d) {
-                        return (nextBoxX);
-                    })
-                    .attr("y", 60 + (pillHeight / 2))
-                    .attr("dy", ".35em")
-                    .attr("alignment-baseline", "middle")
-                    .attr("text-anchor", "left")
-                    .attr("class", "filterPillsText")
-                    .text(function() {
-                        return d.source.name + " " + "X";
-                    });
-
-                var bbox = textBox.node().getBBox();
-
-                filterPillGroup.append("rect")
-                    .style("opacity", "0.2")
-                    .attr("width", bbox.width)
-                    .attr("height", bbox.height)
-                    .attr("rx", 3).attr("ry", 3)
-                    .attr("x", bbox.x)
-                    .attr("y", bbox.y);
-
-
-                nextBoxX = nextBoxX + bbox.width + 5;
-                clickCounter++;
-
-                var filterPillGroup2 = d3.select(".filterPills").append("g")
-                    .attr("id", function(d) {
-                        return "rect" + clickCounter
-                    });
-
-                var textBox2 = filterPillGroup2.append("text")
-                    .attr("x", function(d) {
-                        return (nextBoxX);
-                    })
-                    .attr("y", 60 + (pillHeight / 2))
-                    .attr("dy", ".35em")
-                    .attr("alignment-baseline", "middle")
-                    .attr("text-anchor", "left")
-                    .attr("class", "filterPillsText")
-                    .text(function() {
-                        return d.target.name + " " + "X";
-                    });
-
-                var bbox2 = textBox2.node().getBBox();
-
-                filterPillGroup2.append("rect")
-                    .style("opacity", "0.2")
-                    .attr("width", bbox2.width)
-                    .attr("height", bbox2.height)
-                    .attr("rx", 3).attr("ry", 3)
-                    .attr("x", bbox2.x)
-                    .attr("y", bbox2.y);
-
-                nextBoxX = nextBoxX + bbox2.width + 5;
-            }); // end of onclick function
+            .on("click", function(d) {}); // end of onclick function
 
         // node hover and pills
-
         var node = svg.append("g").selectAll(".node")
             .data(mydatabase.nodes)
             .enter().append("g")
@@ -306,7 +248,8 @@ function refreshSankey() {
             .on("click", function(d) {
 
                 clickCounter++;
-                var filterPillGroup = d3.select(".filterPills").append("g")
+                var filterPillGroup = d3.select(".filterPills")
+                    .append("g")
                     .attr("id", function(d) {
                         return "rect" + clickCounter
                     });
@@ -315,33 +258,31 @@ function refreshSankey() {
                     .attr("x", function(d) {
                         return (nextBoxX);
                     })
-                    .attr("y", 60 + (pillHeight / 2))
-                    .attr("dy", ".35em")
+                    .attr("y", pillHeight / 2)
+                    .attr("dy", "1em")
+                    .attr("dx", "1em")
                     .attr("alignment-baseline", "middle")
                     .attr("text-anchor", "left")
                     .attr("class", "filterPillsText")
                     .text(function() {
-                        return d.name + " " + "X";
+                        return d.name + " " + " " + "X";
                     });
 
                 var bbox = textBox.node().getBBox();
 
                 filterPillGroup.append("rect")
                     .style("opacity", "0.2")
-                    .attr("width", bbox.width)
+                    .attr("width", bbox.width + 10)
                     .attr("height", bbox.height)
                     .attr("rx", 3).attr("ry", 3)
                     .attr("x", bbox.x)
                     .attr("y", bbox.y);
 
-
-                nextBoxX = nextBoxX + bbox.width + 5;
+                nextBoxX = nextBoxX + bbox.width + 15;
 
                 filterPillGroup.on("click", function() {
                     d3.select(this).remove();
                 });
-
-
             }); // end of onclick function
 
 
