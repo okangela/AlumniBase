@@ -1,6 +1,6 @@
 [{
     "label": "Addy Beavers",
-    "image": "images/22.jpg",
+    "image": "images/andy_beavers.jpg",
     "current_designation": "UX Design Lead",
     "current_company": "Google",
     "graduate": 2007,
@@ -9,33 +9,37 @@
       "label": "Design lead Google Play Books",
       "starting_time": 1366576163000,
       "ending_time": 1461270563000,
-      "location": "SF",
+      "location": "SF Bay Area",
       "industry": "Internet",
       "company": "Google",
+      "job": 1,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "UX Designer",
       "starting_time": 1335040163000,
       "ending_time": 1366576163000,
-      "location": "SF",
+      "location": "SF Bay Area",
       "industry": "Internet",
       "company": "Google",
+      "job": 2,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "UX Design Manager - Yahoo! Communications + Communities",
       "starting_time": 1303417763000,
       "ending_time": 1335040163000,
-      "location": "SF",
+      "location": "SF Bay Area",
       "industry": "Internet",
       "company": "Google",
+      "job": 3,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "Product Designer - Yahoo! Communications",
       "starting_time": 1177187363000,
       "ending_time": 1303417763000,
-      "location": "SF",
+      "location": "SF Bay Area",
       "industry": "Internet",
       "company": "Google",
+      "job": 4,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "MS-HCI",
@@ -44,6 +48,7 @@
       "location": "Atlanta",
       "industry": "University",
       "company": "Georgia Tech",
+      "job": 5,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "Consultant",
@@ -52,6 +57,7 @@
       "location": "Unkown",
       "industry": "IT services",
       "company": "Accenture",
+      "job": 6,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "Knowledge management developer",
@@ -60,6 +66,7 @@
       "location": "Unkown",
       "industry": "IT services",
       "company": "Accenture",
+      "job": 7,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "BA Psycology",
@@ -68,11 +75,12 @@
       "location": "Unkown",
       "industry": "University",
       "company": "Vanderbilt University",
+      "job": 8,
       "company_type": "5001-10,000 employees"
     }]
   }, {
     "label": "May Cheng",
-    "image": "images/22.jpg",
+    "image": "images/may_cheng.jpg",
     "current_designation": "Interaction Designer",
     "current_company": "Google",
     "graduate": 1999,
@@ -81,64 +89,72 @@
       "label": "Interaction Designer (Contract)",
       "starting_time": 1429648163000,
       "ending_time": 1461270563000,
-      "location": "SF",
+      "location": "SF Bay Area",
       "industry": "Internet",
-      "company": "Google",
+      "job": 1,
+      "company": "Google"
     }, {
       "label": "Product Designer (Contract)",
       "starting_time": 1398112163000,
       "ending_time": 1429648163000,
-      "location": "SF",
+      "location": "SF Bay Area",
       "industry": "Internet",
       "company": "Groupon",
+      "job": 2,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "Interaction Designer (Contract)",
       "starting_time": 1366576163000,
       "ending_time": 1398112163000,
-      "location": "SF",
+      "location": "SF Bay Area",
       "industry": "Internet",
       "company": "Punchcut",
+      "job": 3,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "UI Designer (Contract)",
       "starting_time": 1335040163000,
       "ending_time": 1366576163000,
-      "location": "SF",
+      "location": "SF Bay Area",
       "industry": "Internet",
       "company": "Samsung",
+      "job": 4,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "Interaction Designer (Contract)",
       "starting_time": 1303417763000,
       "ending_time": 1335040163000,
-      "location": "SF",
+      "location": "SF Bay Area",
       "industry": "IT services",
       "company": "Motorola Mobility",
+      "job": 5,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "Sr. Interaction Designer",
       "starting_time": 1208809763000,
       "ending_time": 1303417763000,
-      "location": "SF",
+      "location": "SF Bay Area",
       "industry": "IT services",
       "company": "Intuit",
+      "job": 6,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "Sr. Interaction Designer",
-      "starting_time": Feb 2007,
+      "starting_time": 1172089763000,
       "ending_time": 1208809763000,
-      "location": "SF",
+      "location": "SF Bay Area",
       "industry": "IT services",
       "company": "Yahoo",
+      "job": 7,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "User Interface Designer",
       "starting_time": 956348963000,
       "ending_time": 1145651363000,
-      "location": "SF",
+      "location": "SF Bay Area",
       "industry": "University",
       "company": "Intuit",
+      "job": 8,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "MS-HCI",
@@ -147,19 +163,21 @@
       "location": "Atlanta",
       "industry": "University",
       "company": "Georgia Tech ",
+      "job": 9,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "BA-Computer Science",
       "starting_time": 766960163000,
       "ending_time": 893190563000,
-      "location": "SF",
+      "location": "SF Bay Area",
       "industry": "University",
       "company": "UC Berkeley",
+      "job": 10,
       "company_type": "5001-10,000 employees"
     }]
   }, {
     "label": "Zuiena Kabir",
-    "image": "images/22.jpg",
+    "image": "images/zuiena_kabir.jpg",
     "current_designation": "UX Researcher",
     "current_company": "Google",
     "graduate": 1366576163000,
@@ -168,25 +186,28 @@
       "label": "User Experience Researcher",
       "starting_time": 1366576163000,
       "ending_time": 1461270563000,
-      "location": "SF",
+      "location": "SF Bay Area",
       "industry": "Internet",
       "company": "Google",
+      "job": 1,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "User Experience Research Intern",
       "starting_time": 1335040163000,
-      "ending_time": Dec 2012,
-      "location": "SF",
+      "ending_time": 1356121763000,
+      "location": "SF Bay Area",
       "industry": "Internet",
       "company": "Google",
+      "job": 2,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "IT Consultant",
       "starting_time": 1208809763000,
-      "ending_time": july 2009,
+      "ending_time": 1261427363000,
       "location": "Melbourne",
       "industry": "Internet",
       "company": "IBM",
+      "job": 3,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "MS-HCI",
@@ -195,19 +216,21 @@
       "location": "Atlanta",
       "industry": "Universtity",
       "company": "Georgia Tech",
+      "job": 4,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "BS-Computer Science",
-      "starting_time": Jan 2003,
-      "ending_time": Jan 2007,
+      "starting_time": 1072038563000,
+      "ending_time": 1198268963000,
       "location": "Melbourne",
       "industry": "University",
       "company": "University of Melbourne",
+      "job": 5,
       "company_type": "5001-10,000 employees"
     }]
   }, {
     "label": "Anya Kogan Mezak",
-    "image": "images/22.jpg",
+    "image": "images/anya_kogan.jpg",
     "current_designation": "Sr. UX Designer",
     "current_company": "Google",
     "graduate": 2009,
@@ -216,33 +239,37 @@
       "label": "Sr. UX Designer for Mobile Payments",
       "starting_time": 1429648163000,
       "ending_time": 1461270563000,
-      "location": "SF",
+      "location": "SF Bay Area",
       "industry": "Internet",
       "company": "Google",
+      "job": 1,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "User Experience Research Intern",
-      "starting_time": May 2012,
-      "ending_time": Dec 2012,
-      "location": "SF",
+      "starting_time": 1335040163000,
+      "ending_time": 1356121763000,
+      "location": "SF Bay Area",
       "industry": "Internet",
       "company": "Google",
+      "job": 2,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "UX Lead and Manager for AdWords Display",
       "starting_time": 1398112163000,
       "ending_time": 1429648163000,
-      "location": "SF",
+      "location": "SF Bay Area",
       "industry": "Internet",
       "company": "Google",
+      "job": 3,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "UX Designer for AdWords",
       "starting_time": 1303417763000,
       "ending_time": 1366576163000,
-      "location": "SF",
+      "location": "SF Bay Area",
       "industry": "Internet",
       "company": "Google",
+      "job": 4,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "Interaction Designer",
@@ -251,6 +278,7 @@
       "location": "NY",
       "industry": "Design",
       "company": "HUGE",
+      "job": 5,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "UX Designer",
@@ -259,14 +287,16 @@
       "location": "Los Angeles",
       "industry": "Internet",
       "company": "Schematic",
+      "job": 6,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "Human Factor Enginnering Contractor",
       "starting_time": 1114115363000,
-      "ending_time": July 2006,
+      "ending_time": 1145651363000,
       "location": "Atlanta",
       "industry": "Internet",
       "company": "Pitney Bowes",
+      "job": 7,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "MS-HCI",
@@ -275,6 +305,7 @@
       "location": "Atlanta",
       "industry": "Universtity",
       "company": "Georgia Tech",
+      "job": 8,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "BS-Computer Science",
@@ -283,11 +314,12 @@
       "location": "Boston",
       "industry": "University",
       "company": "Tufts University",
+      "job": 9,
       "company_type": "5001-10,000 employees"
     }]
   }, {
     "label": "Jin Yao",
-    "image": "images/22.jpg",
+    "image": "images/jin_yao.jpg",
     "current_designation": "UX Desginer",
     "current_company": "Google",
     "graduate": 2012,
@@ -296,17 +328,19 @@
       "label": "User Experience Designer",
       "starting_time": 1335040163000,
       "ending_time": 1461270563000,
-      "location": "SF",
+      "location": "SF Bay Area",
       "industry": "Internet",
       "company": "Google",
+      "job": 1,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "UX Design Intern",
       "starting_time": 1303417763000,
       "ending_time": 1311280163000,
-      "location": "SF",
+      "location": "SF Bay Area",
       "industry": "Internet",
       "company": "Google",
+      "job": 2,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "Assosiate Application Developer (MATREX)",
@@ -315,14 +349,16 @@
       "location": "NY",
       "industry": "Design",
       "company": "HUGE",
+      "job": 3,
       "company_type": "5001-10,000 employees"
-    } {
+    }, {
       "label": "MS-HCI",
       "starting_time": 1240345763000,
       "ending_time": 1335040163000,
       "location": "Atlanta",
       "industry": "Universtity",
       "company": "Georgia Tech",
+      "job": 4,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "BS-Computer Science",
@@ -331,6 +367,7 @@
       "location": "Boston",
       "industry": "University",
       "company": "Georgia Tech",
+      "job": 5,
       "company_type": "5001-10,000 employees"
     }]
   }, {
@@ -344,17 +381,19 @@
       "label": "User Experience Researcher",
       "starting_time": 1398112163000,
       "ending_time": 1461270563000,
-      "location": "SF",
+      "location": "SF Bay Area",
       "industry": "Internet",
       "company": "Google",
+      "job": 1,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "UI Designer",
       "starting_time": 1303417763000,
       "ending_time": 1398112163000,
-      "location": "SF",
+      "location": "SF Bay Area",
       "industry": "Internet",
       "company": "Intel",
+      "job": 2,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "Ph.D. Human Centered Computing",
@@ -363,6 +402,7 @@
       "location": "Atlanta",
       "industry": "Universtity",
       "company": "Georgia Tech",
+      "job": 3,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "MS-HCI",
@@ -371,6 +411,7 @@
       "location": "Atlanta",
       "industry": "Universtity",
       "company": "Georgia Tech",
+      "job": 4,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "MS-Fine Arts",
@@ -379,6 +420,7 @@
       "location": "Ohio",
       "industry": "University",
       "company": "Ohio State University",
+      "job": 5,
       "company_type": "5001-10,000 employees"
     }, {
       "label": "BS-Industrial Design",
@@ -387,6 +429,7 @@
       "location": "Ohio",
       "industry": "University",
       "company": "Korea Advanced Institute of Tech",
+      "job": 6,
       "company_type": "5001-10,000 employees"
     }]
   }

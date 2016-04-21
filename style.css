@@ -439,6 +439,11 @@ body {
   pointer-events:none;
 }
 
+.timeline rect{
+   stroke:#fff;
+   stroke-width:1px;
+}
+
 .axis path,
 .axis line {
   fill: none;

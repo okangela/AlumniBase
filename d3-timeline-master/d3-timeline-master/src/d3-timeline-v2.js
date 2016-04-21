@@ -44,7 +44,7 @@
         tickInterval: 1,
         tickSize: 6
       },
-      colorCycle = d3.scale.category20(),
+      colorCycle = d3.scale.category20c(),
       colorPropertyName = null,
       display = "rect",
       beginning = 0,
@@ -348,7 +348,7 @@
             .on("mouseover", function(d, i) {
               mouseover(d, i, datum);
               d3.select(this)
-                .style("stroke", "#666666")
+                .style("stroke", "#222222")
                 .style("stroke-width", "2px");
               var currentMapping = d3.select(this).attr("yAxisMapping");
               g.selectAll(".row-green-bar")
@@ -455,7 +455,7 @@
               textItemId = d3.select(this).attr("id");
               boundingRectId = "timelineItem_" + textItemId.substring("timelineTextItem_".length);
               d3.select("#" + boundingRectId)
-                .style("stroke", "#666666")
+                .style("stroke", "#222222")
                 .style("stroke-width", "2px");
             })
             .on("mouseout", function(d, i) {
