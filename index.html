@@ -471,69 +471,7 @@
               .selectAll("text")
               .style("opacity", 1);
           })
-          .on("click", function(d) {
-            clickCounter++;
-            var filterPillGroup = d3.select(".filterPills").append("g")
-              .attr("id", function(d) {
-                return "rect" + clickCounter;
-              });
-
-            var textBox = filterPillGroup.append("text")
-              .attr("x", function(d) {
-                return (nextBoxX);
-              })
-              .attr("y", (pillHeight / 2))
-              .attr("dy", ".35em")
-              .attr("alignment-baseline", "middle")
-              .attr("text-anchor", "left")
-              .attr("class", "filterPillsText")
-              .text(function() {
-                return d.source.name + "  " + "X";
-              });
-
-            var bbox = textBox.node().getBBox();
-
-            filterPillGroup.append("rect")
-              .style("opacity", "0.2")
-              .attr("width", bbox.width)
-              .attr("height", bbox.height)
-              .attr("rx", 3).attr("ry", 3)
-              .attr("x", bbox.x)
-              .attr("y", bbox.y);
-
-            nextBoxX = nextBoxX + bbox.width + 15;
-            clickCounter++;
-
-            var filterPillGroup2 = d3.select(".filterPills").append("g")
-              .attr("id", function(d) {
-                return "rect" + clickCounter
-              });
-
-            var textBox2 = filterPillGroup2.append("text")
-              .attr("x", function(d) {
-                return (nextBoxX);
-              })
-              .attr("y", (pillHeight / 2))
-              .attr("dy", ".35em")
-              .attr("alignment-baseline", "middle")
-              .attr("text-anchor", "left")
-              .attr("class", "filterPillsText")
-              .text(function() {
-                return d.target.name + " " + "X";
-              });
-
-            var bbox2 = textBox2.node().getBBox();
-
-            filterPillGroup2.append("rect")
-              .style("opacity", "0.2")
-              .attr("width", bbox2.width)
-              .attr("height", bbox2.height)
-              .attr("rx", 3).attr("ry", 3)
-              .attr("x", bbox2.x)
-              .attr("y", bbox2.y);
-
-            nextBoxX = nextBoxX + bbox2.width + 15;
-          }); // end of onclick function
+          .on("click", function(d) {}); // end of onclick function
 
           // node hover and pills
 
@@ -597,7 +535,8 @@
                 d3.select(this).remove();
               });
             }); // end of onclick function
-          node.append("rect")
+
+            node.append("rect")
             .attr("height", function(d) {
               return d.dy;
             })
