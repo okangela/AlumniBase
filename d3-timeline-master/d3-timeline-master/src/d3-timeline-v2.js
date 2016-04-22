@@ -323,13 +323,14 @@
             .style("fill", function(d, i) {
               var dColorPropName;
 
-              if (d.location) {
-                var dropdownKey = "location" // from a global dropdown
-                var dropdownValue = d[dropdownKey]; // sf
-                var dropdownScale = colorScales[dropdownKey]; // locationScale
-                var valueColor = dropdownScale(dropdownValue);
-                return valueColor;
-              }
+              // if (d.location) {
+            //   console.log(colorPropertyName);
+              //   var dropdownKey = "location" // from a global dropdown
+              //   var dropdownValue = d[dropdownKey]; // sf
+              //   var dropdownScale = colorScales[dropdownKey]; // locationScale
+              //   var valueColor = dropdownScale(dropdownValue);
+              //   return valueColor;
+              // }
 
               if (d.color) return d.color;
               if (colorPropertyName) {
@@ -391,11 +392,8 @@
               var a = d.label; //storing the d value
               d3.select(".profile-wrapper")
                 .style("display", "inherit");
-              console.log("Clicked");
-              console.log(d);
               d3.selectAll("#name")
                 .text(function(d) {
-                  console.log(a);
                   return datum.label;
                 });
               d3.selectAll("#designation")
@@ -470,11 +468,8 @@
               var a = d.label; //storing the d value
               d3.select(".profile-wrapper")
                 .style("display", "inherit");
-              console.log("Clicked");
-              console.log(d);
               d3.selectAll("#name")
                 .text(function(d) {
-                  console.log(a);
                   return datum.label;
                 });
               d3.selectAll("#designation")
