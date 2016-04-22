@@ -89,7 +89,7 @@
               </ul>
             </div>
             <div class = "col-lg-1">
-              <button onclick="updateTimeline()" type="button" class="btn btn-primary btn-sm" style="padding:3px 14px">Apply</button>
+              <button id="sankey-filter-button" style="visibility:hidden" onclick="updateTimeline()" type="button" class="btn btn-primary btn-sm" style="padding:3px 14px">Apply</button>
             </div>
 
             </div>
@@ -368,6 +368,7 @@
         }
 
         d3.select("#sankey-filter-header").style("visibility", "hidden");
+        d3.select("#sankey-filter-button").style("visibility", "hidden");
         d3.select("#sankey-filter").selectAll("li").remove();
 
         if (filterCount > 0) {
@@ -383,6 +384,7 @@
           }
 
           d3.select("#sankey-filter-header").style("visibility", "visible");
+          d3.select("#sankey-filter-button").style("visibility", "visible");
           d3.select("#sankey-filter")
           .selectAll("li")
           .data(sankeyFilterArray)
