@@ -81,7 +81,7 @@
     <section>
       <div class="container">
         <div class="row">
-          <div class="col-lg-10" id="sankey">
+          <div class="col-lg-9" id="sankey">
             <div class="row">
 
                 <div class="dropdown filterDropdown sankey1">
@@ -153,10 +153,10 @@
 
 <!-- ____________Filters from Sankey __________________-->
 
-          <div class="col-lg-2">
+          <div class="col-lg-3">
             <div class="row row-margin">
-            <svg width="700" height="40">
-              <rect width="700" height="40" fill = "#f7f7f7" rx="3px" ry ="3px"></rect>
+            <svg width="320" height="40">
+              <rect width="320" height="40" fill = "#f7f7f7" rx="3px" ry ="3px"></rect>
               <svg class="filterPills" width="700" height="40"><svg>
             </svg>
             </div>
@@ -474,9 +474,9 @@
 <!-- ___________________________________________-->
 
       <script>
-        var w = 700,
-          h = 443,
-          r = 400,
+        var w = 350,
+          h = 350,
+          r = 250,
           x = d3.scale.linear().range([0, r]),
           y = d3.scale.linear().range([0, r]),
           node,
@@ -496,7 +496,7 @@
           .attr("width", w)
           .attr("height", h)
           .append("svg:g")
-          .attr("transform", "translate( 50, 0)");
+          .attr("transform", "translate( 10, 0)");
 
 
         var tip = d3.tip()
