@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="d3.js"></script>
-    <script src="sankeyUpdate.js"></script>
+    <script src="timelineUpdate.js"></script>
     <link rel="stylesheet" href="bootstrap3/css/bootstrap.min.css">
     <script type="text/javascript" src="jquery.js"></script>
     <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
@@ -83,9 +83,15 @@
         <div class="row">
           <div class="col-lg-9" id="sankey">
             <div class="row">
+            <div class = "col-lg-11">
               <span id="sankey-filter-header" style="visibility:hidden">Filter</span>
               <ul style="display:inline;" id="sankey-filter" class="list-inline">
               </ul>
+            </div>
+            <div class = "col-lg-1">
+              <button onclick="updateTimeline()" type="button" class="btn btn-primary btn-sm" style="padding:3px 14px">Apply</button>
+            </div>
+
             </div>
 
 <!-- ____________Sankey renders here __________________-->
@@ -343,6 +349,12 @@
       })
       .on("click", function(d) {
 
+          if(d3.select(this).style("stroke") == "#2f2f2f") {
+            d3.select(this).style("stroke", null);
+          } else {
+            d3.select(this).style("stroke", "#2f2f2f");
+          }
+
         if(sankeyFilterMap[d.category] == undefined) {
           sankeyFilterMap[d.category] = {};
           sankeyFilterMap[d.category][d.name] = "enabled";
@@ -417,43 +429,6 @@
             return listHtml;
           });
         }
-
-      //   clickCounter++;
-      //   var filterPillGroup = d3.select(".filterPills")
-      //     .append("g")
-      //     .attr("id", function(d) {
-      //       return "rect" + clickCounter
-      //     });
-
-      //   var textBox = filterPillGroup.append("text")
-      //     .attr("x", function(d) {
-      //       return (nextBoxX);
-      //     })
-      //     .attr("y", pillHeight / 2 )
-      //     .attr("dy", "1em")
-      //     .attr("dx", "1em")
-      //     .attr("alignment-baseline", "middle")
-      //     .attr("text-anchor", "left")
-      //     .attr("class", "filterPillsText")
-      //     .text(function() {
-      //       return d.name + " " +  " " + "X";
-      //     });
-
-      //   var bbox = textBox.node().getBBox();
-
-      //   filterPillGroup.append("rect")
-      //     .style("opacity", "0.2")
-      //     .attr("width", bbox.width + 10)
-      //     .attr("height", bbox.height)
-      //     .attr("rx", 3).attr("ry", 3)
-      //     .attr("x", bbox.x)
-      //     .attr("y", bbox.y);
-
-      //   nextBoxX = nextBoxX + bbox.width + 15;
-
-      //   filterPillGroup.on("click", function() {
-      //     d3.select(this).remove();
-      //   });
       });
 
       node.append("rect")
@@ -731,7 +706,7 @@
         //   .range(['#393b79', '#5254a3', '#6b6ecf', '#9c9ede', '#8c6d31', '#bd9e39', '#e7ba52', '#e7cb94', '#843c39'])
         //   .domain(['5001-10,000 employees', '10,001+ employees', '11-50 employees', '1001-5000 employees', '501-1000 employees', 'Unknown', '51-200 employees', '201-500 employees', '1-10 employees']);
 
-        d3.json("google.json", function(timeLineData) {
+        d3.json("timelinedata.json", function(timeLineData) {
 
           // console.log (timeLineData);
           function timelineStackedIcons() {
