@@ -83,7 +83,7 @@
         <div class="row">
           <div class="col-lg-9" id="sankey">
             <div class="row">
-              <span id="sankey-filter-header" style="visibility:hidden">Filtering</span>
+              <span id="sankey-filter-header" style="visibility:hidden">Filter</span>
               <ul style="display:inline;" id="sankey-filter" class="list-inline">
               </ul>
             </div>
@@ -364,8 +364,10 @@
           var filterKeys = Object.keys(sankeyFilterMap);
           for(iterator = 0; iterator < filterKeys.length; iterator++) {
             var temp = {};
-            temp[filterKeys[iterator]] = Object.keys(sankeyFilterMap[filterKeys[iterator]]);
-            sankeyFilterArray.push(temp);
+            var tempItems = Object.keys(sankeyFilterMap[filterKeys[iterator]]);
+            temp[filterKeys[iterator]] = tempItems;
+            if (tempItems.length > 0)
+              sankeyFilterArray.push(temp);
           }
 
           d3.select("#sankey-filter-header").style("visibility", "visible");
@@ -374,9 +376,30 @@
           .data(sankeyFilterArray)
           .enter()
           .append("li")
+          .append("a")
+          .attr("class", "btn btn-primary btn-sm disabled")
+          .attr("role","button")
+          .style("background-color", function(d, i){
+            return color(Object.keys(d)[0]);
+          })
+          .style("border-color", function(d, i){
+            return color(Object.keys(d)[0]);
+          })
+          .style("padding", "3px 14px")
+          .style("margin-left", "3px")
+          .style("margin-bottom", "3px")
           .html(function(d, i) {
             var orFilters = d[Object.keys(d)[0]];
-            var listHtml = Object.keys(d)[0] + " by ";
+            var categoryName = "";
+            for(iterator=0; iterator<Object.keys(d)[0].length; iterator++) {
+              var character = Object.keys(d)[0].charAt(iterator);
+              if(character == character.toUpperCase() && iterator != 0) {
+                categoryName += ' ' + Object.keys(d)[0].charAt(iterator);
+              } else {
+                categoryName += Object.keys(d)[0].charAt(iterator);
+              }
+            }
+            var listHtml = categoryName + " by ";
             if (orFilters.length == 0) {
               return "";
             }
@@ -391,11 +414,7 @@
                 }
               }
             }
-            if (i==0) {
-              return listHtml;
-            } else {
-              return "and " + listHtml;
-            }
+            return listHtml;
           });
         }
 
