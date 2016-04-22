@@ -83,7 +83,7 @@
         <div class="row">
           <div class="col-lg-9" id="sankey">
             <div class="row">
-              <span>Filtering</span>
+              <span id="sankey-filter-header" style="visibility:hidden">Filtering</span>
               <ul style="display:inline;" id="sankey-filter" class="list-inline">
               </ul>
             </div>
@@ -355,7 +355,9 @@
           filterCount--;
         }
 
+        d3.select("#sankey-filter-header").style("visibility", "hidden");
         d3.select("#sankey-filter").selectAll("li").remove();
+
         if (filterCount > 0) {
 
           var sankeyFilterArray = [];
@@ -366,6 +368,7 @@
             sankeyFilterArray.push(temp);
           }
 
+          d3.select("#sankey-filter-header").style("visibility", "visible");
           d3.select("#sankey-filter")
           .selectAll("li")
           .data(sankeyFilterArray)
