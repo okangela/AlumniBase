@@ -83,66 +83,9 @@
         <div class="row">
           <div class="col-lg-9" id="sankey">
             <div class="row">
-
-                <div class="dropdown filterDropdown sankey1">
-                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Program
-                <span class="caret"></span>
-              </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a id="Year_Completion" href="#">Year of Graduation</a></li>
-                    <li><a id="Current_Employer_Industry" href="#">Industry</a></li>
-                    <li><a id="Major" href="#">Program</a></li>
-                    <li><a id="Current_Location" href="#">Location</a></li>
-                    <li><a id="Current_Employer" href="#">Company</a></li>
-                    <li><a id="Current_Employer_Type" href="#">Company Type</a></li>
-                  </ul>
-                </div>
-
-                <div class= "filterDropdown">
-                  <p>vs</p>
-                </div>
-
-                <div class="dropdown filterDropdown sankey2">
-                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Year of Graduation
-                <span class="caret"></span>
-              </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a id="Year_Completion" href="#">Year of Graduation</a></li>
-                    <li><a id="Current_Employer_Industry" href="#">Industry</a></li>
-                    <li><a id="Major" href="#">Program</a></li>
-                    <li><a id="Current_Location" href="#">Location</a></li>
-                    <li><a id="Current_Employer" href="#">Company</a></li>
-                    <li><a id="Current_Employer_Type" href="#">Company Type</a></li>
-                  </ul>
-                </div>
-
-                <div class= "filterDropdown">
-                  <p>vs</p>
-                </div>
-
-                <div class="dropdown filterDropdown sankey3">
-                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Company
-                <span class="caret"></span>
-              </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a id="Year_Completion" href="#">Year of Graduation</a></li>
-                    <li><a id="Current_Employer_Industry" href="#">Industry</a></li>
-                    <li><a id="Major" href="#">Program</a></li>
-                    <li><a id="Current_Location" href="#">Location</a></li>
-                    <li><a id="Current_Employer" href="#">Company</a></li>
-                    <li><a id="Current_Employer_Type" href="#">Company Type</a></li>
-                  </ul>
-                </div>
-                <div style="display:inline" class="dropdown filterDropdown sankey4">
-                  <button onclick="refreshSankey()"
-                          class="btn btn-default" id ="applyButton"type="button" aria-expanded="true">
-                  Apply
-                  </button>
-                </div>
-                <i style="visibility: hidden" id="sankeyBadInput" class="fa fa-exclamation-triangle fa-lg"></i>
+              <span>Filtering</span>
+              <ul style="display:inline;" id="sankey-filter" class="list-inline">
+              </ul>
             </div>
 
 <!-- ____________Sankey renders here __________________-->
@@ -298,9 +241,13 @@
 
 
   <script>
+
+  var sankeyFilterMap = {};
+  var filterCount = 0;
+
   var pillWidth = 90;
   var pillHeight = 30;
-  var clickCounter = -1;
+  // var clickCounter = -1;
   var nextBoxX = 0;
   var pillPadding = 3;
   var margin = {top: 1, right: 30, bottom: 30, left:10},
@@ -395,42 +342,96 @@
           .style("opacity", 1);
       })
       .on("click", function(d) {
-        clickCounter++;
-        var filterPillGroup = d3.select(".filterPills")
-          .append("g")
-          .attr("id", function(d) {
-            return "rect" + clickCounter
+
+        if(sankeyFilterMap[d.category] == undefined) {
+          sankeyFilterMap[d.category] = {};
+          sankeyFilterMap[d.category][d.name] = "enabled";
+          filterCount++;
+        } else if(sankeyFilterMap[d.category][d.name] == undefined) {
+          sankeyFilterMap[d.category][d.name] = "enabled";
+          filterCount++;
+        } else if(sankeyFilterMap[d.category][d.name] == "enabled") {
+          delete sankeyFilterMap[d.category][d.name];
+          filterCount--;
+        }
+
+        d3.select("#sankey-filter").selectAll("li").remove();
+        if (filterCount > 0) {
+
+          var sankeyFilterArray = [];
+          var filterKeys = Object.keys(sankeyFilterMap);
+          for(iterator = 0; iterator < filterKeys.length; iterator++) {
+            var temp = {};
+            temp[filterKeys[iterator]] = Object.keys(sankeyFilterMap[filterKeys[iterator]]);
+            sankeyFilterArray.push(temp);
+          }
+
+          d3.select("#sankey-filter")
+          .selectAll("li")
+          .data(sankeyFilterArray)
+          .enter()
+          .append("li")
+          .html(function(d, i) {
+            var orFilters = d[Object.keys(d)[0]];
+            var listHtml = Object.keys(d)[0] + " by ";
+            if (orFilters.length == 0) {
+              return "";
+            }
+            else if (orFilters.length == 1) {
+              listHtml += orFilters[0];
+            } else {
+              for(iterator = 0; iterator < orFilters.length; iterator++) {
+                if (iterator == 0) {
+                  listHtml += orFilters[iterator];
+                } else {
+                  listHtml += " or " + orFilters[iterator];
+                }
+              }
+            }
+            if (i==0) {
+              return listHtml;
+            } else {
+              return "and " + listHtml;
+            }
           });
+        }
 
-        var textBox = filterPillGroup.append("text")
-          .attr("x", function(d) {
-            return (nextBoxX);
-          })
-          .attr("y", pillHeight / 2 )
-          .attr("dy", "1em")
-          .attr("dx", "1em")
-          .attr("alignment-baseline", "middle")
-          .attr("text-anchor", "left")
-          .attr("class", "filterPillsText")
-          .text(function() {
-            return d.name + " " +  " " + "X";
-          });
+      //   clickCounter++;
+      //   var filterPillGroup = d3.select(".filterPills")
+      //     .append("g")
+      //     .attr("id", function(d) {
+      //       return "rect" + clickCounter
+      //     });
 
-        var bbox = textBox.node().getBBox();
+      //   var textBox = filterPillGroup.append("text")
+      //     .attr("x", function(d) {
+      //       return (nextBoxX);
+      //     })
+      //     .attr("y", pillHeight / 2 )
+      //     .attr("dy", "1em")
+      //     .attr("dx", "1em")
+      //     .attr("alignment-baseline", "middle")
+      //     .attr("text-anchor", "left")
+      //     .attr("class", "filterPillsText")
+      //     .text(function() {
+      //       return d.name + " " +  " " + "X";
+      //     });
 
-        filterPillGroup.append("rect")
-          .style("opacity", "0.2")
-          .attr("width", bbox.width + 10)
-          .attr("height", bbox.height)
-          .attr("rx", 3).attr("ry", 3)
-          .attr("x", bbox.x)
-          .attr("y", bbox.y);
+      //   var bbox = textBox.node().getBBox();
 
-        nextBoxX = nextBoxX + bbox.width + 15;
+      //   filterPillGroup.append("rect")
+      //     .style("opacity", "0.2")
+      //     .attr("width", bbox.width + 10)
+      //     .attr("height", bbox.height)
+      //     .attr("rx", 3).attr("ry", 3)
+      //     .attr("x", bbox.x)
+      //     .attr("y", bbox.y);
 
-        filterPillGroup.on("click", function() {
-          d3.select(this).remove();
-        });
+      //   nextBoxX = nextBoxX + bbox.width + 15;
+
+      //   filterPillGroup.on("click", function() {
+      //     d3.select(this).remove();
+      //   });
       });
 
       node.append("rect")
@@ -459,11 +460,6 @@
         // .attr("transform", function(d) { return "translate (" + ((d.dy / 2) + 30) + "," + (d.dy / 2) + ") rotate(90)"; });
 
         node.selectAll("text")
-          .transition()
-          .duration(300)
-          .delay(function(d, i) {
-            return parseInt(d.id) * 15 > 700 ? parseInt(d.id) * 10 : parseInt(d.id) * 15;
-          })
           .style("opacity", 1);
       });
 </script>
