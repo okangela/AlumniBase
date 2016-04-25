@@ -1,208 +1,333 @@
 [{
-        "class": "Richard Brent",
-        "image": "images/23(1).jpg",
-        "label": "Richard Brent",
-        "current_designation": "Head of User Experience",
-        "current_company": "Amazon",
-        "graduate": 2008,
-        "description": "I design and craft user interfaces for both hardware and software, with a focus on creating best user experience possible. I have specialized in user research, information architecture, wireframe, visual design and rapid prototyping in the UI/UX design field, as well as developing my expertise in HTML, CSS and JavaScript.With my passion for web front-end experience, I’m currently designing and developing websites for a research project at Georgia Tech. I like spending my spare time working on side projects and attending web development groups. ",
-        "times": [{
-            "label": "MS-HCI",
-            "starting_time": 1199150003000,
-            "ending_time": 1230772403000,
-            "location": "Atlanta",
-            "industry": "University",
-            "company": "Georgia Tech",
-            "company_type": "5001-10,000 employees"
-        }, {
-            "label": "UX Manager",
-            "starting_time": 1262308403000,
-            "ending_time": 1325380403000,
-            "location": "India",
-            "industry": "Internet",
-            "company": "Google",
-            "company_type": "1001-5000 employees"
-        }, {
-            "label": "UX Lead",
-            "starting_time": 1325380403000,
-            "ending_time": 1388538803000,
-            "location": "India",
-            "industry": "Internet",
-            "company": "Google",
-            "company_type": "1001-5000 employees"
-        }, {
-
-            "label": "Head of User Expererience",
-            "starting_time": 1388538803000,
-            "ending_time": 1451610803000,
-            "location": "India",
-            "industry": "Internet",
-            "company": "Amazon",
-            "company_type": "1001-5000 employees"
-        }]
-    },
-
-    {
-        "class": "Bhargav Rajendra",
-        "image": "images/22.jpg",
-        "label": "Bhargav Rajendra",
-        "current_designation": "UX Designer",
-        "current_company": "Google",
-        "graduate": 2009,
-        "description": "For your really long charts, it supports scrolling. It can even do things on hover, click, and scroll for when someone accidentially interacts with your chart.You can also specify an optional class key in the data dictionary. This will label each timeline rectangle item within the visualization with the following id property: 'timelineItem_'+class. For example, this data",
-        "times": [{
-            "label": "UX Lead",
-            "starting_time": 1357002803000,
-            "ending_time": 1388538803000,
-            "location": "New York",
-            "industry": "Internet",
-            "company": "abc",
-            "company_type": "201-500 employees"
-        }, {
-            "label": "UX Designer",
-            "starting_time": 1388538803000,
-            "ending_time": 1451610803000,
-            "location": "Seattle",
-            "industry": "University",
-            "company": "abc",
-            "company_type": "5001-10,000 employees"
-        }]
-    },
-
-    {
-        "class": "Karan Pratap Singh",
-        "image": "images/24.jpg",
-        "label": "Karan Pratap Singh",
-        "current_designation": "UX Designer",
-        "current_company": "Google",
-        "graduate": 2009,
-        "description": "For your really long charts, it supports scrolling. It can even do things on hover, click, and scroll for when someone accidentially interacts with your chart.You can also specify an optional class key in the data dictionary. This will label each timeline rectangle item within the visualization with the following id property: 'timelineItem_'+class. For example, this data",
-        "times": [{
-            "label": "UX Designer",
-            "starting_time": 1136078003000,
-            "ending_time": 1451610803000,
-            "location": "Austin",
-            "industry": "Internet",
-            "company": "abc",
-            "company_type": "201-500 employees"
-        }, {
-            "label": "UX Designer",
-            "starting_time": 883617203000,
-            "ending_time": 1104542003000,
-            "location": "Boston",
-            "industry": "Consultant",
-            "company": "abc",
-            "company_type": "51-200 employees"
-        }]
-    },
-
-    {
-        "class": "David Brooks",
-        "image": "images/25(1).jpg",
-        "label": "David Brooks",
-        "current_designation": "UX Designer",
-        "current_company": "Google",
-        "graduate": 2009,
-        "description": "For your really long charts, it supports scrolling. It can even do things on hover, click, and scroll for when someone accidentially interacts with your chart.You can also specify an optional class key in the data dictionary. This will label each timeline rectangle item within the visualization with the following id property: 'timelineItem_'+class. For example, this data",
-        "times": [{
-            "label": "UX Designer",
-            "starting_time": 1420074803000,
-            "ending_time": 1451610803000,
-            "location": "Austin",
-            "industry": "Internet",
-            "company": "abc",
-            "company_type": "201-500 employees"
-        }]
-    },
-
-    {
-        "class": "Bhargav Rajendra",
-        "image": "images/22.jpg",
-        "label": "Bhargav Rajendra",
-        "current_designation": "UX Designer",
-        "current_company": "Google",
-        "graduate": 2009,
-        "description": "For your really long charts, it supports scrolling. It can even do things on hover, click, and scroll for when someone accidentially interacts with your chart.You can also specify an optional class key in the data dictionary. This will label each timeline rectangle item within the visualization with the following id property: 'timelineItem_'+class. For example, this data",
-        "times": [{
-            "label": "UX Lead",
-            "starting_time": 1357002803000,
-            "ending_time": 1388538803000,
-            "location": "New York",
-            "industry": "Internet",
-            "company": "abc",
-            "company_type": "201-500 employees"
-        }, {
-            "label": "UX Designer",
-            "starting_time": 1388538803000,
-            "ending_time": 1451610803000,
-            "location": "Seattle",
-            "industry": "University",
-            "company": "abc",
-            "company_type": "5001-10,000 employees"
-        }]
-    },
-
-    {
-        "class": "David Brooks",
-        "image": "images/25(1).jpg",
-        "label": "David Brooks",
-        "current_designation": "UX Designer",
-        "current_company": "Google",
-        "graduate": 2009,
-        "description": "For your really long charts, it supports scrolling. It can even do things on hover, click, and scroll for when someone accidentially interacts with your chart.You can also specify an optional class key in the data dictionary. This will label each timeline rectangle item within the visualization with the following id property: 'timelineItem_'+class. For example, this data",
-        "times": [{
-            "label": "UX Designer",
-            "starting_time": 1420074803000,
-            "ending_time": 1451610803000,
-            "location": "Austin",
-            "industry": "Internet",
-            "company": "abc",
-            "company_type": "201-500 employees"
-        }]
-    },
-
-    {
-        "class": "David Brooks",
-        "image": "images/25(1).jpg",
-        "label": "David Brooks",
-        "current_designation": "UX Designer",
-        "current_company": "Google",
-        "graduate": 2009,
-        "description": "For your really long charts, it supports scrolling. It can even do things on hover, click, and scroll for when someone accidentially interacts with your chart.You can also specify an optional class key in the data dictionary. This will label each timeline rectangle item within the visualization with the following id property: 'timelineItem_'+class. For example, this data",
-        "times": [{
-            "label": "UX Designer",
-            "starting_time": 1420074803000,
-            "ending_time": 1451610803000,
-            "location": "Austin",
-            "industry": "Internet",
-            "company": "abc",
-            "company_type": "201-500 employees"
-        }]
+    "label": "Mikol Graves",
+    "image": "images/30.jpg",
+    "current_designation": "Front-End Engineer and Designer",
+    "current_company": "Bebop",
+    "graduate": 1997,
+    "description": "UX designer who ships products to hundreds of millions of users. Asks difficult questions and facilitates answers critical for building the highest quality products. Aligns and builds consensus in cross-functional teams. Mentors, motivates, and develops designers.",
+    "times": [{
+      "label": "Front-End Engineer and Designer",
+      "starting_time": 1383271154000,
+      "ending_time": 1461290354000,
+      "location": "Mountain View",
+      "industry": "",
+      "company": "Bebop",
+      "job": 1,
+      "color": "#0277bd",
+      "company_type": ""
     }, {
-        "class": "Bhargav Rajendra",
-        "image": "images/22.jpg",
-        "label": "Bhargav Rajendra",
-        "current_designation": "UX Designer",
-        "current_company": "Google",
-        "graduate": 2009,
-        "description": "For your really long charts, it supports scrolling. It can even do things on hover, click, and scroll for when someone accidentially interacts with your chart.You can also specify an optional class key in the data dictionary. This will label each timeline rectangle item within the visualization with the following id property: 'timelineItem_'+class. For example, this data",
-        "times": [{
-            "label": "UX Lead",
-            "starting_time": 1357002803000,
-            "ending_time": 1388538803000,
-            "location": "New York",
-            "industry": "Internet",
-            "company": "abc",
-            "company_type": "201-500 employees"
-        }, {
-            "label": "UX Designer",
-            "starting_time": 1388538803000,
-            "ending_time": 1451610803000,
-            "location": "Seattle",
-            "industry": "University",
-            "company": "abc",
-            "company_type": "5001-10,000 employees"
-        }]
-    }
+      "label": "Sr. UX Designer and UI Developer",
+      "starting_time": 1288576754000,
+      "ending_time": 1383271154000,
+      "location": "Mountain View",
+      "industry": "",
+      "company": "Google",
+      "job": 2,
+      "color": "#0288d1",
+      "company_type": ""
+    }, {
+      "label": "Sr. Staff Engineer",
+      "starting_time": 973043954000,
+      "ending_time": 1288576754000,
+      "location": "Palo Alto",
+      "industry": "",
+      "company": "VMware",
+      "job": 3,
+      "color": "#039be5",
+      "company_type": ""
+    }, {
+      "label": "Software Engineer and Interaction Designer",
+      "starting_time": 878349554000,
+      "ending_time": 973043954000,
+      "location": "Mountain View",
+      "industry": "",
+      "company": "Netscape Communications",
+      "job": 4,
+      "color": "#03a9f4",
+      "company_type": ""
+    }, {
+      "label": "Bachelor of University Studies",
+      "starting_time": 688960754000,
+      "ending_time": 815191154000,
+      "location": "New Mexico",
+      "industry": "University",
+      "company": "The University of New Mexico",
+      "job": 0,
+      "company_type": ""
+    }, {
+      "label": "MS-IDT",
+      "starting_time": 815191154000,
+      "ending_time": 878349554000,
+      "location": "Atlanta",
+      "industry": "University",
+      "company": "Georgia Institute of Technology",
+      "job": 0,
+      "company_type": ""
+    }]
+  }, {
+    "label": "John Canning",
+    "image": "images/31.jpg",
+    "current_designation": "VP of Interactive Experiences",
+    "current_company": "NBC",
+    "graduate": 1995,
+    "description": "UX designer who ships products to hundreds of millions of users. Asks difficult questions and facilitates answers critical for building the highest quality products. Aligns and builds consensus in cross-functional teams. Mentors, motivates, and develops designers.",
+    "times": [{
+      "label": "VP of Interactive Experiences",
+      "starting_time": 1343786354000,
+      "ending_time": 1461290354000,
+      "location": "New York",
+      "industry": "",
+      "company": "NBC",
+      "job": 1,
+      "color": "#0277bd",
+      "company_type": ""
+    }, {
+      "label": "VP Product",
+      "starting_time": 1193882354000,
+      "ending_time": 1320112754000,
+      "location": "Burbank",
+      "industry": "",
+      "company": "Walt Disney Company",
+      "job": 4,
+      "color": "#03a9f4",
+      "company_type": ""
+    }, {
+      "label": "Technical Evangelist",
+      "starting_time": 878349554000,
+      "ending_time": 1130810354000,
+      "location": "Sunnyvale",
+      "industry": "",
+      "company": "Microsoft",
+      "job": 5,
+      "color": "#29b6f6",
+      "company_type": ""
+    }, {
+      "label": "MS-IDT & BEE",
+      "starting_time": 531194354000,
+      "ending_time": 815191154000,
+      "location": "Atlanta",
+      "industry": "University",
+      "company": "Georgia Institute of Technology",
+      "job": 0,
+      "company_type": ""
+    }]
+  }, {
+    "label": "Bryce Glass",
+    "image": "images/32.jpg",
+    "current_designation": "Product Manager",
+    "current_company": "Aver",
+    "graduate": 1997,
+    "description": "UX designer who ships products to hundreds of millions of users. Asks difficult questions and facilitates answers critical for building the highest quality products. Aligns and builds consensus in cross-functional teams. Mentors, motivates, and develops designers.",
+    "times": [{
+      "label": "Product Manager",
+      "starting_time": 1425175154000,
+      "ending_time": 1461290354000,
+      "location": "Columbus",
+      "industry": "",
+      "company": "Aver",
+      "job": 1,
+      "color": "#0277bd",
+      "company_type": ""
+    }, {
+      "label": "UX Lead",
+      "starting_time": 1383271154000,
+      "ending_time": 1420077554000,
+      "location": "Columbus",
+      "industry": "",
+      "company": "Appirio",
+      "job": 2,
+      "color": "#0288d1",
+      "company_type": ""
+    }, {
+      "label": "Product Manager",
+      "starting_time": 1341107954000,
+      "ending_time": 1375322354000,
+      "location": "Columbus",
+      "industry": "",
+      "company": "Manta",
+      "job": 3,
+      "color": "#039be5",
+      "company_type": ""
+    }, {
+      "label": "Principal UX Designer",
+      "starting_time": 1249091954000,
+      "ending_time": 1341107954000,
+      "location": "Columbus",
+      "industry": "",
+      "company": "Manta",
+      "job": 4,
+      "color": "#03a9f4",
+      "company_type": ""
+    }, {
+      "label": "Sr. Interaction Designer",
+      "starting_time": 1154397554000,
+      "ending_time": 1249091954000,
+      "location": "Sunnyvale",
+      "industry": "",
+      "company": "Yahoo",
+      "job": 5,
+      "color": "#29b6f6",
+      "company_type": ""
+    }, {
+      "label": "Sr. Interaction Designer",
+      "starting_time": 1091325554000,
+      "ending_time": 1154397554000,
+      "location": "Menlo Park",
+      "industry": "",
+      "company": "Sun Microsystems",
+      "job": 6,
+      "color": "#4FC3F7",
+      "company_type": ""
+    }, {
+      "label": "Sr. UI Designer",
+      "starting_time": 933472754000,
+      "ending_time": 1091325554000,
+      "location": "Mountain View",
+      "industry": "",
+      "company": "AOL",
+      "job": 7,
+      "color": "#81D4FA",
+      "company_type": ""
+    }, {
+      "label": "Interface Designer",
+      "starting_time": 870400754000,
+      "ending_time": 933472754000,
+      "location": "Mountain View",
+      "industry": "",
+      "company": "Netscape Communications",
+      "job": 8,
+      "color": "#81D4FA",
+      "company_type": ""
+    }, {
+      "label": "MS-IDT",
+      "starting_time": 815191154000,
+      "ending_time": 878349554000,
+      "location": "Atlanta",
+      "industry": "University",
+      "company": "Georgia Institute of Technology",
+      "job": 0,
+      "company_type": ""
+    }, {
+      "label": "BA English",
+      "starting_time": 625888754000,
+      "ending_time": 783655154000,
+      "location": "Ohio",
+      "industry": "University",
+      "company": "Bowling Green State University",
+      "job": 0,
+      "company_type": ""
+    }]
+  }, {
+    "class": "Richard Brent",
+    "image": "images/28.jpg",
+    "label": "Richard Brent",
+    "current_designation": "Head of User Experience",
+    "current_company": "Amazon",
+    "graduate": 2008,
+    "description": "I design and craft user interfaces for both hardware and software, with a focus on creating best user experience possible. I have specialized in user research, information architecture, wireframe, visual design and rapid prototyping in the UI/UX design field, as well as developing my expertise in HTML, CSS and JavaScript.With my passion for web front-end experience, I’m currently designing and developing websites for a research project at Georgia Tech. I like spending my spare time working on side projects and attending web development groups. ",
+    "times": [{
+      "label": "MS-HCI",
+      "starting_time": 1199150003000,
+      "ending_time": 1230772403000,
+      "location": "Atlanta",
+      "industry": "University",
+      "company": "Georgia Tech",
+      "job": 0,
+      "company_type": "5001-10,000 employees"
+    }, {
+      "label": "UX Manager",
+      "starting_time": 1262308403000,
+      "ending_time": 1325380403000,
+      "location": "India",
+      "industry": "Internet",
+      "company": "Google",
+      "job": 3,
+      "color": "#039be5",
+      "company_type": "1001-5000 employees"
+    }, {
+      "label": "UX Lead",
+      "starting_time": 1325380403000,
+      "ending_time": 1388538803000,
+      "location": "India",
+      "industry": "Internet",
+      "company": "Google",
+      "job": 2,
+      "color": "#0288d1",
+      "company_type": "1001-5000 employees"
+    }, {
+
+      "label": "Head of User Expererience",
+      "starting_time": 1388538803000,
+      "ending_time": 1461232022000,
+      "location": "India",
+      "industry": "Internet",
+      "company": "Amazon",
+      "job": 1,
+      "color": "#0277bd",
+      "company_type": "1001-5000 employees"
+    }]
+  },
+
+  {
+    "class": "Brian Jones",
+    "image": "images/44.jpg",
+    "label": "Brian Jones",
+    "current_designation": "UX Designer",
+    "current_company": "Google",
+    "graduate": 2009,
+    "description": "For your really long charts, it supports scrolling. It can even do things on hover, click, and scroll for when someone accidentially interacts with your chart.You can also specify an optional class key in the data dictionary. This will label each timeline rectangle item within the visualization with the following id property: 'timelineItem_'+class. For example, this data",
+    "times": [{
+      "label": "MS-HCI",
+      "starting_time": 1357002803000,
+      "ending_time": 1388538803000,
+      "location": "New York",
+      "industry": "Internet",
+      "company": "abc",
+      "job": 0,
+      "company_type": "201-500 employees"
+    }, {
+      "label": "UX Designer",
+      "starting_time": 1388538803000,
+      "ending_time": 1461232022000,
+      "location": "Seattle",
+      "industry": "University",
+      "company": "abc",
+      "job": 1,
+      "color": "#0277bd",
+      "company_type": "5001-10,000 employees"
+    }]
+  },
+
+  {
+    "class": "Karan Pratap Singh",
+    "image": "images/55.jpg",
+    "label": "Karan Singh",
+    "current_designation": "UX Designer",
+    "current_company": "Google",
+    "graduate": 2009,
+    "description": "For your really long charts, it supports scrolling. It can even do things on hover, click, and scroll for when someone accidentially interacts with your chart.You can also specify an optional class key in the data dictionary. This will label each timeline rectangle item within the visualization with the following id property: 'timelineItem_'+class. For example, this data",
+    "times": [{
+      "label": "UX Lead",
+      "starting_time": 1136078003000,
+      "ending_time": 1461232022000,
+      "location": "Austin",
+      "industry": "Internet",
+      "company": "abc",
+      "job": 1,
+      "color": "#0277bd",
+
+      "company_type": "201-500 employees"
+    }, {
+      "label": "UX Architect",
+      "starting_time": 883617203000,
+      "ending_time": 1104542003000,
+      "location": "Boston",
+      "industry": "Consultant",
+      "company": "abc",
+      "job": 2,
+      "color": "#0288d1",
+      "company_type": "51-200 employees"
+    }]
+  }
 
 ]

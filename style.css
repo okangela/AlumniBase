@@ -193,6 +193,8 @@ li #display-toggle{
 
 }
 
+
+
 /*_________Profile_________*/
 
 /*.profile {
@@ -299,6 +301,7 @@ li #display-toggle{
 .clusterChart{
   background-color: #f7f7f7;
   border-radius:3px;
+  visibility: hidden;
 }
 .clusterChart text {
   font-size: 11px;
@@ -363,6 +366,7 @@ li #display-toggle{
   border-radius: 3px;
   padding-top: 10px;
   margin: 0 auto;
+  visibility: hidden;
 }
 
 .filterpills{
@@ -382,6 +386,10 @@ body {
   background-color: #f7f7f7;
   padding:10px;
   border-radius: 3px;
+}
+
+.sankey-filter-header li{
+  color:black;
 }
 
 .sankeyChart{
@@ -434,6 +442,11 @@ body {
 
 
 /*_____Timeline_______*/
+
+.timeline{
+  visibility:hidden;
+}
+
 
 .timeline text{
   pointer-events:none;
@@ -489,6 +502,14 @@ body {
   margin-top: 30px;
 }
 
+.timeline_initial{
+  margin: 40px 0px;
+  border: 2px dashed #C9C9C9;
+  padding:10px 10px;
+  border-radius: 5px;
+  color: #C9C9C9;
+  font-size: 14px;
+}
 
 
 /*___________D3 Tooltip________*/
